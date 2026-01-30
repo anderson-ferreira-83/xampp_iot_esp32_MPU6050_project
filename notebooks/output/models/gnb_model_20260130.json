@@ -1,0 +1,891 @@
+{
+  "type": "gaussian_nb",
+  "version": "py_20260130",
+  "generated_at": "2026-01-30 13:19:44",
+  "features": [
+    "accel_x_g_mean",
+    "accel_x_g_std",
+    "accel_x_g_skew",
+    "accel_x_g_kurtosis",
+    "accel_x_g_rms",
+    "accel_x_g_peak",
+    "accel_x_g_root_amplitude",
+    "accel_x_g_crest_factor",
+    "accel_x_g_shape_factor",
+    "accel_x_g_impulse_factor",
+    "accel_x_g_clearance_factor",
+    "accel_y_g_mean",
+    "accel_y_g_std",
+    "accel_y_g_skew",
+    "accel_y_g_kurtosis",
+    "accel_y_g_rms",
+    "accel_y_g_peak",
+    "accel_y_g_root_amplitude",
+    "accel_y_g_crest_factor",
+    "accel_y_g_shape_factor",
+    "accel_y_g_impulse_factor",
+    "accel_y_g_clearance_factor",
+    "accel_z_g_mean",
+    "accel_z_g_std",
+    "accel_z_g_skew",
+    "accel_z_g_kurtosis",
+    "accel_z_g_rms",
+    "accel_z_g_peak",
+    "accel_z_g_root_amplitude",
+    "accel_z_g_crest_factor",
+    "accel_z_g_shape_factor",
+    "accel_z_g_impulse_factor",
+    "accel_z_g_clearance_factor",
+    "gyro_x_dps_mean",
+    "gyro_x_dps_std",
+    "gyro_x_dps_skew",
+    "gyro_x_dps_kurtosis",
+    "gyro_x_dps_rms",
+    "gyro_x_dps_peak",
+    "gyro_x_dps_root_amplitude",
+    "gyro_x_dps_crest_factor",
+    "gyro_x_dps_shape_factor",
+    "gyro_x_dps_impulse_factor",
+    "gyro_x_dps_clearance_factor",
+    "gyro_y_dps_mean",
+    "gyro_y_dps_std",
+    "gyro_y_dps_skew",
+    "gyro_y_dps_kurtosis",
+    "gyro_y_dps_rms",
+    "gyro_y_dps_peak",
+    "gyro_y_dps_root_amplitude",
+    "gyro_y_dps_crest_factor",
+    "gyro_y_dps_shape_factor",
+    "gyro_y_dps_impulse_factor",
+    "gyro_y_dps_clearance_factor",
+    "gyro_z_dps_mean",
+    "gyro_z_dps_std",
+    "gyro_z_dps_skew",
+    "gyro_z_dps_kurtosis",
+    "gyro_z_dps_rms",
+    "gyro_z_dps_peak",
+    "gyro_z_dps_root_amplitude",
+    "gyro_z_dps_crest_factor",
+    "gyro_z_dps_shape_factor",
+    "gyro_z_dps_impulse_factor",
+    "gyro_z_dps_clearance_factor"
+  ],
+  "labels": [
+    "HIGH",
+    "LOW",
+    "MEDIUM"
+  ],
+  "priors": {
+    "HIGH": 0.3333333333333333,
+    "LOW": 0.3366013071895425,
+    "MEDIUM": 0.3300653594771242
+  },
+  "stats": {
+    "HIGH": {
+      "accel_x_g_mean": {
+        "mean": 0.287796273695,
+        "var": 0.00017181246823076297
+      },
+      "accel_x_g_std": {
+        "mean": 0.14907183950112085,
+        "var": 0.00036830082305222946
+      },
+      "accel_x_g_skew": {
+        "mean": -0.5006715415220784,
+        "var": 0.02026935189683753
+      },
+      "accel_x_g_kurtosis": {
+        "mean": -0.24644011840498223,
+        "var": 0.0754445242640478
+      },
+      "accel_x_g_rms": {
+        "mean": 0.32436980917452135,
+        "var": 0.00014749530406399125
+      },
+      "accel_x_g_peak": {
+        "mean": 0.5787090392156863,
+        "var": 0.00289618647844527
+      },
+      "accel_x_g_root_amplitude": {
+        "mean": 0.26981521932015473,
+        "var": 0.00017983059664794878
+      },
+      "accel_x_g_crest_factor": {
+        "mean": 1.7826957646384822,
+        "var": 0.0184093576768112
+      },
+      "accel_x_g_shape_factor": {
+        "mean": 1.106847107529082,
+        "var": 0.0004656279410546935
+      },
+      "accel_x_g_impulse_factor": {
+        "mean": 1.9753183424387906,
+        "var": 0.0328344523720442
+      },
+      "accel_x_g_clearance_factor": {
+        "mean": 2.1499719479664647,
+        "var": 0.05190121215178153
+      },
+      "accel_y_g_mean": {
+        "mean": -0.021684362376470583,
+        "var": 0.00017175786974008405
+      },
+      "accel_y_g_std": {
+        "mean": 0.15959372787424708,
+        "var": 6.498104465673155e-05
+      },
+      "accel_y_g_skew": {
+        "mean": -0.005190622034809184,
+        "var": 0.034204690180114315
+      },
+      "accel_y_g_kurtosis": {
+        "mean": -0.5033391547847242,
+        "var": 0.0593084987595918
+      },
+      "accel_y_g_rms": {
+        "mean": 0.1607767557996686,
+        "var": 7.254564046346703e-05
+      },
+      "accel_y_g_peak": {
+        "mean": 0.38330327450980384,
+        "var": 0.0007470717329989022
+      },
+      "accel_y_g_root_amplitude": {
+        "mean": 0.11369825535577183,
+        "var": 6.644139865571161e-05
+      },
+      "accel_y_g_crest_factor": {
+        "mean": 2.3905982481497734,
+        "var": 0.04526099757264481
+      },
+      "accel_y_g_shape_factor": {
+        "mean": 1.2199571147266166,
+        "var": 0.0006141737529498645
+      },
+      "accel_y_g_impulse_factor": {
+        "mean": 2.919625276367285,
+        "var": 0.09115615510812751
+      },
+      "accel_y_g_clearance_factor": {
+        "mean": 3.3927963045051994,
+        "var": 0.15138316460303974
+      },
+      "accel_z_g_mean": {
+        "mean": -1.0831483967647058,
+        "var": 1.2993254757340656e-05
+      },
+      "accel_z_g_std": {
+        "mean": 0.04466723942540136,
+        "var": 1.881077913919293e-05
+      },
+      "accel_z_g_skew": {
+        "mean": -0.20549070204458733,
+        "var": 0.0447230470466553
+      },
+      "accel_z_g_kurtosis": {
+        "mean": -0.1053387644847227,
+        "var": 0.11376141718131082
+      },
+      "accel_z_g_rms": {
+        "mean": 1.0840683426714,
+        "var": 1.3058186122749985e-05
+      },
+      "accel_z_g_peak": {
+        "mean": 1.1998322549019607,
+        "var": 0.00048149679740143854
+      },
+      "accel_z_g_root_amplitude": {
+        "mean": 1.0826894589340033,
+        "var": 1.2986333296924935e-05
+      },
+      "accel_z_g_crest_factor": {
+        "mean": 1.106767629898882,
+        "var": 0.0003551267270003648
+      },
+      "accel_z_g_shape_factor": {
+        "mean": 1.000849320500228,
+        "var": 7.319001479907752e-08
+      },
+      "accel_z_g_impulse_factor": {
+        "mean": 1.1077093260199844,
+        "var": 0.0003594875810524241
+      },
+      "accel_z_g_clearance_factor": {
+        "mean": 1.108179718268379,
+        "var": 0.0003616536760134619
+      },
+      "gyro_x_dps_mean": {
+        "mean": -0.9484829540450979,
+        "var": 0.02776161257822896
+      },
+      "gyro_x_dps_std": {
+        "mean": 1.712446719329424,
+        "var": 0.018947723221915576
+      },
+      "gyro_x_dps_skew": {
+        "mean": -0.003192067620242568,
+        "var": 0.02888140126080056
+      },
+      "gyro_x_dps_kurtosis": {
+        "mean": -0.4117205548863392,
+        "var": 0.040535632984092136
+      },
+      "gyro_x_dps_rms": {
+        "mean": 1.9574557284622722,
+        "var": 0.01765582644223911
+      },
+      "gyro_x_dps_peak": {
+        "mean": 4.9360132352941175,
+        "var": 0.14781848207437184
+      },
+      "gyro_x_dps_root_amplitude": {
+        "mean": 1.3681834796049406,
+        "var": 0.014007700520772442
+      },
+      "gyro_x_dps_crest_factor": {
+        "mean": 2.525508129847434,
+        "var": 0.02948357278387619
+      },
+      "gyro_x_dps_shape_factor": {
+        "mean": 1.2297353390677053,
+        "var": 0.0006231425817031153
+      },
+      "gyro_x_dps_impulse_factor": {
+        "mean": 3.10683594172873,
+        "var": 0.05581291837324296
+      },
+      "gyro_x_dps_clearance_factor": {
+        "mean": 3.6217086156435574,
+        "var": 0.08598961555040568
+      },
+      "gyro_y_dps_mean": {
+        "mean": 0.680499119122549,
+        "var": 0.13724816067044368
+      },
+      "gyro_y_dps_std": {
+        "mean": 3.636635014467227,
+        "var": 0.13118902282498485
+      },
+      "gyro_y_dps_skew": {
+        "mean": 0.21108444183718839,
+        "var": 0.040420773618565685
+      },
+      "gyro_y_dps_kurtosis": {
+        "mean": 0.07341000690055917,
+        "var": 0.21040586740371464
+      },
+      "gyro_y_dps_rms": {
+        "mean": 3.698914696371893,
+        "var": 0.14109745329560774
+      },
+      "gyro_y_dps_peak": {
+        "mean": 10.689266078431368,
+        "var": 2.75520693329397
+      },
+      "gyro_y_dps_root_amplitude": {
+        "mean": 2.4574090726968714,
+        "var": 0.07686083539067938
+      },
+      "gyro_y_dps_crest_factor": {
+        "mean": 2.8873686421316744,
+        "var": 0.10761769491754777
+      },
+      "gyro_y_dps_shape_factor": {
+        "mean": 1.2681649333879954,
+        "var": 0.0012603667196862723
+      },
+      "gyro_y_dps_impulse_factor": {
+        "mean": 3.6677078461386743,
+        "var": 0.22841490136961995
+      },
+      "gyro_y_dps_clearance_factor": {
+        "mean": 4.367033182025684,
+        "var": 0.38458726790228775
+      },
+      "gyro_z_dps_mean": {
+        "mean": 1.505457670102941,
+        "var": 3.7448009880320297
+      },
+      "gyro_z_dps_std": {
+        "mean": 19.66903943723647,
+        "var": 1.3146851316471684
+      },
+      "gyro_z_dps_skew": {
+        "mean": -0.0674955547553855,
+        "var": 0.019258444114080134
+      },
+      "gyro_z_dps_kurtosis": {
+        "mean": -0.34491297423318656,
+        "var": 0.052518216276977815
+      },
+      "gyro_z_dps_rms": {
+        "mean": 19.71983012982456,
+        "var": 1.4434429291991875
+      },
+      "gyro_z_dps_peak": {
+        "mean": 42.1125549019608,
+        "var": 1.7777042125029685
+      },
+      "gyro_z_dps_root_amplitude": {
+        "mean": 12.166046165726364,
+        "var": 1.5772132700784212
+      },
+      "gyro_z_dps_crest_factor": {
+        "mean": 2.1419123878573307,
+        "var": 0.01550860434004425
+      },
+      "gyro_z_dps_shape_factor": {
+        "mean": 1.300629639548717,
+        "var": 0.0010901731113774759
+      },
+      "gyro_z_dps_impulse_factor": {
+        "mean": 2.7883513658967796,
+        "var": 0.0450713551537722
+      },
+      "gyro_z_dps_clearance_factor": {
+        "mean": 3.4924660826402416,
+        "var": 0.10544846074875378
+      }
+    },
+    "LOW": {
+      "accel_x_g_mean": {
+        "mean": 0.28778698572815536,
+        "var": 1.2651363603022441e-05
+      },
+      "accel_x_g_std": {
+        "mean": 0.06638151287177352,
+        "var": 1.0532881471798434e-05
+      },
+      "accel_x_g_skew": {
+        "mean": -0.34200918992936513,
+        "var": 0.01787159294647385
+      },
+      "accel_x_g_kurtosis": {
+        "mean": -0.7354893344512491,
+        "var": 0.04373004120103304
+      },
+      "accel_x_g_rms": {
+        "mean": 0.29528684337605593,
+        "var": 1.2502171670310202e-05
+      },
+      "accel_x_g_peak": {
+        "mean": 0.40350744660194154,
+        "var": 5.0183835404787364e-05
+      },
+      "accel_x_g_root_amplitude": {
+        "mean": 0.2836665969567391,
+        "var": 1.309746055113086e-05
+      },
+      "accel_x_g_crest_factor": {
+        "mean": 1.3665636723942383,
+        "var": 0.0005021635005129512
+      },
+      "accel_x_g_shape_factor": {
+        "mean": 1.0260685834421859,
+        "var": 6.882817733814651e-06
+      },
+      "accel_x_g_impulse_factor": {
+        "mean": 1.4022223010456267,
+        "var": 0.0006387991661657909
+      },
+      "accel_x_g_clearance_factor": {
+        "mean": 1.4226240918976087,
+        "var": 0.0007345171452920976
+      },
+      "accel_y_g_mean": {
+        "mean": -0.017713181146601947,
+        "var": 9.214783623520208e-05
+      },
+      "accel_y_g_std": {
+        "mean": 0.12954113481784565,
+        "var": 2.394181664173698e-05
+      },
+      "accel_y_g_skew": {
+        "mean": -0.06208755565959683,
+        "var": 0.022239207075142764
+      },
+      "accel_y_g_kurtosis": {
+        "mean": -0.9115010331506515,
+        "var": 0.027129320518025427
+      },
+      "accel_y_g_rms": {
+        "mean": 0.1304491167766763,
+        "var": 2.568528029835758e-05
+      },
+      "accel_y_g_peak": {
+        "mean": 0.28394746601941756,
+        "var": 0.0003250557146103676
+      },
+      "accel_y_g_root_amplitude": {
+        "mean": 0.097303976809289,
+        "var": 2.9685935619230333e-05
+      },
+      "accel_y_g_crest_factor": {
+        "mean": 2.1783959367581307,
+        "var": 0.01957489717366039
+      },
+      "accel_y_g_shape_factor": {
+        "mean": 1.181058158389369,
+        "var": 0.0005453826671653096
+      },
+      "accel_y_g_impulse_factor": {
+        "mean": 2.5732170156864314,
+        "var": 0.031248441307741487
+      },
+      "accel_y_g_clearance_factor": {
+        "mean": 2.92527267165612,
+        "var": 0.04785978922864981
+      },
+      "accel_z_g_mean": {
+        "mean": -1.0834155165048545,
+        "var": 1.2420361959100374e-06
+      },
+      "accel_z_g_std": {
+        "mean": 0.020823083672729233,
+        "var": 1.989345398866261e-06
+      },
+      "accel_z_g_skew": {
+        "mean": 0.18210905846832953,
+        "var": 0.04318288451870927
+      },
+      "accel_z_g_kurtosis": {
+        "mean": -0.37237040238543745,
+        "var": 0.13153074662678238
+      },
+      "accel_z_g_rms": {
+        "mean": 1.0836144944584387,
+        "var": 1.2388699829542214e-06
+      },
+      "accel_z_g_peak": {
+        "mean": 1.1279819417475734,
+        "var": 2.9232763678517444e-05
+      },
+      "accel_z_g_root_amplitude": {
+        "mean": 1.0833158119988036,
+        "var": 1.2442598599936836e-06
+      },
+      "accel_z_g_crest_factor": {
+        "mean": 1.0409436261442018,
+        "var": 2.314483350514148e-05
+      },
+      "accel_z_g_shape_factor": {
+        "mean": 1.0001836598516909,
+        "var": 4.72952270996506e-08
+      },
+      "accel_z_g_impulse_factor": {
+        "mean": 1.0411348428921494,
+        "var": 2.3231367353509606e-05
+      },
+      "accel_z_g_clearance_factor": {
+        "mean": 1.041230684921182,
+        "var": 2.3274402324278592e-05
+      },
+      "gyro_x_dps_mean": {
+        "mean": -0.9569999428553394,
+        "var": 0.004825467977200526
+      },
+      "gyro_x_dps_std": {
+        "mean": 1.0429496517216812,
+        "var": 0.0024130305597220188
+      },
+      "gyro_x_dps_skew": {
+        "mean": 0.1719780034725565,
+        "var": 0.028365063966154364
+      },
+      "gyro_x_dps_kurtosis": {
+        "mean": -0.4384812060484319,
+        "var": 0.06355869628543029
+      },
+      "gyro_x_dps_rms": {
+        "mean": 1.4128500868711653,
+        "var": 0.00378438092397541
+      },
+      "gyro_x_dps_peak": {
+        "mean": 3.245979708737862,
+        "var": 0.05883726016056793
+      },
+      "gyro_x_dps_root_amplitude": {
+        "mean": 1.0309873080644407,
+        "var": 0.004075087229211683
+      },
+      "gyro_x_dps_crest_factor": {
+        "mean": 2.300188240630903,
+        "var": 0.03269228367703296
+      },
+      "gyro_x_dps_shape_factor": {
+        "mean": 1.1950721907802844,
+        "var": 0.0004433164896495952
+      },
+      "gyro_x_dps_impulse_factor": {
+        "mean": 2.750490911742791,
+        "var": 0.05744247696425982
+      },
+      "gyro_x_dps_clearance_factor": {
+        "mean": 3.1592572727096657,
+        "var": 0.08642503038360502
+      },
+      "gyro_y_dps_mean": {
+        "mean": 0.615169452805825,
+        "var": 0.010873807886539875
+      },
+      "gyro_y_dps_std": {
+        "mean": 1.9821851158079418,
+        "var": 0.024415865785405555
+      },
+      "gyro_y_dps_skew": {
+        "mean": -0.013161208609368043,
+        "var": 0.03328885653712351
+      },
+      "gyro_y_dps_kurtosis": {
+        "mean": -0.4594857920010591,
+        "var": 0.04467175082079255
+      },
+      "gyro_y_dps_rms": {
+        "mean": 2.068480274803058,
+        "var": 0.024635532200685588
+      },
+      "gyro_y_dps_peak": {
+        "mean": 5.173348252427181,
+        "var": 0.2631937964207053
+      },
+      "gyro_y_dps_root_amplitude": {
+        "mean": 1.4391926585209034,
+        "var": 0.014302467078811899
+      },
+      "gyro_y_dps_crest_factor": {
+        "mean": 2.5057565820647216,
+        "var": 0.0519335637098832
+      },
+      "gyro_y_dps_shape_factor": {
+        "mean": 1.2287020263498178,
+        "var": 0.0007781664648442397
+      },
+      "gyro_y_dps_impulse_factor": {
+        "mean": 3.079760284378593,
+        "var": 0.08985584075446262
+      },
+      "gyro_y_dps_clearance_factor": {
+        "mean": 3.6071468303403886,
+        "var": 0.13703195731994014
+      },
+      "gyro_z_dps_mean": {
+        "mean": 0.9517543956262134,
+        "var": 1.2008878285820008
+      },
+      "gyro_z_dps_std": {
+        "mean": 13.948497415021539,
+        "var": 0.22581517279399901
+      },
+      "gyro_z_dps_skew": {
+        "mean": -0.0749017296749983,
+        "var": 0.011415271380504464
+      },
+      "gyro_z_dps_kurtosis": {
+        "mean": -0.9354633040601023,
+        "var": 0.010497406617760678
+      },
+      "gyro_z_dps_rms": {
+        "mean": 13.955104625440972,
+        "var": 0.20031046150493922
+      },
+      "gyro_z_dps_peak": {
+        "mean": 26.482543689320377,
+        "var": 0.493230046435391
+      },
+      "gyro_z_dps_root_amplitude": {
+        "mean": 10.363030643342928,
+        "var": 0.2648214506843619
+      },
+      "gyro_z_dps_crest_factor": {
+        "mean": 1.8989889549821086,
+        "var": 0.003741789365457893
+      },
+      "gyro_z_dps_shape_factor": {
+        "mean": 1.1822659262863897,
+        "var": 0.00019836756586685117
+      },
+      "gyro_z_dps_impulse_factor": {
+        "mean": 2.2456120938657858,
+        "var": 0.00821823167385534
+      },
+      "gyro_z_dps_clearance_factor": {
+        "mean": 2.560758672432208,
+        "var": 0.015580395679086723
+      }
+    },
+    "MEDIUM": {
+      "accel_x_g_mean": {
+        "mean": 0.2886856365346535,
+        "var": 1.5209757523568277e-05
+      },
+      "accel_x_g_std": {
+        "mean": 0.07331621376005895,
+        "var": 3.450307431140734e-05
+      },
+      "accel_x_g_skew": {
+        "mean": -0.41335337703225894,
+        "var": 0.026887831364633897
+      },
+      "accel_x_g_kurtosis": {
+        "mean": -0.5145723252555549,
+        "var": 0.21150645976206212
+      },
+      "accel_x_g_rms": {
+        "mean": 0.2978192940245594,
+        "var": 1.3900950606640673e-05
+      },
+      "accel_x_g_peak": {
+        "mean": 0.42753854455445545,
+        "var": 0.00045546472456397337
+      },
+      "accel_x_g_root_amplitude": {
+        "mean": 0.28345392706768746,
+        "var": 1.8343418221765434e-05
+      },
+      "accel_x_g_crest_factor": {
+        "mean": 1.4354847754527158,
+        "var": 0.004593385882590743
+      },
+      "accel_x_g_shape_factor": {
+        "mean": 1.031665364600413,
+        "var": 2.765089985133497e-05
+      },
+      "accel_x_g_impulse_factor": {
+        "mean": 1.481130857269361,
+        "var": 0.005506491953019421
+      },
+      "accel_x_g_clearance_factor": {
+        "mean": 1.5086786367017548,
+        "var": 0.006237612522801047
+      },
+      "accel_y_g_mean": {
+        "mean": -0.01735230514950495,
+        "var": 5.7458079767869127e-05
+      },
+      "accel_y_g_std": {
+        "mean": 0.13781491907942864,
+        "var": 5.5664964750341566e-05
+      },
+      "accel_y_g_skew": {
+        "mean": -0.07718625565073083,
+        "var": 0.029254099327404477
+      },
+      "accel_y_g_kurtosis": {
+        "mean": -0.8044781263716875,
+        "var": 0.030448506880622936
+      },
+      "accel_y_g_rms": {
+        "mean": 0.13842990003302794,
+        "var": 5.3807840653027856e-05
+      },
+      "accel_y_g_peak": {
+        "mean": 0.30691611881188124,
+        "var": 0.0005330760810543173
+      },
+      "accel_y_g_root_amplitude": {
+        "mean": 0.10026488673219586,
+        "var": 3.038355493056163e-05
+      },
+      "accel_y_g_crest_factor": {
+        "mean": 2.2179009248178403,
+        "var": 0.01777522104626462
+      },
+      "accel_y_g_shape_factor": {
+        "mean": 1.1995965016327943,
+        "var": 0.0007485875567775864
+      },
+      "accel_y_g_impulse_factor": {
+        "mean": 2.6615542447774745,
+        "var": 0.03483298466634563
+      },
+      "accel_y_g_clearance_factor": {
+        "mean": 3.066817439692312,
+        "var": 0.06288748363062091
+      },
+      "accel_z_g_mean": {
+        "mean": -1.0832642623762374,
+        "var": 3.554388441671608e-06
+      },
+      "accel_z_g_std": {
+        "mean": 0.024196034999312364,
+        "var": 5.626994429089735e-06
+      },
+      "accel_z_g_skew": {
+        "mean": -0.07141244423547596,
+        "var": 0.03615556308985094
+      },
+      "accel_z_g_kurtosis": {
+        "mean": -0.36889382538467136,
+        "var": 0.07941846021218442
+      },
+      "accel_z_g_rms": {
+        "mean": 1.0835342923100149,
+        "var": 3.572044561556059e-06
+      },
+      "accel_z_g_peak": {
+        "mean": 1.1409909900990096,
+        "var": 5.817692040496909e-05
+      },
+      "accel_z_g_root_amplitude": {
+        "mean": 1.0831293341250332,
+        "var": 3.5473052297262026e-06
+      },
+      "accel_z_g_crest_factor": {
+        "mean": 1.0530275096549153,
+        "var": 4.716302198755105e-05
+      },
+      "accel_z_g_shape_factor": {
+        "mean": 1.0002492686571653,
+        "var": 4.8929448617066776e-08
+      },
+      "accel_z_g_impulse_factor": {
+        "mean": 1.053290210815754,
+        "var": 4.763941385216749e-05
+      },
+      "accel_z_g_clearance_factor": {
+        "mean": 1.0534215266567921,
+        "var": 4.7877135235327835e-05
+      },
+      "gyro_x_dps_mean": {
+        "mean": -0.9572398479653468,
+        "var": 0.005223699905342305
+      },
+      "gyro_x_dps_std": {
+        "mean": 1.2393716987178292,
+        "var": 0.029230244393750885
+      },
+      "gyro_x_dps_skew": {
+        "mean": 0.08678066622243188,
+        "var": 0.018865034869434243
+      },
+      "gyro_x_dps_kurtosis": {
+        "mean": -0.43101368727313144,
+        "var": 0.0596381898727296
+      },
+      "gyro_x_dps_rms": {
+        "mean": 1.566335456891329,
+        "var": 0.017744744153074272
+      },
+      "gyro_x_dps_peak": {
+        "mean": 3.6593602970297034,
+        "var": 0.16203178856387115
+      },
+      "gyro_x_dps_root_amplitude": {
+        "mean": 1.1139163587798104,
+        "var": 0.007859982075816412
+      },
+      "gyro_x_dps_crest_factor": {
+        "mean": 2.333502689769604,
+        "var": 0.0158420432379414
+      },
+      "gyro_x_dps_shape_factor": {
+        "mean": 1.2143682253036059,
+        "var": 0.0003861738909524707
+      },
+      "gyro_x_dps_impulse_factor": {
+        "mean": 2.834024424122809,
+        "var": 0.027155899592303627
+      },
+      "gyro_x_dps_clearance_factor": {
+        "mean": 3.2818225360059765,
+        "var": 0.04483064641715414
+      },
+      "gyro_y_dps_mean": {
+        "mean": 0.5844108722871286,
+        "var": 0.011791480175366187
+      },
+      "gyro_y_dps_std": {
+        "mean": 2.0723880560435535,
+        "var": 0.012399067043997942
+      },
+      "gyro_y_dps_skew": {
+        "mean": 0.0036425211579137824,
+        "var": 0.017441174578346118
+      },
+      "gyro_y_dps_kurtosis": {
+        "mean": -0.6886529161603735,
+        "var": 0.03573842643067529
+      },
+      "gyro_y_dps_rms": {
+        "mean": 2.1463116093465624,
+        "var": 0.010793385837429288
+      },
+      "gyro_y_dps_peak": {
+        "mean": 4.989796138613859,
+        "var": 0.14430280306192048
+      },
+      "gyro_y_dps_root_amplitude": {
+        "mean": 1.5313950193973462,
+        "var": 0.009953818827856249
+      },
+      "gyro_y_dps_crest_factor": {
+        "mean": 2.325451514132412,
+        "var": 0.02156053606939232
+      },
+      "gyro_y_dps_shape_factor": {
+        "mean": 1.212917100262193,
+        "var": 0.000741222586287112
+      },
+      "gyro_y_dps_impulse_factor": {
+        "mean": 2.8217547297475507,
+        "var": 0.042164653102778386
+      },
+      "gyro_y_dps_clearance_factor": {
+        "mean": 3.267170366572047,
+        "var": 0.07344504015738405
+      },
+      "gyro_z_dps_mean": {
+        "mean": 0.9858716645049507,
+        "var": 0.7372817862234893
+      },
+      "gyro_z_dps_std": {
+        "mean": 15.965573775923058,
+        "var": 1.44008334035975
+      },
+      "gyro_z_dps_skew": {
+        "mean": -0.04246000681347806,
+        "var": 0.006413938586507769
+      },
+      "gyro_z_dps_kurtosis": {
+        "mean": -0.7311092244888178,
+        "var": 0.04079886548159798
+      },
+      "gyro_z_dps_rms": {
+        "mean": 15.941034708950063,
+        "var": 1.3688701283734876
+      },
+      "gyro_z_dps_peak": {
+        "mean": 31.37911089108911,
+        "var": 9.651934876971083
+      },
+      "gyro_z_dps_root_amplitude": {
+        "mean": 11.034049729671764,
+        "var": 0.34469241029098224
+      },
+      "gyro_z_dps_crest_factor": {
+        "mean": 1.9654291399000292,
+        "var": 0.006616362038524513
+      },
+      "gyro_z_dps_shape_factor": {
+        "mean": 1.2263005860234222,
+        "var": 0.0012285492302066493
+      },
+      "gyro_z_dps_impulse_factor": {
+        "mean": 2.4123977744903558,
+        "var": 0.024792277142793806
+      },
+      "gyro_z_dps_clearance_factor": {
+        "mean": 2.8440405980471275,
+        "var": 0.06068851004024143
+      }
+    }
+  },
+  "metrics": {
+    "train_accuracy": 0.9215686274509803,
+    "cv_accuracy_mean": 0.9017451084082495
+  },
+  "training_info": {
+    "total_samples": 306,
+    "window_size": 100
+  }
+}

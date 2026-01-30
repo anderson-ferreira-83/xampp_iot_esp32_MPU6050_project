@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Sistema IoT de monitoramento de vibração de ventilador com Machine Learning em tempo real" />
+  <meta name="author" content="Anderson Ferreira" />
+  <title>Dashboard | IoT Fan Monitor (XAMPP)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2-family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <style>
+    /* ML Classification Styles */
+    .ml-card {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      border: 2px solid #0f3460;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ml-card .card-title {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .ml-card .card-unit {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .ml-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #00d9ff, #00ff88, #00d9ff);
+      background-size: 200% 100%;
+      animation: mlGradient 3s ease infinite;
+    }
+
+    @keyframes mlGradient {
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .ml-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .ml-badge-active {
+      background: rgba(0, 255, 136, 0.2);
+      color: #00ff88;
+      border: 1px solid #00ff88;
+    }
+
+    .ml-badge-loading {
+      background: rgba(255, 193, 7, 0.2);
+      color: #ffc107;
+      border: 1px solid #ffc107;
+    }
+
+    .ml-badge-error {
+      background: rgba(255, 82, 82, 0.2);
+      color: #ff5252;
+      border: 1px solid #ff5252;
+    }
+
+    .ml-badge-offline {
+      background: rgba(148, 163, 184, 0.2);
+      color: #94a3b8;
+      border: 1px solid #94a3b8;
+    }
+
+    .ml-prediction {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .ml-prediction.low {
+      color: #00d9ff;
+      text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+    }
+
+    .ml-prediction.medium {
+      color: #00ff88;
+      text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+    }
+
+    .ml-prediction.high {
+      color: #ff5252;
+      text-shadow: 0 0 20px rgba(255, 82, 82, 0.5);
+    }
+
+    .ml-prediction.buffering {
+      color: #ffc107;
+    }
+
+    .ml-prediction.unknown {
+      color: #888;
+    }
+
+    .confidence-bar {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      margin-top: 12px;
+      overflow: hidden;
+    }
+
+    .confidence-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.5s ease, background 0.3s ease;
+    }
+
+    .confidence-fill.high {
+      background: linear-gradient(90deg, #00ff88, #00d9ff);
+    }
+
+    .confidence-fill.medium {
+      background: linear-gradient(90deg, #ffc107, #ff9800);
+    }
+
+    .confidence-fill.low {
+      background: linear-gradient(90deg, #ff5252, #ff9800);
+    }
+
+    .ml-stats {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .ml-prob {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .ml-prob-item {
+      flex: 1;
+      text-align: center;
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+    }
+
+    .ml-prob-label {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+    }
+
+    .ml-prob-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 4px;
+      color: rgba(255, 255, 255, 0.8);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .ml-prob-value.active {
+      color: #00ff88;
+    }
+
+    .ml-controls {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .ml-controls .btn {
+      flex: 1;
+      font-size: 0.75rem;
+      padding: 6px 12px;
+    }
+
+    .btn-ml-active {
+      background: rgba(0, 255, 136, 0.2) !important;
+      border-color: #00ff88 !important;
+      color: #00ff88 !important;
+    }
+
+    /* Fan State Card ML Indicators */
+    #fanStateCard {
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #fanStateCard.ml-confidence-high {
+      border: 2px solid #00ff88;
+      box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+    }
+
+    #fanStateCard.ml-confidence-medium {
+      border: 2px solid #ffc107;
+      box-shadow: 0 0 15px rgba(255, 193, 7, 0.3);
+    }
+
+    #fanStateCard.ml-confidence-low {
+      border: 2px solid #ff5252;
+      box-shadow: 0 0 15px rgba(255, 82, 82, 0.3);
+    }
+
+    .state-low {
+      color: #00d9ff !important;
+    }
+
+    .state-medium {
+      color: #00ff88 !important;
+    }
+
+    .state-high {
+      color: #ff5252 !important;
+    }
+
+    .state-analisando,
+    .state-buffering {
+      color: #ffc107 !important;
+    }
+
+    #fanStateCard .card-title::after {
+      content: ' (ML)';
+      font-size: 0.65rem;
+      color: #00ff88;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Professional Header -->
+    <header>
+      <div class="header-brand">
+        <div class="brand-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>IoT Fan Monitor (XAMPP)</h1>
+          <div class="brand-subtitle">Sistema de Monitoramento de Vibração com XAMPP</div>
+        </div>
+      </div>
+      <div class="header-meta">
+        <div class="tech-stack">
+          <span class="tech-badge">ESP32</span>
+          <span class="tech-badge">MPU6050</span>
+          <span class="tech-badge">XAMPP</span>
+          <span class="tech-badge">PHP</span>
+          <span class="tech-badge">MySQL</span>
+          <span class="tech-badge">Machine Learning</span>
+        </div>
+        <nav class="header-nav">
+          <a class="nav-link active" href="index.html">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7" />
+              <rect x="14" y="3" width="7" height="7" />
+              <rect x="14" y="14" width="7" height="7" />
+              <rect x="3" y="14" width="7" height="7" />
+            </svg>
+            Dashboard
+          </a>
+        </nav>
+        <div class="status-badge status-offline" id="statusBadge">
+          <span class="pulse"></span>
+          <span>Offline</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Row 1: Sobre o Projeto -->
+    <div class="grid-2x1">
+      <div class="card">
+        <div class="card-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="vertical-align: middle; margin-right: 6px;">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+          Sobre o Projeto
+        </div>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.7;">
+          Sistema IoT completo para monitoramento de vibração de ventiladores industriais em um ambiente local.
+          Utiliza um microcontrolador ESP32 com sensor MPU6050 para coletar dados de vibração a <strong>20Hz</strong>.
+          Os dados são enviados via HTTP para um servidor local XAMPP (Apache, PHP, MySQL)
+          e processados por um modelo de Machine Learning que classifica
+          automaticamente a velocidade do ventilador como <strong style="color: var(--primary);">LOW</strong> ou <strong
+            style="color: var(--primary);">HIGH</strong>.
+        </p>
+        <p
+          style="color: var(--muted); font-size: 0.85rem; line-height: 1.6; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(148,163,184,0.2);">
+          Após análise comparativa entre <strong>7 algoritmos</strong> (Logistic Regression, SVM, Random Forest, KNN,
+          Gaussian NB)
+          em <strong>21 configurações</strong> diferentes de features, o <strong style="color: var(--primary);">Gaussian
+            Naive Bayes</strong>
+          foi selecionado por apresentar o melhor equilíbrio entre acurácia (<strong>99.64% CV</strong>) e velocidade de
+          inferência (<strong>~9ms</strong>).
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Row 2: CompetÃªncias TÃ©cnicas - Pipeline Stack -->
+    <div class="card skills-card">
+      <div class="card-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          style="vertical-align: middle; margin-right: 6px;">
+          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+          <path d="M2 17l10 5 10-5" />
+          <path d="M2 12l10 5 10-5" />
+        </svg>
+        Pipeline de Dados
+      </div>
+      <div class="pipeline-stack">
+        <div class="pipeline-layer layer-hardware">
+          <div class="layer-icon">📡</div>
+          <div class="layer-title">HARDWARE</div>
+          <div class="layer-techs">
+            <span class="tech-tag">ESP32</span>
+            <span class="tech-tag">MPU6050</span>
+            <span class="tech-tag">MicroPython</span>
+            <span class="tech-tag">I2C 20Hz</span>
+          </div>
+        </div>
+        <div class="pipeline-layer layer-comm">
+          <div class="layer-icon">🌐</div>
+          <div class="layer-title">COMUNICAÇÃO</div>
+          <div class="layer-techs">
+            <span class="tech-tag">HTTP</span>
+            <span class="tech-tag">Wi-Fi</span>
+            <span class="tech-tag">POST Requests</span>
+          </div>
+        </div>
+        <div class="pipeline-layer layer-backend">
+          <div class="layer-icon">💾</div>
+          <div class="layer-title">BACKEND</div>
+          <div class="layer-techs">
+            <span class="tech-tag">XAMPP</span>
+            <span class="tech-tag">Apache</span>
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">MySQL</span>
+          </div>
+        </div>
+        <div class="pipeline-layer layer-ml">
+          <div class="layer-icon">🤖</div>
+          <div class="layer-title">MACHINE LEARNING</div>
+          <div class="layer-techs">
+            <span class="tech-tag">Scikit-learn</span>
+            <span class="tech-tag">Gaussian NB</span>
+            <span class="tech-tag">Cross-val 5-fold</span>
+            <span class="tech-tag">Feature Eng.</span>
+          </div>
+        </div>
+        <div class="pipeline-layer layer-visual">
+          <div class="layer-icon">🖥️</div>
+          <div class="layer-title">VISUALIZAÇÃO</div>
+          <div class="layer-techs">
+            <span class="tech-tag">Dashboard</span>
+            <span class="tech-tag">Chart.js</span>
+            <span class="tech-tag">HTML/CSS</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: ML Classification + Decision (1x2) -->
+    <div class="grid-1x2">
+      <!-- ML Classification Card -->
+      <div class="card ml-card" id="mlClassificationCard">
+        <div class="card-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="vertical-align: middle; margin-right: 6px;">
+            <path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22l-.75-12.07A4.001 4.001 0 0 1 12 2z" />
+            <path d="M12 6h.01" />
+          </svg>
+          Classificação ML
+          <span class="ml-badge ml-badge-loading" id="mlBadge">ML Ativo</span>
+        </div>
+        <div class="ml-prediction unknown" id="mlPrediction">--</div>
+        <div class="card-unit" id="mlConfidenceText">Aguardando modelo...</div>
+        <div class="confidence-bar">
+          <div class="confidence-fill high" id="mlConfidenceBar" style="width: 0%"></div>
+        </div>
+        <div class="ml-stats">
+          <span id="mlBufferStatus">Buffer: 0/100</span>
+          <span id="mlStability">Estabilidade: --</span>
+        </div>
+        <div class="ml-decision-mini">
+          <div class="ml-decision-line">
+            <span class="ml-decision-label">Predição bruta</span>
+            <span class="ml-decision-value" id="mlRawPrediction">--</span>
+            <span class="ml-decision-sub" id="mlRawConfidence">--</span>
+          </div>
+          <div class="ml-decision-line">
+            <span class="ml-decision-label">Predição suavizada</span>
+            <span class="ml-decision-value" id="mlSmoothedPrediction">--</span>
+            <span class="ml-decision-sub" id="mlSmoothedConfidence">--</span>
+          </div>
+        </div>
+
+        <div class="ml-decision-mini">
+          <div class="ml-decision-section-title">Histerese e suavização</div>
+          <div class="ml-decision-grid">
+            <div class="ml-decision-kv">
+              <span>Confirmado</span>
+              <strong id="mlHysteresisConfirmed">--</strong>
+            </div>
+            <div class="ml-decision-kv">
+              <span>Candidato</span>
+              <strong id="mlHysteresisCandidate">--</strong>
+            </div>
+            <div class="ml-decision-kv">
+              <span>Contagem</span>
+              <strong id="mlHysteresisCount">--</strong>
+            </div>
+          </div>
+          <div class="ml-decision-meta">
+            <span>Alpha: <strong id="mlAlpha">--</strong></span>
+            <span>Janela: <strong id="mlWindowSize">--</strong></span>
+            <span>Mín pts: <strong id="mlMinPoints">--</strong></span>
+          </div>
+        </div>
+        <div class="ml-prob">
+          <div class="ml-prob-item">
+            <div class="ml-prob-label" style="color: #00d9ff;">LOW</div>
+            <div class="ml-prob-value" id="mlProbLow">--</div>
+          </div>
+          <div class="ml-prob-item">
+            <div class="ml-prob-label" style="color: #00ff88;">MEDIUM</div>
+            <div class="ml-prob-value" id="mlProbMedium">--</div>
+          </div>
+          <div class="ml-prob-item">
+            <div class="ml-prob-label" style="color: #ff5252;">HIGH</div>
+            <div class="ml-prob-value" id="mlProbHigh">--</div>
+          </div>
+        </div>
+        <div class="ml-controls">
+          <button class="btn btn-ml-active" id="mlToggle">ML Ativo</button>
+          <button class="btn" id="mlReset">Reset</button>
+        </div>
+      </div>
+
+      <!-- ML Decision Card -->
+      <div class="card ml-decision-card" id="mlDecisionCard">
+        <div class="card-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="vertical-align: middle; margin-right: 6px;">
+            <path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22l-.75-12.07A4.001 4.001 0 0 1 12 2z" />
+            <path d="M12 6h.01" />
+          </svg>
+          Decisão do Modelo
+        </div>
+
+        <div class="ml-decision-section">
+          <div class="ml-decision-section-title">Probabilidades (brutas)</div>
+          <div class="ml-prob ml-prob-compact">
+            <div class="ml-prob-item">
+              <div class="ml-prob-label" style="color: #00d9ff;">LOW</div>
+              <div class="ml-prob-value" id="mlProbLowRaw">--</div>
+            </div>
+            <div class="ml-prob-item">
+              <div class="ml-prob-label" style="color: #00ff88;">MEDIUM</div>
+              <div class="ml-prob-value" id="mlProbMediumRaw">--</div>
+            </div>
+            <div class="ml-prob-item">
+              <div class="ml-prob-label" style="color: #ff5252;">HIGH</div>
+              <div class="ml-prob-value" id="mlProbHighRaw">--</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ml-decision-section">
+          <div class="ml-decision-section-title">Probabilidades (suavizadas)</div>
+          <div class="ml-prob ml-prob-compact">
+            <div class="ml-prob-item">
+              <div class="ml-prob-label" style="color: #00d9ff;">LOW</div>
+              <div class="ml-prob-value" id="mlProbLowSmooth">--</div>
+            </div>
+            <div class="ml-prob-item">
+              <div class="ml-prob-label" style="color: #00ff88;">MEDIUM</div>
+              <div class="ml-prob-value" id="mlProbMediumSmooth">--</div>
+            </div>
+            <div class="ml-prob-item">
+              <div class="ml-prob-label" style="color: #ff5252;">HIGH</div>
+              <div class="ml-prob-value" id="mlProbHighSmooth">--</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ml-decision-section">
+          <div class="ml-decision-section-title">Features em tempo real (janela atual)</div>
+          <div class="ml-feature-list" id="mlFeatureList"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Row 4: Desempenho do Modelo (1x1) -->
+    <div class="grid-2x1">
+      <div class="card model-card model-card-full">
+        <div class="card-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="vertical-align: middle; margin-right: 6px;">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <polyline points="22 4 12 14.01 9 11.01" />
+          </svg>
+          Desempenho do Modelo
+        </div>
+        <div class="model-metrics-stack">
+          <div class="model-metric-row">
+            <span class="model-metric-label">CV Acurácia (5-fold)</span>
+            <span class="model-metric-value" id="modelCvAccuracy">--</span>
+          </div>
+          <div class="model-metric-row">
+            <span class="model-metric-label">Train Acurácia</span>
+            <span class="model-metric-value" id="modelTrainAccuracy">--</span>
+          </div>
+          <div class="model-metric-row">
+            <span class="model-metric-label">Features</span>
+            <span class="model-metric-value" id="modelFeatureCount">--</span>
+          </div>
+          <div class="model-metric-row">
+            <span class="model-metric-label">Janelas</span>
+            <span class="model-metric-value" id="modelWindowCount">--</span>
+          </div>
+          <div class="model-metric-row">
+            <span class="model-metric-label">Validação</span>
+            <span class="model-metric-value" id="modelValidation">--</span>
+          </div>
+        </div>
+        <details class="model-features">
+          <summary>Ver features do modelo (<span id="modelFeatureCountSummary">--</span>)</summary>
+          <div class="model-feature-list" id="modelFeatureList"></div>
+        </details>
+        <div class="model-note">
+          <strong>Gaussian Naive Bayes</strong> - Comparado: Logistic Regression, SVM, Random Forest, KNN
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 5: Estado do Ventilador (1x2) -->
+    <div class="grid-1x2">
+      <div class="card" id="fanStateCard">
+        <div class="card-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="vertical-align: middle; margin-right: 6px;">
+            <path
+              d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+          Estado do Ventilador
+        </div>
+        <div class="card-value" id="fanState">--</div>
+        <div class="card-unit" id="fanStateDetail">Aguardando conexão...</div>
+      </div>
+      <div class="card" id="severityCard">
+        <div class="card-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="vertical-align: middle; margin-right: 6px;">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+            <line x1="12" y1="9" x2="12" y2="13" />
+            <line x1="12" y1="17" x2="12.01" y2="17" />
+          </svg>
+          Severidade
+        </div>
+        <div class="card-value" id="severity">NONE</div>
+        <div class="card-unit" id="severityMessage">Sistema normal</div>
+      </div>
+    </div>
+
+    <!-- Row 6: Sensores Principais (1x3) -->
+    <div class="grid-1x3">
+      <div class="card">
+        <div class="card-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="vertical-align: middle; margin-right: 6px;">
+            <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z" />
+          </svg>
+          Temperatura
+        </div>
+        <div class="card-value" id="tempValue">--</div>
+        <div class="card-unit">°C</div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="tempProgress"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="vertical-align: middle; margin-right: 6px;">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+          </svg>
+          Acelerao
+        </div>
+        <div class="card-values-column">
+          <div class="card-value-line" id="accelAxisX">AX=--</div>
+          <div class="card-value-line" id="accelAxisY">AY=--</div>
+          <div class="card-value-line" id="accelAxisZ">AZ=--</div>
+        </div>
+        <div class="card-unit">g (Magnitude)</div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="accelMagProgress"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="vertical-align: middle; margin-right: 6px;">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+          </svg>
+          Vel. Angular
+        </div>
+        <div class="card-values-column">
+          <div class="card-value-line" id="gyroAxisX">GX=--</div>
+          <div class="card-value-line" id="gyroAxisY">GY=--</div>
+          <div class="card-value-line" id="gyroAxisZ">GZ=--</div>
+        </div>
+        <div class="card-unit">dps (Magnitude)</div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="gyroMagProgress"></div>
+        </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Row 7: Dados Recebidos (1x3) -->
+    <div class="grid-1x3">
+      <div class="card" id="lastPayloadSummaryCard">
+        <div class="card-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="vertical-align: middle; margin-right: 6px;">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          Último Dado Recebido
+        </div>
+        <div class="card-values-column">
+          <div class="card-value-line" id="lastPayloadTimestamp">--</div>
+          <div class="card-value-line" id="lastPayloadTemp">--</div>
+          <div class="card-value-line" id="lastPayloadVib">--</div>
+        </div>
+        <div class="card-unit">Timestamp | Temperatura | Vibração</div>
+      </div>
+      <div class="card" id="lastPayloadAccelCard">
+        <div class="card-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="vertical-align: middle; margin-right: 6px;">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+          </svg>
+          Leituras dos Eixos
+        </div>
+        <div class="card-values-column">
+          <div class="card-value-line" id="lastPayloadAX">--</div>
+          <div class="card-value-line" id="lastPayloadAY">--</div>
+          <div class="card-value-line" id="lastPayloadAZ">--</div>
+        </div>
+        <div class="card-unit">AX | AY | AZ (g)</div>
+      </div>
+      <div class="card" id="lastPayloadGyroCard">
+        <div class="card-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="vertical-align: middle; margin-right: 6px;">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+          </svg>
+          Leituras dos Eixos
+        </div>
+        <div class="card-values-column">
+          <div class="card-value-line" id="lastPayloadGX">--</div>
+          <div class="card-value-line" id="lastPayloadGY">--</div>
+          <div class="card-value-line" id="lastPayloadGZ">--</div>
+        </div>
+        <div class="card-unit">GX | GY | GZ</div>
+      </div>
+    </div>
+
+    <!-- Time Range Controls -->
+    <div class="controls">
+      <span>Janela de tempo:</span>
+      <button class="btn active" data-range="all">Tudo</button>
+      <button class="btn" data-range="30s">30 s</button>
+      <button class="btn" data-range="1m">1 min</button>
+      <button class="btn" data-range="5m">5 min</button>
+      <button class="btn" data-range="10m">10 min</button>
+      <button class="btn" data-range="1h">1 hora</button>
+      <button class="btn" data-range="6h">6 horas</button>
+    </div>
+
+    <!-- Charts Tabs -->
+    <div class="tabs-container">
+      <div class="tabs-nav">
+        <button class="tab-button active" data-tab="overview">Visão Geral</button>
+        <button class="tab-button" data-tab="accel">Aceleração Detalhada</button>
+        <button class="tab-button" data-tab="gyro">Velocidade Angular Detalhada</button>
+      </div>
+
+      <div class="tab-pane active" id="tab-overview">
+        <div class="charts-stack">
+          <div class="chart-card">
+            <div class="chart-title">
+              <span>Temperatura (°C)</span>
+              <span class="chart-timer">--</span>
+            </div>
+            <div class="chart-controls">
+              <span>Escala</span>
+              <div class="chart-buttons">
+                <button class="btn btn-small active" data-scale-target="temp" data-scale-step="auto">Auto</button>
+                <button class="btn btn-small" data-scale-target="temp" data-scale-step="0.1">0.1</button>
+                <button class="btn btn-small" data-scale-target="temp" data-scale-step="1">1</button>
+                <button class="btn btn-small" data-scale-target="temp" data-scale-step="5">5</button>
+              </div>
+            </div>
+            <div class="chart-container"><canvas id="tempChart"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-title">
+              <span>Vibração (dps)</span>
+              <span class="chart-timer">--</span>
+            </div>
+            <div class="chart-controls">
+              <span>Escala</span>
+              <div class="chart-buttons">
+                <button class="btn btn-small active" data-scale-target="vibration" data-scale-step="auto">Auto</button>
+                <button class="btn btn-small" data-scale-target="vibration" data-scale-step="1">1</button>
+                <button class="btn btn-small" data-scale-target="vibration" data-scale-step="5">5</button>
+                <button class="btn btn-small" data-scale-target="vibration" data-scale-step="10">10</button>
+              </div>
+            </div>
+            <div class="chart-container"><canvas id="vibrationChart"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-title">
+              <span>Aceleração (g)</span>
+              <span class="chart-timer">--</span>
+            </div>
+            <div class="chart-controls">
+              <span>Escala</span>
+              <button class="btn btn-small active" data-scale-target="accel" data-scale-step="auto">Auto</button>
+              <button class="btn btn-small" data-scale-target="accel" data-scale-step="1">1</button>
+              <button class="btn btn-small" data-scale-target="accel" data-scale-step="5">5</button>
+              <button class="btn btn-small" data-scale-target="accel" data-scale-step="10">10</button>
+            </div>
+          </div>
+          <div class="chart-container"><canvas id="accelChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">
+            <span>Giroscópio (dps)</span>
+            <span class="chart-timer">--</span>
+          </div>
+          <div class="chart-controls">
+            <span>Escala</span>
+            <div class="chart-buttons">
+              <button class="btn btn-small active" data-scale-target="gyro" data-scale-step="auto">Auto</button>
+              <button class="btn btn-small" data-scale-target="gyro" data-scale-step="1">1</button>
+              <button class="btn btn-small" data-scale-target="gyro" data-scale-step="5">5</button>
+              <button class="btn btn-small" data-scale-target="gyro" data-scale-step="10">10</button>
+            </div>
+          </div>
+          <div class="chart-container"><canvas id="gyroChart"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="tab-accel">
+      <div class="metrics-row">
+        <div class="metric-item">
+          <div class="metric-value" id="accelMeanX">--</div>
+          <div class="metric-label">Média X (g)</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-value" id="accelMeanY">--</div>
+          <div class="metric-label">Média Y (g)</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-value" id="accelMeanZ">--</div>
+          <div class="metric-label">Média Z (g)</div>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">
+          <div class="metric-value" id="accelMinX">--</div>
+          <div class="metric-label">Mín X (g)</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-value" id="accelMaxX">--</div>
+          <div class="metric-label">Máx X (g)</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-value" id="accelStdX">--</div>
+          <div class="metric-label">Desvio X (g)</div>
+        </div>
+      </div>
+      <div class="charts-grid charts-grid-vertical">
+        <div class="chart-card">
+          <div class="chart-title">
+            <span>Aceleração X (g)</span>
+            <span class="chart-timer">--</span>
+          </div>
+          <div class="chart-controls">
+            <span>Escala</span>
+            <div class="chart-buttons">
+              <button class="btn btn-small active" data-scale-target="accelX" data-scale-step="auto">Auto</button>
+              <button class="btn btn-small" data-scale-target="accelX" data-scale-step="1">1</button>
+              <button class="btn btn-small" data-scale-target="accelX" data-scale-step="5">5</button>
+            </div>
+          </div>
+          <div class="chart-container"><canvas id="accelXChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">
+            <span>Aceleração Y (g)</span>
+            <span class="chart-timer">--</span>
+          </div>
+          <div class="chart-controls">
+            <span>Escala</span>
+            <div class="chart-buttons">
+              <button class="btn btn-small active" data-scale-target="accelY" data-scale-step="auto">Auto</button>
+              <button class="btn btn-small" data-scale-target="accelY" data-scale-step="1">1</button>
+              <button class="btn btn-small" data-scale-target="accelY" data-scale-step="5">5</button>
+            </div>
+          </div>
+          <div class="chart-container"><canvas id="accelYChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">
+            <span>Aceleração Z (g)</span>
+            <span class="chart-timer">--</span>
+          </div>
+          <div class="chart-controls">
+            <span>Escala</span>
+            <div class="chart-buttons">
+              <button class="btn btn-small active" data-scale-target="accelZ" data-scale-step="auto">Auto</button>
+              <button class="btn btn-small" data-scale-target="accelZ" data-scale-step="1">1</button>
+              <button class="btn btn-small" data-scale-target="accelZ" data-scale-step="5">5</button>
+            </div>
+          </div>
+          <div class="chart-container"><canvas id="accelZChart"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="tab-gyro">
+    <div class="metrics-row">
+      <div class="metric-item">
+        <div class="metric-value" id="gyroMeanX">--</div>
+        <div class="metric-label">Média X (dps)</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-value" id="gyroMeanY">--</div>
+        <div class="metric-label">Média Y (dps)</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-value" id="gyroMeanZ">--</div>
+        <div class="metric-label">Média Z (dps)</div>
+      </div>
+    </div>
+    <div class="metrics-row">
+      <div class="metric-item">
+        <div class="metric-value" id="gyroMinX">--</div>
+        <div class="metric-label">Mín X (dps)</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-value" id="gyroMaxX">--</div>
+        <div class="metric-label">Máx X (dps)</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-value" id="gyroStdX">--</div>
+        <div class="metric-label">Desvio X (dps)</div>
+      </div>
+    </div>
+    <div class="charts-grid charts-grid-vertical">
+      <div class="chart-card">
+        <div class="chart-title">
+          <span>Giroscópio X (dps)</span>
+          <span class="chart-timer">--</span>
+        </div>
+        <div class="chart-controls">
+          <span>Escala</span>
+          <div class="chart-buttons">
+            <button class="btn btn-small active" data-scale-target="gyroX" data-scale-step="auto">Auto</button>
+            <button class="btn btn-small" data-scale-target="gyroX" data-scale-step="1">1</button>
+            <button class="btn btn-small" data-scale-target="gyroX" data-scale-step="5">5</button>
+          </div>
+        </div>
+        <div class="chart-container"><canvas id="gyroXChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">
+          <span>Giroscópio Y (dps)</span>
+          <span class="chart-timer">--</span>
+        </div>
+        <div class="chart-controls">
+          <span>Escala</span>
+          <div class="chart-buttons">
+            <button class="btn btn-small active" data-scale-target="gyroY" data-scale-step="auto">Auto</button>
+            <button class="btn btn-small" data-scale-target="gyroY" data-scale-step="1">1</button>
+            <button class="btn btn-small" data-scale-target="gyroY" data-scale-step="5">5</button>
+          </div>
+        </div>
+        <div class="chart-container"><canvas id="gyroYChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">
+          <span>Giroscópio Z (dps)</span>
+          <span class="chart-timer">--</span>
+        </div>
+        <div class="chart-controls">
+          <span>Escala</span>
+          <div class="chart-buttons">
+            <button class="btn btn-small active" data-scale-target="gyroZ" data-scale-step="auto">Auto</button>
+            <button class="btn btn-small" data-scale-target="gyroZ" data-scale-step="1">1</button>
+            <button class="btn btn-small" data-scale-target="gyroZ" data-scale-step="5">5</button>
+          </div>
+        </div>
+        <div class="chart-container"><canvas id="gyroZChart"></canvas></div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Alerts Section -->
+  <div class="alerts">
+    <div class="alerts-head">
+      <h3>Histórico de Alertas</h3>
+      <div class="alerts-actions">
+        <button class="btn" id="clearCache">Limpar Cache</button>
+        <button class="btn" id="exportCsv">Exportar CSV</button>
+      </div>
+    </div>
+    <div id="alertsList">
+      <div class="card-unit">Nenhum alerta registrado.</div>
+    </div>
+  </div>
+
+  <!-- Professional Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <strong>IoT Fan Monitor</strong> v1.0
+        <span class="footer-separator">|</span>
+        Desenvolvido por <strong>Anderson Ferreira</strong>
+      </div>
+      <div class="footer-tech">
+        <span>Stack:</span>
+        ESP32 • MPU6050 • XAMPP • PHP • MySQL • Gaussian Naive Bayes
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/anderson-ferreira-83/aws_iot_esp32_MPU6050_project" target="_blank" rel="noopener"
+          class="footer-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/anderson-ferreira-1a473138/" target="_blank" rel="noopener"
+          class="footer-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+          </svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="footer-update">
+        Última atualização: <span id="lastUpdate">--</span>
+      </div>
+    </div>
+  </footer>
+  </div>
+
+  <script src="js/classifier.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+
+</html>

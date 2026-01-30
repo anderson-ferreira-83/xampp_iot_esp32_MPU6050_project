@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<!-- Painel de Controle para Treinamento IoT -->
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Painel de controle para coleta de dados IoT">
+    <title>Controle de Treinamento IoT</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+            font-weight: bold;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .btn-raw {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-pause {
+            background: #f59e0b;
+            color: #000;
+        }
+
+        .btn-low {
+            background: #00d9ff;
+            color: #000;
+        }
+
+        .btn-medium {
+            background: #00ff88;
+            color: #000;
+        }
+
+        .btn-high {
+            background: #ff5252;
+            color: white;
+        }
+
+        .status {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            color: #cbd5e1;
+        }
+
+        #currentMode {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .danger-zone {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-reset {
+            background: #ef4444;
+            color: white;
+            font-size: 0.9rem;
+            padding: 10px 20px;
+        }
+
+        .btn-reset:hover {
+            background: #dc2626;
+        }
+
+        .timer-box {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: inline-block;
+            min-width: 250px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timer-display {
+            font-size: 4rem;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #00ff88;
+            line-height: 1;
+            margin: 10px 0;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .timer-label {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timer-controls {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-timer {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85rem;
+            color: #0f172a;
+        }
+
+        .btn-timer-start {
+            background: #00ff88;
+        }
+
+        .btn-timer-pause {
+            background: #fbbf24;
+        }
+
+        .btn-timer-clear {
+            background: #94a3b8;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Controle de Coleta de Dados (ESP32)</h1>
+    <p>Selecione o estado que o ESP32 deve rotular nos dados enviados:</p>
+
+    <div class="danger-zone">
+        <button class="btn-reset" onclick="resetDatabase()">⚠️ ZERAR BANCO DE DADOS (Iniciar Nova Coleta)</button>
+    </div>
+
+    <div class="btn-group">
+        <button class="btn-raw" onclick="setMode('RAW')">MODO NORMAL (RAW)</button>
+        <button class="btn-pause" onclick="setMode('PAUSE')">⏸️ PAUSAR / TRANSIENTE</button>
+        <button class="btn-low" onclick="setMode('LOW')">TREINAR LOW</button>
+        <button class="btn-medium" onclick="setMode('MEDIUM')">TREINAR MEDIUM</button>
+        <button class="btn-high" onclick="setMode('HIGH')">TREINAR HIGH</button>
+    </div>
+
+    <div class="slider-box">
+        <div class="timer-label">Taxa de Amostragem (Hz)</div>
+        <div class="timer-display" id="hzDisplay" style="font-size: 2.5rem; color: #3b82f6;">4 Hz</div>
+        <input type="range" id="hzSlider" min="1" max="20" value="4" oninput="updateHzDisplay(this.value)"
+            onchange="setSampleRate(this.value)">
+        <div style="font-size: 0.8rem; color: #64748b;">Ajuste fino: 1 a 20 amostras/segundo</div>
+    </div>
+
+    <div class="status">
+        Modo Atual: <span id="currentMode">--</span>
+    </div>
+
+    <div class="timer-box">
+        <div class="timer-label">Tempo de Coleta</div>
+        <div class="timer-display" id="timer">00:00</div>
+        <div style="font-size: 0.8rem; color: #64748b;">Meta sugerida: 08:00</div>
+        <div class="timer-controls">
+            <button class="btn-timer btn-timer-start" onclick="startTimer()">Iniciar</button>
+            <button class="btn-timer btn-timer-pause" onclick="stopTimer()">Pausar</button>
+            <button class="btn-timer btn-timer-clear" onclick="resetTimer()">Zerar</button>
+        </div>
+    </div>
+
+    <script>
+        // Token de autenticação que deve ser idêntico ao dos scripts PHP
+        const AUTH_TOKEN = "F0xb@m986960440";
+
+        // Canal de comunicação para notificar o dashboard sobre mudanças de modo
+        const controlChannel = new BroadcastChannel('fan_control_channel');
+
+        let timerInterval;
+        let startTime;
+        let elapsedTime = 0;
+        let isRunning = false;
+
+        function startTimer() {
+            if (isRunning) return;
+            isRunning = true;
+            startTime = Date.now() - elapsedTime;
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        function stopTimer() {
+            if (!isRunning) return;
+            isRunning = false;
+            clearInterval(timerInterval);
+        }
+
+        function resetTimer() {
+            stopTimer();
+            elapsedTime = 0;
+            updateDisplay();
+        }
+
+        function updateTimer() {
+            elapsedTime = Date.now() - startTime;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            const diff = Math.floor(elapsedTime / 1000);
+            const minutes = Math.floor(diff / 60).toString().padStart(2, '0');
+            const seconds = (diff % 60).toString().padStart(2, '0');
+
+            const display = document.getElementById('timer');
+            display.innerText = `${minutes}:${seconds}`;
+
+            // Alerta visual quando atingir 8 minutos (480 segundos)
+            if (diff >= 480) {
+                display.style.color = '#ff5252'; // Vermelho (Meta atingida)
+            } else {
+                display.style.color = '#00ff88'; // Verde (Contando)
+            }
+        }
+
+        async function setMode(mode) {
+            document.getElementById('currentMode').innerText = 'Atualizando...';
+
+            // Lógica do Cronômetro
+            if (mode === 'RAW' || mode === 'PAUSE') {
+                stopTimer();
+                // Não reseta o texto imediatamente para você ver quanto tempo durou
+            } else {
+                // Se for um modo de treino, reseta e inicia
+                resetTimer();
+                startTimer();
+            }
+
+            try {
+                const res = await fetch('../api/set_mode.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${AUTH_TOKEN}`
+                    },
+                    body: JSON.stringify({ mode })
+                });
+                const data = await res.json();
+                document.getElementById('currentMode').innerText = data.mode;
+
+                // Notifica o dashboard que o modo foi alterado para um reset inteligente
+                controlChannel.postMessage({ type: 'MODE_CHANGE', newMode: mode });
+            } catch (e) {
+                alert('Erro ao comunicar com servidor');
+            }
+        }
+
+        function updateHzDisplay(val) {
+            document.getElementById('hzDisplay').innerText = val + " Hz";
+        }
+
+        async function setSampleRate(hz) {
+            try {
+                // Mantém o modo atual, atualiza apenas o Hz
+                // Nota: Idealmente deveríamos ler o modo atual antes, mas aqui simplificamos
+                // enviando apenas o que mudou se o PHP suportar merge (o PHP foi atualizado para suportar)
+                await fetch('../api/set_mode.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${AUTH_TOKEN}`
+                    },
+                    body: JSON.stringify({ sample_rate: hz })
+                });
+            } catch (e) {
+                alert('Erro ao ajustar taxa de amostragem');
+            }
+        }
+
+        async function resetDatabase() {
+            if (!confirm("Tem certeza? Isso apagará TODOS os dados coletados até agora!")) return;
+
+            try {
+                const res = await fetch('../api/reset_db.php', {
+                    method: 'POST', // Necessário pois o endpoint agora só aceita POST
+                    headers: {
+                        'Authorization': `Bearer ${AUTH_TOKEN}`
+                    }
+                });
+                const data = await res.json();
+                alert(data.message);
+            } catch (e) {
+                alert('Erro ao resetar banco de dados');
+            }
+        }
+    </script>
+</body>
+
+</html>

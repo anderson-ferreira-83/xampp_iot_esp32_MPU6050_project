@@ -1,0 +1,314 @@
+{
+  "version": "2.0",
+  "generated_by": "01_eda.ipynb",
+  "selection_criteria": {
+    "min_effect_size": 0.5,
+    "correlation_threshold": 0.85,
+    "method": "cohens_d_with_correlation_filter"
+  },
+  "selected_features": [
+    "accel_x_g_std",
+    "vibration_dps_rms",
+    "gyro_z_dps_std",
+    "accel_z_g_std",
+    "accel_y_g_std",
+    "accel_x_g_min",
+    "gyro_x_dps_std",
+    "accel_x_g_max",
+    "gyro_x_dps_max",
+    "accel_z_g_max",
+    "accel_z_g_min",
+    "gyro_z_dps_max",
+    "accel_y_g_min",
+    "vibration_dps_min",
+    "gyro_x_dps_min",
+    "gyro_z_dps_min",
+    "accel_y_g_max",
+    "gyro_y_dps_rms"
+  ],
+  "feature_count": 18,
+  "feature_stats": {
+    "accel_x_g_std": {
+      "cohens_d": 2.6175198863405305,
+      "abs_d": 2.6175198863405305,
+      "mean_low": 0.07209658098058777,
+      "mean_high": 0.24938892213470584,
+      "rank": 1
+    },
+    "vibration_dps_rms": {
+      "cohens_d": 2.524890395643436,
+      "abs_d": 2.524890395643436,
+      "mean_low": 12.805984606785172,
+      "mean_high": 24.86743872178831,
+      "rank": 2
+    },
+    "gyro_z_dps_std": {
+      "cohens_d": 2.1893898190650423,
+      "abs_d": 2.1893898190650423,
+      "mean_low": 7.554474015355286,
+      "mean_high": 17.706580509407708,
+      "rank": 3
+    },
+    "accel_z_g_std": {
+      "cohens_d": 2.131631134696044,
+      "abs_d": 2.131631134696044,
+      "mean_low": 0.027720458130714068,
+      "mean_high": 0.06340922715038393,
+      "rank": 4
+    },
+    "accel_y_g_std": {
+      "cohens_d": 1.9334153192512504,
+      "abs_d": 1.9334153192512504,
+      "mean_low": 0.07646144499724433,
+      "mean_high": 0.16774303003023786,
+      "rank": 5
+    },
+    "accel_x_g_min": {
+      "cohens_d": -1.9158056011770843,
+      "abs_d": 1.9158056011770843,
+      "mean_low": 0.24340950442335768,
+      "mean_high": 0.01948084666170213,
+      "rank": 6
+    },
+    "gyro_x_dps_std": {
+      "cohens_d": 1.764609658690576,
+      "abs_d": 1.764609658690576,
+      "mean_low": 1.1152445797921646,
+      "mean_high": 8.511124346313613,
+      "rank": 7
+    },
+    "accel_x_g_max": {
+      "cohens_d": 1.5621421631112922,
+      "abs_d": 1.5621421631112922,
+      "mean_low": 0.43561946767883214,
+      "mean_high": 0.693807650964539,
+      "rank": 8
+    },
+    "gyro_x_dps_max": {
+      "cohens_d": 1.3714944245621206,
+      "abs_d": 1.3714944245621206,
+      "mean_low": 1.4493588305985403,
+      "mean_high": 11.499368214893618,
+      "rank": 9
+    },
+    "accel_z_g_max": {
+      "cohens_d": 1.3707362281108553,
+      "abs_d": 1.3707362281108553,
+      "mean_low": 0.22746372671532847,
+      "mean_high": 0.27761500458156024,
+      "rank": 10
+    },
+    "accel_z_g_min": {
+      "cohens_d": -1.2277404537138243,
+      "abs_d": 1.2277404537138243,
+      "mean_low": 0.15251255620437956,
+      "mean_high": 0.10200517271347519,
+      "rank": 11
+    },
+    "gyro_z_dps_max": {
+      "cohens_d": 1.1478618487012222,
+      "abs_d": 1.1478618487012222,
+      "mean_low": 10.552747983664236,
+      "mean_high": 24.242099259148937,
+      "rank": 12
+    },
+    "accel_y_g_min": {
+      "cohens_d": -1.1452164078842633,
+      "abs_d": 1.1452164078842633,
+      "mean_low": 0.8837468627737226,
+      "mean_high": 0.7542598434609928,
+      "rank": 13
+    },
+    "vibration_dps_min": {
+      "cohens_d": 1.0884900604944179,
+      "abs_d": 1.0884900604944179,
+      "mean_low": 4.941045385109488,
+      "mean_high": 8.3541186129078,
+      "rank": 14
+    },
+    "gyro_x_dps_min": {
+      "cohens_d": -1.0369601463502776,
+      "abs_d": 1.0369601463502776,
+      "mean_low": -1.6347777860729924,
+      "mean_high": -12.03021875503546,
+      "rank": 15
+    },
+    "gyro_z_dps_min": {
+      "cohens_d": -0.9434207399179336,
+      "abs_d": 0.9434207399179336,
+      "mean_low": -10.121403837518248,
+      "mean_high": -24.374163884042552,
+      "rank": 16
+    },
+    "accel_y_g_max": {
+      "cohens_d": 0.9028780629257612,
+      "abs_d": 0.9028780629257612,
+      "mean_low": 1.095147698627737,
+      "mean_high": 1.2139125775886523,
+      "rank": 17
+    },
+    "gyro_y_dps_rms": {
+      "cohens_d": 0.677515311589374,
+      "abs_d": 0.677515311589374,
+      "mean_low": 2.96511592481723,
+      "mean_high": 3.442286568910232,
+      "rank": 18
+    }
+  },
+  "thresholds": {
+    "accel_x_g_std": {
+      "threshold": 0.10177743550417902,
+      "low_mean": 0.07209658098058777,
+      "high_mean": 0.24938892213470584,
+      "low_std": 0.0187577766735855,
+      "high_std": 0.09328786057696646,
+      "direction": "higher_is_high"
+    },
+    "vibration_dps_rms": {
+      "threshold": 16.182886324127903,
+      "low_mean": 12.805984606785172,
+      "high_mean": 24.86743872178831,
+      "low_std": 2.43534381659854,
+      "high_std": 6.263099360652601,
+      "direction": "higher_is_high"
+    },
+    "gyro_z_dps_std": {
+      "threshold": 10.641674470198948,
+      "low_mean": 7.554474015355286,
+      "high_mean": 17.706580509407708,
+      "low_std": 2.6129585370656,
+      "high_std": 5.979626792206272,
+      "direction": "higher_is_high"
+    },
+    "accel_z_g_std": {
+      "threshold": 0.037144610877770275,
+      "low_mean": 0.027720458130714068,
+      "high_mean": 0.06340922715038393,
+      "low_std": 0.007952276586715601,
+      "high_std": 0.022162576890477563,
+      "direction": "higher_is_high"
+    },
+    "accel_y_g_std": {
+      "threshold": 0.10346972338284319,
+      "low_mean": 0.07646144499724433,
+      "high_mean": 0.16774303003023786,
+      "low_std": 0.02573580997827318,
+      "high_std": 0.06124513455473191,
+      "direction": "higher_is_high"
+    },
+    "accel_x_g_min": {
+      "threshold": 0.19320544845285248,
+      "low_mean": 0.24340950442335768,
+      "high_mean": 0.01948084666170213,
+      "low_std": 0.04561291870586204,
+      "high_std": 0.15783757126882192,
+      "direction": "lower_is_high"
+    },
+    "gyro_x_dps_std": {
+      "threshold": 1.5875282872134875,
+      "low_mean": 1.1152445797921646,
+      "high_mean": 8.511124346313613,
+      "low_std": 0.40051946430707297,
+      "high_std": 5.871544894617424,
+      "direction": "higher_is_high"
+    },
+    "accel_x_g_max": {
+      "threshold": 0.4646726220597978,
+      "low_mean": 0.43561946767883214,
+      "high_mean": 0.693807650964539,
+      "low_std": 0.02919732150360148,
+      "high_std": 0.23027204616149002,
+      "direction": "higher_is_high"
+    },
+    "gyro_x_dps_max": {
+      "threshold": 2.836303574181091,
+      "low_mean": 1.4493588305985403,
+      "high_mean": 11.499368214893618,
+      "low_std": 1.6270839548746845,
+      "high_std": 10.163010133923716,
+      "direction": "higher_is_high"
+    },
+    "accel_z_g_max": {
+      "threshold": 0.23983206135975488,
+      "low_mean": 0.22746372671532847,
+      "high_mean": 0.27761500458156024,
+      "low_std": 0.016004063968286124,
+      "high_std": 0.04888941664583695,
+      "direction": "higher_is_high"
+    },
+    "accel_z_g_min": {
+      "threshold": 0.14084779112911539,
+      "low_mean": 0.15251255620437956,
+      "high_mean": 0.10200517271347519,
+      "low_std": 0.016632978569649435,
+      "high_std": 0.05538632477428059,
+      "direction": "lower_is_high"
+    },
+    "gyro_z_dps_max": {
+      "threshold": 15.363722276626213,
+      "low_mean": 10.552747983664236,
+      "high_mean": 24.242099259148937,
+      "low_std": 8.00370695462132,
+      "high_std": 14.770381897236215,
+      "direction": "higher_is_high"
+    },
+    "accel_y_g_min": {
+      "threshold": 0.8224266346354048,
+      "low_mean": 0.8837468627737226,
+      "high_mean": 0.7542598434609928,
+      "low_std": 0.10685832039372889,
+      "high_std": 0.11878933003875351,
+      "direction": "lower_is_high"
+    },
+    "vibration_dps_min": {
+      "threshold": 6.387914623607605,
+      "low_mean": 4.941045385109488,
+      "high_mean": 8.3541186129078,
+      "low_std": 2.622590776847205,
+      "high_std": 3.5639353654452037,
+      "direction": "higher_is_high"
+    },
+    "gyro_x_dps_min": {
+      "threshold": -2.477290647169921,
+      "low_mean": -1.6347777860729924,
+      "high_mean": -12.03021875503546,
+      "low_std": 1.236735453402506,
+      "high_std": 14.022865915816366,
+      "direction": "lower_is_high"
+    },
+    "gyro_z_dps_min": {
+      "threshold": -15.9284275418836,
+      "low_mean": -10.121403837518248,
+      "high_mean": -24.374163884042552,
+      "low_std": 12.073585746963817,
+      "high_std": 17.5598253282983,
+      "direction": "lower_is_high"
+    },
+    "accel_y_g_max": {
+      "threshold": 1.139408699240362,
+      "low_mean": 1.095147698627737,
+      "high_mean": 1.2139125775886523,
+      "low_std": 0.09468455503483451,
+      "high_std": 0.15938109175977214,
+      "direction": "higher_is_high"
+    },
+    "gyro_y_dps_rms": {
+      "threshold": 3.164176158084503,
+      "low_mean": 2.96511592481723,
+      "high_mean": 3.442286568910232,
+      "low_std": 0.5783672182075912,
+      "high_std": 0.808046600281678,
+      "direction": "higher_is_high"
+    }
+  },
+  "class_distribution": {
+    "LOW": 137,
+    "HIGH": 141
+  },
+  "data_source": {
+    "low_filter": "20260123165026_low",
+    "high_filter": "20260124105818_high",
+    "total_samples_low": 686,
+    "total_samples_high": 705
+  }
+}

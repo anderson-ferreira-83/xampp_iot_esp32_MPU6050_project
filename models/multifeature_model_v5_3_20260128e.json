@@ -1,0 +1,141 @@
+{
+  "version": "5.3",
+  "type": "gaussian_nb_3class",
+  "generated_by": "04_train_model.ipynb",
+  "generated_at": "2026-01-28T15:29:24.702653",
+  "labels": [
+    "HIGH",
+    "LOW",
+    "MEDIUM"
+  ],
+  "features": [
+    "accel_x_g_std",
+    "accel_x_g_range",
+    "gyro_y_dps_rms",
+    "gyro_y_dps_std",
+    "accel_x_g_rms",
+    "gyro_y_dps_range"
+  ],
+  "feature_count": 6,
+  "priors": {
+    "HIGH": 0.3324607329842932,
+    "LOW": 0.33507853403141363,
+    "MEDIUM": 0.3324607329842932
+  },
+  "stats": {
+    "HIGH": {
+      "accel_x_g_std": {
+        "mean": 0.251669901602519,
+        "var": 0.00013169737133246275,
+        "count": 127
+      },
+      "accel_x_g_range": {
+        "mean": 1.0743455905826766,
+        "var": 0.0036816227492422627,
+        "count": 127
+      },
+      "gyro_y_dps_rms": {
+        "mean": 5.495462360187512,
+        "var": 0.05114194467799521,
+        "count": 127
+      },
+      "gyro_y_dps_std": {
+        "mean": 5.402612108196904,
+        "var": 0.05354959250303575,
+        "count": 127
+      },
+      "accel_x_g_rms": {
+        "mean": 0.26698224184092095,
+        "var": 0.00019368267381594744,
+        "count": 127
+      },
+      "gyro_y_dps_range": {
+        "mean": 29.472140478740155,
+        "var": 4.588358731791117,
+        "count": 127
+      }
+    },
+    "LOW": {
+      "accel_x_g_std": {
+        "mean": 0.065750953745287,
+        "var": 1.9758786750154987e-05,
+        "count": 128
+      },
+      "accel_x_g_range": {
+        "mean": 0.31307220423125015,
+        "var": 0.0013347000399104095,
+        "count": 128
+      },
+      "gyro_y_dps_rms": {
+        "mean": 2.151309021995286,
+        "var": 0.027478389043153625,
+        "count": 128
+      },
+      "gyro_y_dps_std": {
+        "mean": 1.9942256755402994,
+        "var": 0.03255076414916695,
+        "count": 128
+      },
+      "accel_x_g_rms": {
+        "mean": 0.11084946181652662,
+        "var": 8.420834788811272e-05,
+        "count": 128
+      },
+      "gyro_y_dps_range": {
+        "mean": 9.535961303125001,
+        "var": 0.8092139411835679,
+        "count": 128
+      }
+    },
+    "MEDIUM": {
+      "accel_x_g_std": {
+        "mean": 0.13864789857117998,
+        "var": 0.0001463118746473039,
+        "count": 127
+      },
+      "accel_x_g_range": {
+        "mean": 0.6280431067716539,
+        "var": 0.0025098782209630154,
+        "count": 127
+      },
+      "gyro_y_dps_rms": {
+        "mean": 3.797115539015334,
+        "var": 0.07260425560680493,
+        "count": 127
+      },
+      "gyro_y_dps_std": {
+        "mean": 3.7789574314800105,
+        "var": 0.0758041376892941,
+        "count": 127
+      },
+      "accel_x_g_rms": {
+        "mean": 0.16497803151647397,
+        "var": 0.00010194429077381557,
+        "count": 127
+      },
+      "gyro_y_dps_range": {
+        "mean": 19.956662904094486,
+        "var": 4.491303765398853,
+        "count": 127
+      }
+    }
+  },
+  "config": {
+    "window_size": 150,
+    "window_step": 75,
+    "min_pair_d": 0.6,
+    "max_features": 6
+  },
+  "metrics": {
+    "cv_accuracy_mean": 1.0,
+    "cv_accuracy_std": 0.0,
+    "train_accuracy": 1.0
+  },
+  "training_info": {
+    "total_samples": 382,
+    "samples_low": 128,
+    "samples_medium": 127,
+    "samples_high": 127
+  },
+  "description": "Modelo 3 classes (janela 150) com features auto-selecionadas para nova coleta ~30Hz"
+}
