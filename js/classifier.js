@@ -41,6 +41,22 @@ const ClassifierConfig = {
     CHANGE_DETECT_WINDOW: 15,       // últimos 15 pontos (3s a 5Hz) para detectar mudança
     CHANGE_DETECT_RATIO: 0.45,      // ratio min entre média recente e média do buffer para trigger
     FAST_FLUSH_KEEP: 40,            // manter últimos 40 pontos após flush (~10s)
+
+    // Defaults for reset
+    _DEFAULTS: {
+        WINDOW_SIZE: 100,
+        MIN_POINTS: 40,
+        SMOOTHING_ALPHA: 0.65,
+        HYSTERESIS_COUNT: 2,
+        CHANGE_DETECT_RATIO: 0.45,
+        FAST_FLUSH_KEEP: 40,
+    },
+
+    reset() {
+        for (const [key, value] of Object.entries(this._DEFAULTS)) {
+            this[key] = value;
+        }
+    },
 };
 
 // =============================================================================

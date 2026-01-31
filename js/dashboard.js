@@ -2320,6 +2320,88 @@ const TransitionTest = {
   },
 };
 
+// =============================================================================
+// ML PARAMETER SLIDERS
+// =============================================================================
+
+const ML_PARAM_SLIDERS = [
+  { id: 'mlParamWindowSize',       key: 'WINDOW_SIZE',         valId: 'mlParamWindowSizeVal',       fmt: v => v },
+  { id: 'mlParamMinPoints',        key: 'MIN_POINTS',          valId: 'mlParamMinPointsVal',        fmt: v => v },
+  { id: 'mlParamSmoothingAlpha',   key: 'SMOOTHING_ALPHA',     valId: 'mlParamSmoothingAlphaVal',   fmt: v => parseFloat(v).toFixed(2) },
+  { id: 'mlParamHysteresisCount',  key: 'HYSTERESIS_COUNT',    valId: 'mlParamHysteresisCountVal',  fmt: v => v },
+  { id: 'mlParamChangeDetectRatio',key: 'CHANGE_DETECT_RATIO', valId: 'mlParamChangeDetectRatioVal',fmt: v => parseFloat(v).toFixed(2) },
+  { id: 'mlParamFastFlushKeep',    key: 'FAST_FLUSH_KEEP',     valId: 'mlParamFastFlushKeepVal',    fmt: v => v },
+];
+
+function initMLParamSliders() {
+  const cfg = window.ClassifierConfig;
+  if (!cfg) return;
+
+  // Toggle arrow on details open/close
+  const details = document.getElementById('mlParamsDetails');
+  const arrow = document.getElementById('mlParamsArrow');
+  if (details && arrow) {
+    details.addEventListener('toggle', () => {
+      arrow.style.transform = details.open ? 'rotate(90deg)' : 'rotate(0deg)';
+    });
+  }
+
+  ML_PARAM_SLIDERS.forEach(({ id, key, valId, fmt }) => {
+    const slider = document.getElementById(id);
+    const valEl = document.getElementById(valId);
+    if (!slider || !valEl) return;
+
+    slider.value = cfg[key];
+    valEl.textContent = fmt(cfg[key]);
+
+    slider.addEventListener('input', () => {
+      const v = key === 'SMOOTHING_ALPHA' || key === 'CHANGE_DETECT_RATIO'
+        ? parseFloat(slider.value)
+        : parseInt(slider.value, 10);
+      cfg[key] = v;
+      valEl.textContent = fmt(v);
+
+      // Resize buffer when WINDOW_SIZE changes
+      if (key === 'WINDOW_SIZE' && window.fanClassifier) {
+        const buf = window.fanClassifier.buffer;
+        if (buf && buf.maxSize !== v) {
+          const arrays = buf.getArrays();
+          const n = buf.size;
+          buf.maxSize = v;
+          buf.buffer = new Array(v);
+          buf.head = 0;
+          buf.count = 0;
+          const start = Math.max(0, n - v);
+          for (let i = start; i < n; i++) {
+            buf.push({
+              ax: arrays.ax[i], ay: arrays.ay[i], az: arrays.az[i],
+              gx: arrays.gx[i], gy: arrays.gy[i], gz: arrays.gz[i],
+              vib: arrays.vib[i], timestamp: Date.now()
+            });
+          }
+        }
+      }
+
+      updateMLDecisionMeta();
+    });
+  });
+
+  // Reset defaults button
+  const resetBtn = document.getElementById('mlParamsReset');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      cfg.reset();
+      ML_PARAM_SLIDERS.forEach(({ id, key, valId, fmt }) => {
+        const slider = document.getElementById(id);
+        const valEl = document.getElementById(valId);
+        if (slider) slider.value = cfg[key];
+        if (valEl) valEl.textContent = fmt(cfg[key]);
+      });
+      updateMLDecisionMeta();
+    });
+  }
+}
+
 async function startApp() {
   if (window.appStarted) return;
   window.appStarted = true;
@@ -2342,6 +2424,9 @@ async function startApp() {
   const testStopBtn = document.getElementById('testStopBtn');
   if (testStartBtn) testStartBtn.addEventListener('click', () => TransitionTest.start());
   if (testStopBtn) testStopBtn.addEventListener('click', () => TransitionTest.stop());
+
+  // ML Parameter sliders
+  initMLParamSliders();
 
   const rateEl = document.getElementById('headerRate');
   if (rateEl) rateEl.textContent = `@ ${currentDashboardRateHz} Hz`;

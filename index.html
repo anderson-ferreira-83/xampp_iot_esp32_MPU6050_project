@@ -563,6 +563,63 @@
       </div>
     </div>
 
+    <!-- Row: Parâmetros ML -->
+    <div class="grid-2x1">
+      <div class="card ml-card" style="padding-bottom:16px;">
+        <details id="mlParamsDetails">
+          <summary style="cursor:pointer;color:rgba(255,255,255,0.7);font-size:0.85rem;font-weight:600;list-style:none;display:flex;align-items:center;gap:6px;">
+            <span style="transition:transform 0.2s;display:inline-block;" id="mlParamsArrow">&#9654;</span>
+            Parâmetros ML
+          </summary>
+          <div style="margin-top:12px;display:flex;flex-direction:column;gap:10px;" id="mlParamsContainer">
+            <div class="ml-param-row">
+              <label style="color:rgba(255,255,255,0.6);font-size:0.75rem;display:flex;justify-content:space-between;">
+                <span>WINDOW_SIZE</span><span id="mlParamWindowSizeVal" style="color:#00d9ff;font-family:'JetBrains Mono',monospace;">100</span>
+              </label>
+              <input type="range" id="mlParamWindowSize" min="30" max="200" step="10" value="100"
+                style="width:100%;accent-color:#00d9ff;cursor:pointer;">
+            </div>
+            <div class="ml-param-row">
+              <label style="color:rgba(255,255,255,0.6);font-size:0.75rem;display:flex;justify-content:space-between;">
+                <span>MIN_POINTS</span><span id="mlParamMinPointsVal" style="color:#00d9ff;font-family:'JetBrains Mono',monospace;">40</span>
+              </label>
+              <input type="range" id="mlParamMinPoints" min="10" max="100" step="5" value="40"
+                style="width:100%;accent-color:#00d9ff;cursor:pointer;">
+            </div>
+            <div class="ml-param-row">
+              <label style="color:rgba(255,255,255,0.6);font-size:0.75rem;display:flex;justify-content:space-between;">
+                <span>SMOOTHING_ALPHA</span><span id="mlParamSmoothingAlphaVal" style="color:#00d9ff;font-family:'JetBrains Mono',monospace;">0.65</span>
+              </label>
+              <input type="range" id="mlParamSmoothingAlpha" min="0.1" max="1.0" step="0.05" value="0.65"
+                style="width:100%;accent-color:#00d9ff;cursor:pointer;">
+            </div>
+            <div class="ml-param-row">
+              <label style="color:rgba(255,255,255,0.6);font-size:0.75rem;display:flex;justify-content:space-between;">
+                <span>HYSTERESIS_COUNT</span><span id="mlParamHysteresisCountVal" style="color:#00d9ff;font-family:'JetBrains Mono',monospace;">2</span>
+              </label>
+              <input type="range" id="mlParamHysteresisCount" min="1" max="5" step="1" value="2"
+                style="width:100%;accent-color:#00d9ff;cursor:pointer;">
+            </div>
+            <div class="ml-param-row">
+              <label style="color:rgba(255,255,255,0.6);font-size:0.75rem;display:flex;justify-content:space-between;">
+                <span>CHANGE_DETECT_RATIO</span><span id="mlParamChangeDetectRatioVal" style="color:#00d9ff;font-family:'JetBrains Mono',monospace;">0.45</span>
+              </label>
+              <input type="range" id="mlParamChangeDetectRatio" min="0.2" max="0.8" step="0.05" value="0.45"
+                style="width:100%;accent-color:#00d9ff;cursor:pointer;">
+            </div>
+            <div class="ml-param-row">
+              <label style="color:rgba(255,255,255,0.6);font-size:0.75rem;display:flex;justify-content:space-between;">
+                <span>FAST_FLUSH_KEEP</span><span id="mlParamFastFlushKeepVal" style="color:#00d9ff;font-family:'JetBrains Mono',monospace;">40</span>
+              </label>
+              <input type="range" id="mlParamFastFlushKeep" min="10" max="80" step="5" value="40"
+                style="width:100%;accent-color:#00d9ff;cursor:pointer;">
+            </div>
+            <button class="btn" id="mlParamsReset" style="margin-top:4px;font-size:0.75rem;padding:5px 12px;align-self:flex-start;">Resetar Defaults</button>
+          </div>
+        </details>
+      </div>
+    </div>
+
     <!-- Row: Teste de Transição -->
     <div class="grid-2x1" id="transitionTestRow" style="display:none;">
       <div class="card" style="border-color:#ffc107;">
