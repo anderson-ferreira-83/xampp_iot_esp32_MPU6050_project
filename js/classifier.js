@@ -18,8 +18,8 @@
 const ClassifierConfig = {
     // Tamanho da Janela Deslizante: Quantos pontos passados analisamos de uma vez
     // 100 pontos a 5Hz = analisamos os ultimos 20 segundos de comportamento
-    WINDOW_SIZE: 100,
-    MIN_POINTS: 100, // Mínimo de pontos para começar a classificar
+    WINDOW_SIZE: 100,  // 100 pontos a ~4Hz = ~25s (estabiliza skew/kurtosis)
+    MIN_POINTS: 40,    // Mínimo 40 pontos (~10s) para classificar
 
     // Confidence thresholds
     CONFIDENCE_HIGH: 0.70,
@@ -40,7 +40,7 @@ const ClassifierConfig = {
     // Se a média recente divergir muito da média do buffer, faz flush parcial
     CHANGE_DETECT_WINDOW: 15,       // últimos 15 pontos (3s a 5Hz) para detectar mudança
     CHANGE_DETECT_RATIO: 0.45,      // ratio min entre média recente e média do buffer para trigger
-    FAST_FLUSH_KEEP: 25,            // manter apenas os últimos 25 pontos após flush (5s)
+    FAST_FLUSH_KEEP: 40,            // manter últimos 40 pontos após flush (~10s)
 };
 
 // =============================================================================
@@ -141,15 +141,15 @@ const Stats = {
         return Math.sqrt(sumSq / arr.length);
     },
 
-    // Peak: valor absoluto maximo
+    // Peak: percentil 95 dos valores absolutos
+    // Usa P95 em vez de max para evitar outliers e tornar transições simétricas
     peak(arr) {
         if (!arr || arr.length === 0) return 0;
-        let maxAbs = 0;
-        for (let i = 0; i < arr.length; i++) {
-            const a = Math.abs(arr[i]);
-            if (a > maxAbs) maxAbs = a;
-        }
-        return maxAbs;
+        const absVals = new Array(arr.length);
+        for (let i = 0; i < arr.length; i++) absVals[i] = Math.abs(arr[i]);
+        absVals.sort((a, b) => a - b);
+        const idx = Math.floor(0.95 * (absVals.length - 1));
+        return absVals[idx];
     },
 
     // Mean absolute value
@@ -351,7 +351,9 @@ class GaussianNBClassifier {
                 const stats = this.model.stats[label][featureName];
                 if (!stats) continue;
 
-                const variance = Math.max(stats.var, 1e-10);
+                // Piso de variância: evita que features com variância ultra-baixa
+                // (ex: 9e-7) dominem a classificação com z-scores extremos
+                const variance = Math.max(stats.var, 1e-3);
                 logProbs[label] += -0.5 * Math.log(2 * Math.PI * variance)
                     - Math.pow(value - stats.mean, 2) / (2 * variance);
             }
@@ -422,6 +424,12 @@ class RealTimeClassifier {
         this.candidateState = null;
         this.candidateCount = 0;
         this.featureModeUntil = 0;
+
+        // Transition tracking
+        this.transitionStartTime = null;   // quando candidato começou a divergir
+        this.transitionLog = [];           // últimas N transições
+        this.maxTransitionLog = 20;
+        this.onTransition = null;          // callback para dashboard
     }
 
     async init(modelData) {
@@ -445,32 +453,35 @@ class RealTimeClassifier {
     }
 
     /**
-     * Detecta mudança brusca comparando os últimos N pontos com o buffer total.
-     * Se gyro_z (feature mais discriminativa) mudar significativamente, faz flush parcial.
+     * Detecta mudança brusca comparando P95 dos últimos N pontos vs primeira metade do buffer.
+     * Usa P95(|gz|) em vez de média para alinhar com a feature peak do modelo.
      */
     _detectAbruptChange() {
         const cfg = ClassifierConfig;
-        if (this.buffer.size < cfg.MIN_POINTS) return; // Só detecta com buffer cheio
+        if (this.buffer.size < cfg.MIN_POINTS) return;
 
         const arrays = this.buffer.getArrays();
         const gz = arrays.gz;
         const n = gz.length;
         const recentN = cfg.CHANGE_DETECT_WINDOW;
-        if (n < recentN + 10) return;
+        if (n < recentN * 2) return;
 
-        // Média absoluta do buffer completo vs últimos N pontos
-        let sumAll = 0, sumRecent = 0;
-        for (let i = 0; i < n; i++) sumAll += Math.abs(gz[i]);
-        for (let i = n - recentN; i < n; i++) sumRecent += Math.abs(gz[i]);
+        // P95 dos valores absolutos: primeira metade vs últimos N pontos
+        const oldAbs = [];
+        for (let i = 0; i < n - recentN; i++) oldAbs.push(Math.abs(gz[i]));
+        const recentAbs = [];
+        for (let i = n - recentN; i < n; i++) recentAbs.push(Math.abs(gz[i]));
 
-        const meanAll = sumAll / n;
-        const meanRecent = sumRecent / recentN;
+        oldAbs.sort((a, b) => a - b);
+        recentAbs.sort((a, b) => a - b);
 
-        // Se a média recente for muito diferente (queda ou subida abrupta)
-        if (meanAll > 1) { // Evita divisão por ~0
-            const ratio = meanRecent / meanAll;
+        const p95Old = oldAbs[Math.floor(0.95 * (oldAbs.length - 1))];
+        const p95Recent = recentAbs[Math.floor(0.95 * (recentAbs.length - 1))];
+
+        if (p95Old > 1) {
+            const ratio = p95Recent / p95Old;
             if (ratio < cfg.CHANGE_DETECT_RATIO || ratio > (1 / cfg.CHANGE_DETECT_RATIO)) {
-                console.log(`[ChangeDetect] Mudança brusca detectada: ratio=${ratio.toFixed(2)} (recent=${meanRecent.toFixed(1)} vs all=${meanAll.toFixed(1)}). Flush parcial.`);
+                console.log(`[ChangeDetect] Mudança brusca: ratio=${ratio.toFixed(2)} (P95 recent=${p95Recent.toFixed(1)} vs old=${p95Old.toFixed(1)}). Flush.`);
                 this._fastFlush();
             }
         }
@@ -557,6 +568,7 @@ class RealTimeClassifier {
 
         // Aplica HISTERESE: Só muda o estado se a nova predição se mantiver por N vezes
         let finalPrediction;
+        const previousConfirmed = this.confirmedState;
 
         if (!confidenceOk) {
             if (this.confirmedState === null) {
@@ -574,8 +586,13 @@ class RealTimeClassifier {
             } else if (rawSmoothedPrediction === this.confirmedState) {
                 this.candidateState = rawSmoothedPrediction;
                 this.candidateCount = 0;
+                this.transitionStartTime = null; // estável, sem transição pendente
                 finalPrediction = this.confirmedState;
             } else if (rawSmoothedPrediction === this.candidateState) {
+                // Marcar início da transição
+                if (this.transitionStartTime === null) {
+                    this.transitionStartTime = Date.now();
+                }
                 this.candidateCount++;
                 if (this.candidateCount >= ClassifierConfig.HYSTERESIS_COUNT) {
                     this.confirmedState = this.candidateState;
@@ -587,7 +604,36 @@ class RealTimeClassifier {
             } else {
                 this.candidateState = rawSmoothedPrediction;
                 this.candidateCount = 1;
+                this.transitionStartTime = Date.now();
                 finalPrediction = this.confirmedState;
+            }
+        }
+
+        // Registrar transição quando estado confirmado muda
+        if (previousConfirmed !== null && this.confirmedState !== previousConfirmed) {
+            const transitionMs = this.transitionStartTime
+                ? Date.now() - this.transitionStartTime
+                : 0;
+            const entry = {
+                from: previousConfirmed,
+                to: this.confirmedState,
+                duration_ms: transitionMs,
+                duration_s: +(transitionMs / 1000).toFixed(1),
+                timestamp: Date.now(),
+                time: new Date().toLocaleTimeString('pt-BR'),
+                confidence: smoothedConfValue,
+                bufferSize: bufferSizeOverride ?? this.buffer.size,
+                featureAgreement: this._calcFeatureAgreement(features),
+            };
+            this.transitionLog.push(entry);
+            while (this.transitionLog.length > this.maxTransitionLog) {
+                this.transitionLog.shift();
+            }
+            this.transitionStartTime = null;
+            console.log(`[Transition] ${entry.from} → ${entry.to} em ${entry.duration_s}s (concordância: ${entry.featureAgreement.ratio})`);
+
+            if (this.onTransition) {
+                this.onTransition(entry);
             }
         }
 
@@ -618,7 +664,10 @@ class RealTimeClassifier {
             confirmedState: this.confirmedState,
             candidateState: this.candidateState,
             candidateCount: this.candidateCount,
-            hysteresisCount: ClassifierConfig.HYSTERESIS_COUNT
+            hysteresisCount: ClassifierConfig.HYSTERESIS_COUNT,
+            featureAgreement: this._calcFeatureAgreement(features),
+            transitionPending: this.transitionStartTime !== null,
+            transitionElapsed: this.transitionStartTime ? Date.now() - this.transitionStartTime : 0,
         };
 
         this.lastPrediction = prediction;
@@ -691,6 +740,45 @@ class RealTimeClassifier {
         // Run classification
         const result = this.classifier.predict(features);
         return this._applyResult(result, features, this.buffer.size);
+    }
+
+    /**
+     * Calcula quantas features apontam para cada classe (por proximidade z-score)
+     */
+    _calcFeatureAgreement(features) {
+        if (!this.classifier.model || !features) return { ratio: '--', counts: {} };
+        const model = this.classifier.model;
+        const counts = {};
+        for (const label of model.labels) counts[label] = 0;
+        let total = 0;
+
+        for (const fname of model.features) {
+            const v = features[fname];
+            if (v === undefined || v === null) continue;
+            let bestLabel = null;
+            let bestZ = Infinity;
+            for (const label of model.labels) {
+                const s = model.stats[label]?.[fname];
+                if (!s) continue;
+                const std = Math.sqrt(Math.max(s.var, 1e-3));
+                const z = Math.abs(v - s.mean) / std;
+                if (z < bestZ) { bestZ = z; bestLabel = label; }
+            }
+            if (bestLabel) { counts[bestLabel]++; total++; }
+        }
+
+        const best = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+        return {
+            counts,
+            best: best ? best[0] : '--',
+            bestCount: best ? best[1] : 0,
+            total,
+            ratio: best ? `${best[1]}/${total} → ${best[0]}` : '--',
+        };
+    }
+
+    getTransitionLog() {
+        return this.transitionLog;
     }
 
     getStability() {

@@ -5,7 +5,9 @@
       "Bash(python3 -m json.tool:*)",
       "Bash(python3:*)",
       "Bash(pip install:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(for i in 1 2 3 4 5)",
+      "Bash(do curl -s \"http://172.26.240.1/XAMPP_iot_mpu_6050/api/get_data.php?mode=history&seconds=15\")"
     ]
   }
 }

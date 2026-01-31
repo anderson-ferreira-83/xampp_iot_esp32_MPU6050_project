@@ -88,9 +88,16 @@ try {
         }
     }
 
-    foreach ($items as $item) {
-        // Aplica correção de tempo
-        $ts = ($item['timestamp'] ?? 0) + $time_offset;
+    // Calcula intervalo entre amostras para distribuir timestamps únicos
+    $sample_rate = $data['sample_rate'] ?? $items[0]['sample_rate'] ?? 5;
+    $sample_interval = 1.0 / max(1, $sample_rate); // 0.2s para 5Hz
+    $batch_count = count($items);
+
+    foreach ($items as $idx => $item) {
+        // Aplica correção de tempo + offset sequencial dentro do batch
+        // Cada amostra recebe timestamp único: base + (idx * intervalo)
+        $base_ts = ($item['timestamp'] ?? 0) + $time_offset;
+        $ts = $base_ts + ($idx * $sample_interval);
         
         // Recalcula severidade para cada ponto
         $temp = $item['temperature'] ?? 0;

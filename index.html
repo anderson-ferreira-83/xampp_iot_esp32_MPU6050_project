@@ -251,6 +251,14 @@
       color: #00ff88;
       font-weight: 500;
     }
+
+    .ml-transition-entry {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding: 3px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
   </style>
 </head>
 
@@ -464,9 +472,28 @@
             <div class="ml-prob-value" id="mlProbHigh">--</div>
           </div>
         </div>
+
+        <div class="ml-decision-mini" style="margin-top:10px;">
+          <div class="ml-decision-section-title">Diagnóstico de Transição</div>
+          <div class="ml-decision-grid">
+            <div class="ml-decision-kv">
+              <span>Estado</span>
+              <strong id="mlTransitionTimer">--</strong>
+            </div>
+            <div class="ml-decision-kv">
+              <span>Concordância</span>
+              <strong id="mlFeatureAgreement">--</strong>
+            </div>
+          </div>
+          <div style="margin-top:6px;">
+            <span style="color:rgba(255,255,255,0.5);font-size:0.7rem;">Última transição:</span>
+            <span class="ml-transition-value" id="mlLastTransition" style="font-size:0.8rem;font-weight:600;margin-left:4px;">--</span>
+          </div>
+        </div>
         <div class="ml-controls">
           <button class="btn btn-ml-active" id="mlToggle">ML Ativo</button>
           <button class="btn" id="mlReset">Reset</button>
+          <button class="btn" id="mlTestToggle" style="background:rgba(255,193,7,0.15);border-color:#ffc107;color:#ffc107;">Teste</button>
         </div>
       </div>
 
@@ -518,6 +545,14 @@
         </div>
 
         <div class="ml-decision-section">
+          <div class="ml-decision-section-title">Histórico de Transições</div>
+          <details style="margin-top:4px;">
+            <summary style="color:rgba(255,255,255,0.5);font-size:0.7rem;cursor:pointer;">Ver log (últimas 20)</summary>
+            <div id="mlTransitionLog" style="max-height:200px;overflow-y:auto;margin-top:6px;font-size:0.75rem;font-family:'JetBrains Mono',monospace;"></div>
+          </details>
+        </div>
+
+        <div class="ml-decision-section">
           <div class="ml-decision-section-title" style="display:flex;align-items:center;justify-content:space-between;">
             <span>Features em tempo real</span>
             <select id="mlFeaturePageSelect" style="background:#1a1a2e;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.2);border-radius:4px;padding:2px 6px;font-size:0.7rem;cursor:pointer;"></select>
@@ -525,6 +560,40 @@
           <div class="ml-feature-list" id="mlFeatureList"></div>
         </div>
 
+      </div>
+    </div>
+
+    <!-- Row: Teste de Transição -->
+    <div class="grid-2x1" id="transitionTestRow" style="display:none;">
+      <div class="card" style="border-color:#ffc107;">
+        <div class="card-title" style="color:#ffc107;display:flex;align-items:center;justify-content:space-between;">
+          <span><span class="status-icon">⏱</span> Teste Guiado de Transição</span>
+          <span id="testBadge" class="ml-badge ml-badge-offline" style="font-size:0.65rem;">Parado</span>
+        </div>
+
+        <!-- Controles -->
+        <div style="display:flex;gap:8px;margin:8px 12px;">
+          <button class="btn" id="testStartBtn" style="background:rgba(76,175,80,0.15);border-color:#4caf50;color:#4caf50;flex:1;">Iniciar Teste</button>
+          <button class="btn" id="testStopBtn" style="background:rgba(244,67,54,0.15);border-color:#f44336;color:#f44336;flex:1;" disabled>Parar</button>
+        </div>
+
+        <!-- Barra de progresso das etapas -->
+        <div style="display:flex;gap:4px;margin:8px 12px;" id="testStepBar"></div>
+
+        <!-- Instrução principal -->
+        <div style="text-align:center;padding:18px 10px;">
+          <div id="testInstruction" style="font-size:1.1rem;font-weight:600;color:rgba(255,255,255,0.5);">
+            Pressione "Iniciar Teste" para começar
+          </div>
+          <div id="testPhaseInfo" style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:6px;"></div>
+          <div id="testTimer" style="font-size:3rem;font-weight:700;color:#ffc107;margin-top:8px;">--</div>
+          <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:4px;">
+            Classificação atual: <span id="testCurrentClass" style="font-weight:600;">--</span>
+          </div>
+        </div>
+
+        <!-- Resultados -->
+        <div id="testResults" style="padding:0 12px 10px;font-size:0.75rem;color:rgba(255,255,255,0.6);"></div>
       </div>
     </div>
 

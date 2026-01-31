@@ -1018,6 +1018,12 @@ async function initMLClassifier() {
       updateMLUI(prediction);
     };
 
+    // Set callback for transitions (log + persist)
+    window.fanClassifier.onTransition = (entry) => {
+      updateTransitionUI(entry);
+      persistTransitionLog(entry);
+    };
+
     return true;
   } else {
     mlErrorState = 'Modelo não carregado';
@@ -1428,6 +1434,9 @@ function updateMLUI(prediction) {
 
   // Feature values (real-time)
   updateFeatureRows(prediction);
+
+  // Transition tracking
+  updateTransitionMeta(prediction);
 
   // Update main fan state card with ML prediction
   let stateDetail;
@@ -1853,6 +1862,464 @@ fetchHistory = async function () {
   }
 };
 
+// =============================================================================
+// TRANSITION TRACKING UI + PERSISTENCE
+// =============================================================================
+
+function updateTransitionUI(entry) {
+  // Atualiza "última transição" no card ML
+  const lastTransEl = document.getElementById('mlLastTransition');
+  if (lastTransEl) {
+    lastTransEl.textContent = `${entry.from} → ${entry.to}  (${entry.duration_s}s)`;
+    lastTransEl.className = 'ml-transition-value state-' + entry.to.toLowerCase();
+  }
+
+  // Atualiza log colapsável
+  const logEl = document.getElementById('mlTransitionLog');
+  if (logEl && window.fanClassifier) {
+    const log = window.fanClassifier.getTransitionLog();
+    logEl.innerHTML = log.slice().reverse().map(e => {
+      const color = e.duration_s > 15 ? '#ff5252' : e.duration_s > 8 ? '#ffc107' : '#00ff88';
+      return `<div class="ml-transition-entry">
+        <span style="color:rgba(255,255,255,0.5)">${e.time}</span>
+        <span class="state-${e.from.toLowerCase()}">${e.from}</span> →
+        <span class="state-${e.to.toLowerCase()}">${e.to}</span>
+        <span style="color:${color};font-weight:600">${e.duration_s}s</span>
+        <span style="color:rgba(255,255,255,0.4)">${e.featureAgreement?.ratio || '--'}</span>
+      </div>`;
+    }).join('');
+  }
+}
+
+function updateTransitionMeta(prediction) {
+  // Concordância de features em tempo real
+  const agreeEl = document.getElementById('mlFeatureAgreement');
+  if (agreeEl && prediction.featureAgreement) {
+    const fa = prediction.featureAgreement;
+    agreeEl.textContent = fa.ratio;
+    agreeEl.className = 'ml-transition-value';
+    if (fa.best && fa.best === prediction.prediction) {
+      agreeEl.classList.add('state-' + fa.best.toLowerCase());
+    }
+  }
+
+  // Timer de transição pendente
+  const timerEl = document.getElementById('mlTransitionTimer');
+  if (timerEl) {
+    if (prediction.transitionPending) {
+      timerEl.textContent = (prediction.transitionElapsed / 1000).toFixed(1) + 's';
+      timerEl.style.color = '#ffc107';
+    } else {
+      timerEl.textContent = 'Estável';
+      timerEl.style.color = '#00ff88';
+    }
+  }
+}
+
+function persistTransitionLog(entry) {
+  fetch('api/log_transition.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(entry),
+  }).catch(err => console.warn('[TransitionLog] Falha ao salvar:', err));
+}
+
+// =============================================================================
+// GUIDED TRANSITION TEST
+// =============================================================================
+
+const TransitionTest = {
+  // Fases: cada etapa tem período de estabilização + contagem regressiva + detecção
+  STEPS: [
+    { from: null,     to: 'LOW',    prepareS: 10, label: 'Coloque em LOW e aguarde' },
+    { from: 'LOW',    to: 'MEDIUM', prepareS: 5,  label: 'Prepare-se para mudar para MEDIUM' },
+    { from: 'MEDIUM', to: 'HIGH',   prepareS: 5,  label: 'Prepare-se para mudar para HIGH' },
+    { from: 'HIGH',   to: 'MEDIUM', prepareS: 5,  label: 'Prepare-se para voltar para MEDIUM' },
+    { from: 'MEDIUM', to: 'LOW',    prepareS: 5,  label: 'Prepare-se para voltar para LOW' },
+    { from: 'LOW',    to: 'HIGH',   prepareS: 5,  label: 'Prepare-se para mudar para HIGH' },
+    { from: 'HIGH',   to: 'LOW',    prepareS: 5,  label: 'Prepare-se para voltar para LOW' },
+  ],
+
+  // Fases de cada etapa
+  PHASE_PREPARE: 'prepare',     // "Prepare-se..." com contagem regressiva
+  PHASE_CHANGE: 'change',       // "MUDE AGORA!" — cronômetro começa
+  PHASE_DETECTING: 'detecting', // Aguardando classificador detectar
+
+  TIMEOUT_S: 90,
+  STABLE_CONFIRM_MS: 3000,
+
+  running: false,
+  stepIndex: 0,
+  phase: null,
+  phaseStartTime: null,
+  changeTime: null,         // momento exato que mandou mudar
+  stableStartTime: null,
+  timerInterval: null,
+  results: [],
+  fullLog: [],              // log completo com cada tick
+
+  start() {
+    this.running = true;
+    this.stepIndex = 0;
+    this.phase = null;
+    this.results = [];
+    this.fullLog = [];
+    this.stableStartTime = null;
+
+    document.getElementById('testStartBtn').disabled = true;
+    document.getElementById('testStopBtn').disabled = false;
+    document.getElementById('testBadge').textContent = 'Rodando';
+    document.getElementById('testBadge').className = 'ml-badge ml-badge-active';
+    document.getElementById('testResults').innerHTML = '';
+
+    this._buildStepBar();
+
+    if (window.fanClassifier) window.fanClassifier.reset();
+
+    this._startPhase(this.PHASE_PREPARE);
+    this.timerInterval = setInterval(() => this._tick(), 200);
+  },
+
+  stop() {
+    this.running = false;
+    clearInterval(this.timerInterval);
+    this.timerInterval = null;
+
+    document.getElementById('testStartBtn').disabled = false;
+    document.getElementById('testStopBtn').disabled = true;
+    document.getElementById('testBadge').textContent = 'Parado';
+    document.getElementById('testBadge').className = 'ml-badge ml-badge-offline';
+    this._setInstruction('Teste interrompido', 'rgba(255,255,255,0.4)', '');
+    document.getElementById('testTimer').textContent = '--';
+
+    this._persistAll();
+  },
+
+  _buildStepBar() {
+    const bar = document.getElementById('testStepBar');
+    if (!bar) return;
+    const colors = { LOW: '#00d9ff', MEDIUM: '#00ff88', HIGH: '#ff5252' };
+    bar.innerHTML = this.STEPS.map((s, i) => {
+      const c = colors[s.to] || '#888';
+      return `<div id="testStep${i}" style="flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,0.1);position:relative;">
+        <div style="position:absolute;inset:0;border-radius:3px;background:${c};opacity:0;transition:opacity 0.3s;" id="testStepFill${i}"></div>
+        <div style="position:absolute;top:10px;left:0;right:0;text-align:center;font-size:0.55rem;color:rgba(255,255,255,0.4);">${s.to}</div>
+      </div>`;
+    }).join('');
+  },
+
+  _markStep(index, status) {
+    const fill = document.getElementById(`testStepFill${index}`);
+    if (!fill) return;
+    if (status === 'active') { fill.style.opacity = '0.5'; fill.style.animation = 'mlGradient 1s ease infinite'; }
+    else if (status === 'done') { fill.style.opacity = '1'; fill.style.animation = 'none'; }
+    else { fill.style.opacity = '0'; fill.style.animation = 'none'; }
+  },
+
+  _startPhase(phase) {
+    this.phase = phase;
+    this.phaseStartTime = Date.now();
+    this.stableStartTime = null;
+
+    const step = this.STEPS[this.stepIndex];
+    if (!step) return;
+
+    const colors = { LOW: '#00d9ff', MEDIUM: '#00ff88', HIGH: '#ff5252' };
+    this._markStep(this.stepIndex, 'active');
+
+    if (phase === this.PHASE_PREPARE) {
+      this._setInstruction(
+        step.label,
+        'rgba(255,255,255,0.6)',
+        `Etapa ${this.stepIndex + 1}/${this.STEPS.length} — Contagem regressiva`
+      );
+    } else if (phase === this.PHASE_CHANGE) {
+      this.changeTime = Date.now();
+      this._setInstruction(
+        `MUDE PARA ${step.to} AGORA!`,
+        colors[step.to],
+        `Cronometrando detecção...`
+      );
+      // Log o momento exato da mudança
+      this._logTick('CHANGE_COMMAND');
+    }
+  },
+
+  _setInstruction(text, color, info) {
+    const el = document.getElementById('testInstruction');
+    if (el) { el.innerHTML = text; el.style.color = color; }
+    const infoEl = document.getElementById('testPhaseInfo');
+    if (infoEl) infoEl.textContent = info;
+  },
+
+  _tick() {
+    if (!this.running) return;
+    const step = this.STEPS[this.stepIndex];
+    if (!step) return;
+
+    const now = Date.now();
+    const elapsed = (now - this.phaseStartTime) / 1000;
+
+    // Atualizar classificação atual
+    const pred = window.fanClassifier?.lastPrediction;
+    const currentClass = pred?.confirmedState || pred?.prediction || '--';
+    const classEl = document.getElementById('testCurrentClass');
+    if (classEl) {
+      classEl.textContent = currentClass;
+      classEl.className = '';
+      if (currentClass !== '--') classEl.classList.add('state-' + currentClass.toLowerCase());
+    }
+
+    // Log cada tick
+    this._logTick(this.phase);
+
+    // === FASE PREPARAÇÃO: contagem regressiva ===
+    if (this.phase === this.PHASE_PREPARE) {
+      const remaining = Math.max(0, step.prepareS - elapsed);
+      const timerEl = document.getElementById('testTimer');
+
+      if (this.stepIndex === 0) {
+        // Primeira etapa: espera estabilização em LOW
+        timerEl.textContent = Math.ceil(remaining) + 's';
+        timerEl.style.color = 'rgba(255,255,255,0.6)';
+
+        if (remaining <= 0) {
+          // Verificar se já está em LOW
+          if (currentClass === step.to) {
+            this._markStep(this.stepIndex, 'done');
+            this._recordResult(step, 0, pred, true);
+            this.stepIndex++;
+            if (this.stepIndex < this.STEPS.length) this._startPhase(this.PHASE_PREPARE);
+            else this._finish();
+          } else {
+            // Ainda não está em LOW, continuar esperando
+            this._setInstruction(
+              `Aguardando classificação: ${step.to}`,
+              '#ffc107',
+              'Coloque o ventilador em LOW para iniciar'
+            );
+            timerEl.textContent = '...';
+          }
+          return;
+        }
+      } else {
+        // Etapas seguintes: contagem regressiva visual
+        if (remaining > 3) {
+          timerEl.textContent = Math.ceil(remaining) + 's';
+          timerEl.style.color = 'rgba(255,255,255,0.6)';
+        } else if (remaining > 0) {
+          // Últimos 3 segundos: grande e pulsante
+          timerEl.textContent = Math.ceil(remaining);
+          timerEl.style.color = '#ffc107';
+          timerEl.style.fontSize = '4rem';
+        }
+
+        if (remaining <= 0) {
+          const timerEl2 = document.getElementById('testTimer');
+          if (timerEl2) timerEl2.style.fontSize = '3rem';
+          this._startPhase(this.PHASE_CHANGE);
+          return;
+        }
+      }
+      return;
+    }
+
+    // === FASE MUDE AGORA: cronometrando detecção ===
+    if (this.phase === this.PHASE_CHANGE || this.phase === this.PHASE_DETECTING) {
+      const sinceChange = (now - this.changeTime) / 1000;
+      const timerEl = document.getElementById('testTimer');
+      timerEl.textContent = sinceChange.toFixed(1) + 's';
+      timerEl.style.fontSize = '3rem';
+
+      // Cor do timer baseada no tempo
+      if (sinceChange < 8) timerEl.style.color = '#00ff88';
+      else if (sinceChange < 20) timerEl.style.color = '#ffc107';
+      else timerEl.style.color = '#ff5252';
+
+      // Após 2s do comando, começa a detectar
+      if (this.phase === this.PHASE_CHANGE && sinceChange >= 1) {
+        this.phase = this.PHASE_DETECTING;
+        const colors = { LOW: '#00d9ff', MEDIUM: '#00ff88', HIGH: '#ff5252' };
+        this._setInstruction(
+          `Aguardando: ${step.to}`,
+          colors[step.to],
+          `Detectando mudança... (atual: ${currentClass})`
+        );
+      }
+
+      if (this.phase === this.PHASE_DETECTING) {
+        document.getElementById('testPhaseInfo').textContent =
+          `Detectando mudança... (atual: ${currentClass})`;
+
+        if (currentClass === step.to) {
+          if (!this.stableStartTime) {
+            this.stableStartTime = now;
+          } else if (now - this.stableStartTime >= this.STABLE_CONFIRM_MS) {
+            // Detectou e estabilizou!
+            const detectionTime = +((this.stableStartTime - this.changeTime) / 1000).toFixed(1);
+            this._markStep(this.stepIndex, 'done');
+            this._recordResult(step, detectionTime, pred, false);
+
+            timerEl.textContent = detectionTime + 's';
+            timerEl.style.color = '#00ff88';
+
+            // Próxima etapa após 1s
+            setTimeout(() => {
+              if (!this.running) return;
+              this.stepIndex++;
+              if (this.stepIndex < this.STEPS.length) this._startPhase(this.PHASE_PREPARE);
+              else this._finish();
+            }, 1000);
+            this.phase = null; // pausa entre etapas
+            return;
+          }
+        } else {
+          this.stableStartTime = null;
+        }
+
+        // Timeout
+        if (sinceChange > this.TIMEOUT_S) {
+          this._markStep(this.stepIndex, 'done');
+          this._recordResult(step, 'TIMEOUT', pred, false);
+          this.stepIndex++;
+          if (this.stepIndex < this.STEPS.length) this._startPhase(this.PHASE_PREPARE);
+          else this._finish();
+        }
+      }
+    }
+  },
+
+  _logTick(phase) {
+    const pred = window.fanClassifier?.lastPrediction;
+    if (!pred) return;
+    this.fullLog.push({
+      t: Date.now(),
+      step: this.stepIndex,
+      phase,
+      confirmed: pred.confirmedState,
+      raw: pred.rawPrediction,
+      confidence: +(pred.confidence * 100).toFixed(1),
+      probabilities: pred.smoothedProbabilities
+        ? { L: +((pred.smoothedProbabilities.LOW||0)*100).toFixed(1),
+            M: +((pred.smoothedProbabilities.MEDIUM||0)*100).toFixed(1),
+            H: +((pred.smoothedProbabilities.HIGH||0)*100).toFixed(1) }
+        : null,
+      agreement: pred.featureAgreement?.ratio || null,
+      buffer: pred.bufferSize,
+    });
+    // Limitar tamanho para evitar uso excessivo de memória
+    if (this.fullLog.length > 5000) this.fullLog.splice(0, 1000);
+  },
+
+  _recordResult(step, time, prediction, isInitial) {
+    const entry = {
+      step: this.stepIndex + 1,
+      from: step.from || '--',
+      to: step.to,
+      time_s: time === 'TIMEOUT' ? time : parseFloat(time),
+      timeout: time === 'TIMEOUT',
+      isInitial,
+      confidence: prediction ? +(prediction.confidence * 100).toFixed(1) : 0,
+      featureAgreement: prediction?.featureAgreement || {},
+      timestamp: new Date().toISOString(),
+    };
+    this.results.push(entry);
+
+    if (isInitial) return; // Não mostrar etapa de estabilização inicial
+
+    const resultsEl = document.getElementById('testResults');
+    const color = entry.timeout ? '#ff5252' : (entry.time_s > 15 ? '#ffc107' : '#00ff88');
+    const timeStr = entry.timeout ? 'TIMEOUT' : `${entry.time_s}s`;
+    resultsEl.innerHTML += `<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+      <span style="color:rgba(255,255,255,0.3);min-width:20px;">#${entry.step}</span>
+      <span class="state-${entry.from.toLowerCase()}" style="min-width:55px;">${entry.from}</span>
+      <span style="color:rgba(255,255,255,0.3);">→</span>
+      <span class="state-${entry.to.toLowerCase()}" style="min-width:55px;">${entry.to}</span>
+      <span style="color:${color};font-weight:700;min-width:60px;text-align:right;">${timeStr}</span>
+      <span style="color:rgba(255,255,255,0.3);font-size:0.7rem;">${entry.featureAgreement?.ratio || ''}</span>
+    </div>`;
+  },
+
+  _finish() {
+    this.running = false;
+    clearInterval(this.timerInterval);
+    this.timerInterval = null;
+
+    document.getElementById('testStartBtn').disabled = false;
+    document.getElementById('testStopBtn').disabled = true;
+    document.getElementById('testBadge').textContent = 'Concluído';
+    document.getElementById('testBadge').className = 'ml-badge ml-badge-active';
+    this._setInstruction('Teste concluído!', '#00ff88', 'Resultados salvos no log');
+    document.getElementById('testTimer').textContent = '--';
+
+    // Marcar todas as steps como done
+    this.STEPS.forEach((_, i) => this._markStep(i, 'done'));
+
+    this._persistAll();
+  },
+
+  _persistAll() {
+    if (!this.results.length && !this.fullLog.length) return;
+
+    const transitionResults = this.results.filter(r => !r.isInitial);
+    const payload = {
+      type: 'transition_test',
+      test_time: new Date().toISOString(),
+      config: {
+        window_size: window.ClassifierConfig?.WINDOW_SIZE,
+        min_points: window.ClassifierConfig?.MIN_POINTS,
+        smoothing_alpha: window.ClassifierConfig?.SMOOTHING_ALPHA,
+        hysteresis_count: window.ClassifierConfig?.HYSTERESIS_COUNT,
+        change_detect_ratio: window.ClassifierConfig?.CHANGE_DETECT_RATIO,
+        change_detect_window: window.ClassifierConfig?.CHANGE_DETECT_WINDOW,
+        fast_flush_keep: window.ClassifierConfig?.FAST_FLUSH_KEEP,
+        var_floor: '1e-3',
+        peak_method: 'P95',
+      },
+      results: transitionResults,
+      summary: {
+        total_transitions: transitionResults.length,
+        timeouts: transitionResults.filter(r => r.timeout).length,
+        avg_time_s: +(transitionResults
+          .filter(r => !r.timeout)
+          .reduce((a, r) => a + r.time_s, 0) /
+          Math.max(1, transitionResults.filter(r => !r.timeout).length)).toFixed(1),
+        max_time_s: Math.max(0, ...transitionResults.filter(r => !r.timeout).map(r => r.time_s)),
+        per_direction: this._summarizeByDirection(transitionResults),
+      },
+      tick_log: this.fullLog,
+    };
+
+    fetch('api/log_transition.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    }).then(() => {
+      console.log('[TransitionTest] Resultados completos salvos:', payload.summary);
+    }).catch(err => console.warn('[TransitionTest] Falha ao salvar:', err));
+  },
+
+  _summarizeByDirection(results) {
+    const dirs = {};
+    for (const r of results) {
+      if (r.timeout) continue;
+      const key = `${r.from}→${r.to}`;
+      if (!dirs[key]) dirs[key] = [];
+      dirs[key].push(r.time_s);
+    }
+    const summary = {};
+    for (const [dir, times] of Object.entries(dirs)) {
+      summary[dir] = {
+        count: times.length,
+        avg_s: +(times.reduce((a, b) => a + b, 0) / times.length).toFixed(1),
+        max_s: Math.max(...times),
+        min_s: Math.min(...times),
+      };
+    }
+    return summary;
+  },
+};
+
 async function startApp() {
   if (window.appStarted) return;
   window.appStarted = true;
@@ -1862,6 +2329,19 @@ async function startApp() {
 
   if (mlToggleBtn) mlToggleBtn.addEventListener('click', toggleML);
   if (mlResetBtn) mlResetBtn.addEventListener('click', resetML);
+
+  // Transition test controls
+  const testToggleBtn = document.getElementById('mlTestToggle');
+  const testCard = document.getElementById('transitionTestRow');
+  if (testToggleBtn && testCard) {
+    testToggleBtn.addEventListener('click', () => {
+      testCard.style.display = testCard.style.display === 'none' ? 'block' : 'none';
+    });
+  }
+  const testStartBtn = document.getElementById('testStartBtn');
+  const testStopBtn = document.getElementById('testStopBtn');
+  if (testStartBtn) testStartBtn.addEventListener('click', () => TransitionTest.start());
+  if (testStopBtn) testStopBtn.addEventListener('click', () => TransitionTest.stop());
 
   const rateEl = document.getElementById('headerRate');
   if (rateEl) rateEl.textContent = `@ ${currentDashboardRateHz} Hz`;
