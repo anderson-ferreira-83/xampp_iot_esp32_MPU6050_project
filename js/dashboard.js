@@ -1815,23 +1815,18 @@ fetchHistory = async function () {
   }
 };
 
-// Event listeners for ML controls
-document.addEventListener('DOMContentLoaded', async () => {
+async function startApp() {
+  if (window.appStarted) return;
+  window.appStarted = true;
+
   const mlToggleBtn = document.getElementById('mlToggle');
   const mlResetBtn = document.getElementById('mlReset');
 
-  if (mlToggleBtn) {
-    mlToggleBtn.addEventListener('click', toggleML);
-  }
+  if (mlToggleBtn) mlToggleBtn.addEventListener('click', toggleML);
+  if (mlResetBtn) mlResetBtn.addEventListener('click', resetML);
 
   const rateEl = document.getElementById('headerRate');
-  if (rateEl) {
-    rateEl.textContent = `@ ${currentDashboardRateHz} Hz`;
-  }
-
-  if (mlResetBtn) {
-    mlResetBtn.addEventListener('click', resetML);
-  }
+  if (rateEl) rateEl.textContent = `@ ${currentDashboardRateHz} Hz`;
 
   injectPlaybackControls();
 
@@ -1847,45 +1842,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.warn("BroadcastChannel não é suportado neste navegador.", e);
   }
 
-  // Initialize ML classifier FIRST, then start data fetching
-  // This ensures historical data can be fed to the classifier buffer
   await initMLClassifier();
   setMLDataOnline(false);
-
   startDataFetching();
 }
-
-async function startApp() {
-    if (window.appStarted) return;
-    window.appStarted = true;
-
-    const mlToggleBtn = document.getElementById('mlToggle');
-    const mlResetBtn = document.getElementById('mlReset');
-
-    if (mlToggleBtn) mlToggleBtn.addEventListener('click', toggleML);
-    if (mlResetBtn) mlResetBtn.addEventListener('click', resetML);
-
-    const rateEl = document.getElementById('headerRate');
-    if (rateEl) rateEl.textContent = `@ ${currentDashboardRateHz} Hz`;
-
-    injectPlaybackControls();
-
-    // Listener para comandos do painel de controle (control.html)
-    try {
-      const controlChannel = new BroadcastChannel('fan_control_channel');
-      controlChannel.onmessage = (event) => {
-        if (event.data?.type === 'MODE_CHANGE') {
-          smartResetClassifier();
-        }
-      };
-    } catch (e) {
-      console.warn("BroadcastChannel não é suportado neste navegador.", e);
-    }
-
-    await initMLClassifier();
-    setMLDataOnline(false);
-    startDataFetching();
-  }
 
 document.addEventListener('DOMContentLoaded', startApp);
 if (document.readyState === 'complete' || document.readyState === 'interactive') setTimeout(startApp, 100);
