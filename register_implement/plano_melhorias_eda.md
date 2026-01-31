@@ -157,16 +157,16 @@
 
 - [x] **7.1** Corrigir `ddof=1` -> `ddof=0` no notebook 02 (CORRIGIDO)
 - [x] **7.2** Usar features selecionadas pelo notebook 01 (14 do ANOVA) - carrega de feature_config.json (CORRIGIDO)
-- [ ] **7.3** Retreinar GNB, RF, LightGBM com features corrigidas
-- [ ] **7.4** Validacao cruzada estratificada (k=5)
-- [ ] **7.5** Exportar modelo GNB corrigido
+- [x] **7.3** Retreinar GNB, RF, LightGBM com features corrigidas (re-executado pelo usuario)
+- [x] **7.4** Validacao cruzada estratificada (k=5) (accuracy 100% treino e CV)
+- [x] **7.5** Exportar modelo GNB corrigido (gnb_model_20260131.json - 14 features, 372 amostras)
 
 ### FASE 8: Integracao com Dashboard
 
-- [ ] **8.1** Verificar que `classifier.js` calcula as mesmas 14 features com `ddof=0`
-- [ ] **8.2** Atualizar `MODEL_URL` se modelo mudou
-- [ ] **8.3** Testar classificacao em tempo real
-- [ ] **8.4** Validar confianca das predicoes
+- [x] **8.1** Atualizar `classifier.js`: Stats (skew, kurtosis, peak, shapeFactor, etc.) + FeatureExtractor (66 features)
+- [x] **8.2** Atualizar `MODEL_URL` para `models/gnb_model_20260131.json`
+- [ ] **8.3** Testar classificacao em tempo real (requer ESP32 ativo)
+- [ ] **8.4** Validar confianca das predicoes (requer ESP32 ativo)
 
 ---
 
@@ -187,6 +187,8 @@
 | 2026-01-31 | Fase 5.5-5.6 | Concluido | Violin plots + t-SNE/PCA implementados |
 | 2026-01-31 | Fase 6.5 | Concluido | Timestamps no CSV de features |
 | 2026-01-31 | Fase 7.1-7.2 | Concluido | NB02 corrigido: ddof=0 + features do feature_config.json |
+| 2026-01-31 | Fase 7.3-7.5 | Concluido | Notebooks re-executados, modelo 20260131 gerado (acc=100%) |
+| 2026-01-31 | Fase 8.1-8.2 | Concluido | classifier.js reescrito (66 features, 11 metricas), MODEL_URL atualizado |
 
 ---
 

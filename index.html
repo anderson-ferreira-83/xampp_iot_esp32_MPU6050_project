@@ -312,20 +312,18 @@
         </div>
         <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.7;">
           Sistema IoT completo para monitoramento de vibração de ventiladores industriais em um ambiente local.
-          Utiliza um microcontrolador ESP32 com sensor MPU6050 para coletar dados de vibração a <strong>20Hz</strong>.
+          Utiliza um microcontrolador ESP32 com sensor MPU6050 para coletar dados de vibração a <strong>5Hz</strong>.
           Os dados são enviados via HTTP para um servidor local XAMPP (Apache, PHP, MySQL)
           e processados por um modelo de Machine Learning que classifica
-          automaticamente a velocidade do ventilador como <strong style="color: var(--primary);">LOW</strong> ou <strong
-            style="color: var(--primary);">HIGH</strong>.
+          automaticamente a velocidade do ventilador como <strong style="color: #00d9ff;">LOW</strong>,
+          <strong style="color: #00ff88;">MEDIUM</strong> ou <strong style="color: #ff5252;">HIGH</strong>.
         </p>
         <p
           style="color: var(--muted); font-size: 0.85rem; line-height: 1.6; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(148,163,184,0.2);">
-          Após análise comparativa entre <strong>7 algoritmos</strong> (Logistic Regression, SVM, Random Forest, KNN,
-          Gaussian NB)
-          em <strong>21 configurações</strong> diferentes de features, o <strong style="color: var(--primary);">Gaussian
-            Naive Bayes</strong>
-          foi selecionado por apresentar o melhor equilíbrio entre acurácia (<strong>99.64% CV</strong>) e velocidade de
-          inferência (<strong>~9ms</strong>).
+          Após análise comparativa entre <strong>3 algoritmos</strong> (Gaussian NB, Random Forest, LightGBM),
+          o <strong style="color: var(--primary);">Gaussian Naive Bayes</strong>
+          foi selecionado por apresentar <strong>100% de acurácia (CV 5-fold)</strong> com 14 features
+          selecionadas via ANOVA F-test + filtro de correlação, e velocidade de inferência compatível com tempo real.
         </p>
       </div>
 
@@ -350,7 +348,7 @@
             <span class="tech-tag">ESP32</span>
             <span class="tech-tag">MPU6050</span>
             <span class="tech-tag">MicroPython</span>
-            <span class="tech-tag">I2C 20Hz</span>
+            <span class="tech-tag">I2C 5Hz</span>
           </div>
         </div>
         <div class="pipeline-layer layer-comm">
@@ -565,7 +563,7 @@
           <div class="model-feature-list" id="modelFeatureList"></div>
         </details>
         <div class="model-note">
-          <strong>Gaussian Naive Bayes</strong> - Comparado: Logistic Regression, SVM, Random Forest, KNN
+          <strong>Gaussian Naive Bayes</strong> - Comparado: Random Forest, LightGBM | Seleção: ANOVA + Kruskal-Wallis + MI
         </div>
       </div>
     </div>

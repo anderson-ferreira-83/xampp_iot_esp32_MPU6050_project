@@ -17,7 +17,7 @@
 
 const ClassifierConfig = {
     // Tamanho da Janela Deslizante: Quantos pontos passados analisamos de uma vez
-    // 100 pontos a 4Hz = analisamos os últimos 25 segundos de comportamento
+    // 100 pontos a 5Hz = analisamos os ultimos 20 segundos de comportamento
     WINDOW_SIZE: 100,
     MIN_POINTS: 100, // Mínimo de pontos para começar a classificar
 
@@ -116,7 +116,7 @@ const Stats = {
         return sum / arr.length;
     },
 
-    // Desvio Padrão (Standard Deviation): Mede o quanto os dados variam da média
+    // Desvio Padrão populacional (ddof=0) - alinhado com np.std(ddof=0) do Python
     std(arr) {
         if (!arr || arr.length < 2) return 0;
         const m = this.mean(arr);
@@ -128,7 +128,7 @@ const Stats = {
         return Math.sqrt(sumSq / arr.length);
     },
 
-    // RMS (Root Mean Square): Mede a magnitude/energia do sinal
+    // RMS (Root Mean Square)
     rms(arr) {
         if (!arr || arr.length === 0) return 0;
         let sumSq = 0;
@@ -136,7 +136,95 @@ const Stats = {
         return Math.sqrt(sumSq / arr.length);
     },
 
-    // Range (Amplitude): Diferença entre o valor máximo e mínimo
+    // Peak: valor absoluto maximo
+    peak(arr) {
+        if (!arr || arr.length === 0) return 0;
+        let maxAbs = 0;
+        for (let i = 0; i < arr.length; i++) {
+            const a = Math.abs(arr[i]);
+            if (a > maxAbs) maxAbs = a;
+        }
+        return maxAbs;
+    },
+
+    // Mean absolute value
+    meanAbs(arr) {
+        if (!arr || arr.length === 0) return 0;
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) sum += Math.abs(arr[i]);
+        return sum / arr.length;
+    },
+
+    // Root amplitude: (mean(sqrt(|x|)))^2
+    rootAmplitude(arr) {
+        if (!arr || arr.length === 0) return 0;
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) sum += Math.sqrt(Math.abs(arr[i]));
+        const m = sum / arr.length;
+        return m * m;
+    },
+
+    // Skewness (bias=True, alinhado com scipy.stats.skew(bias=True))
+    skew(arr) {
+        if (!arr || arr.length < 3) return 0;
+        const n = arr.length;
+        const m = this.mean(arr);
+        let m2 = 0, m3 = 0;
+        for (let i = 0; i < n; i++) {
+            const d = arr[i] - m;
+            m2 += d * d;
+            m3 += d * d * d;
+        }
+        m2 /= n;
+        m3 /= n;
+        const s = Math.sqrt(m2);
+        if (s < 1e-10) return 0;
+        return m3 / (s * s * s);
+    },
+
+    // Kurtosis (Fisher, bias=True, alinhado com scipy.stats.kurtosis(fisher=True, bias=True))
+    kurtosis(arr) {
+        if (!arr || arr.length < 4) return 0;
+        const n = arr.length;
+        const m = this.mean(arr);
+        let m2 = 0, m4 = 0;
+        for (let i = 0; i < n; i++) {
+            const d = arr[i] - m;
+            const d2 = d * d;
+            m2 += d2;
+            m4 += d2 * d2;
+        }
+        m2 /= n;
+        m4 /= n;
+        if (m2 < 1e-10) return 0;
+        return (m4 / (m2 * m2)) - 3.0;
+    },
+
+    // Crest factor: peak / rms
+    crestFactor(arr) {
+        const r = this.rms(arr);
+        return r > 1e-10 ? this.peak(arr) / r : 0;
+    },
+
+    // Shape factor: rms / meanAbs
+    shapeFactor(arr) {
+        const ma = this.meanAbs(arr);
+        return ma > 1e-10 ? this.rms(arr) / ma : 0;
+    },
+
+    // Impulse factor: peak / meanAbs
+    impulseFactor(arr) {
+        const ma = this.meanAbs(arr);
+        return ma > 1e-10 ? this.peak(arr) / ma : 0;
+    },
+
+    // Clearance factor: peak / rootAmplitude
+    clearanceFactor(arr) {
+        const ra = this.rootAmplitude(arr);
+        return ra > 1e-10 ? this.peak(arr) / ra : 0;
+    },
+
+    // Range (mantido para compatibilidade)
     range(arr) {
         if (!arr || arr.length === 0) return 0;
         let min = arr[0], max = arr[0];
@@ -162,36 +250,35 @@ const Stats = {
 // =============================================================================
 
 class FeatureExtractor {
-    // Transforma os dados brutos (arrays de pontos) em "Features" (estatísticas)
-    // O modelo de ML não olha para os pontos brutos, mas sim para essas estatísticas.
+    // Calcula 11 metricas estatisticas para um eixo
+    // Alinhado com compute_features() do notebook 01 (ddof=0, bias=True)
+    static _axisFeatures(arr, prefix) {
+        return {
+            [`${prefix}_mean`]: Stats.mean(arr),
+            [`${prefix}_std`]: Stats.std(arr),
+            [`${prefix}_skew`]: Stats.skew(arr),
+            [`${prefix}_kurtosis`]: Stats.kurtosis(arr),
+            [`${prefix}_rms`]: Stats.rms(arr),
+            [`${prefix}_peak`]: Stats.peak(arr),
+            [`${prefix}_root_amplitude`]: Stats.rootAmplitude(arr),
+            [`${prefix}_crest_factor`]: Stats.crestFactor(arr),
+            [`${prefix}_shape_factor`]: Stats.shapeFactor(arr),
+            [`${prefix}_impulse_factor`]: Stats.impulseFactor(arr),
+            [`${prefix}_clearance_factor`]: Stats.clearanceFactor(arr),
+        };
+    }
+
+    // Extrai 66 features (11 metricas x 6 eixos) - identico ao pipeline Python
     static extract(data) {
-        const { ax, ay, az, gx, gy, gz, vib } = data;
+        const { ax, ay, az, gx, gy, gz } = data;
 
         return {
-            // Accelerometer features
-            accel_x_g_std: Stats.std(ax),
-            accel_x_g_range: Stats.range(ax),
-            accel_x_g_rms: Stats.rms(ax),
-            accel_y_g_std: Stats.std(ay),
-            accel_z_g_std: Stats.std(az),
-
-            // Gyroscope features
-            gyro_x_dps_std: Stats.std(gx),
-            gyro_x_dps_rms: Stats.rms(gx),
-            gyro_x_dps_range: Stats.range(gx),
-            gyro_y_dps_std: Stats.std(gy),
-            gyro_y_dps_rms: Stats.rms(gy),
-            gyro_y_dps_range: Stats.range(gy),
-            gyro_z_dps_std: Stats.std(gz),
-
-            gyro_z_dps_range: Stats.range(gz),
-            gyro_z_dps_rms: Stats.rms(gz),
-
-            // Vibration features
-            vibration_dps_std: Stats.std(vib),
-            vibration_dps_max: Stats.max(vib),
-            vibration_dps_range: Stats.range(vib),
-            vibration_dps_mean: Stats.mean(vib),
+            ...this._axisFeatures(ax, 'accel_x_g'),
+            ...this._axisFeatures(ay, 'accel_y_g'),
+            ...this._axisFeatures(az, 'accel_z_g'),
+            ...this._axisFeatures(gx, 'gyro_x_dps'),
+            ...this._axisFeatures(gy, 'gyro_y_dps'),
+            ...this._axisFeatures(gz, 'gyro_z_dps'),
         };
     }
 }

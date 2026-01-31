@@ -4,7 +4,7 @@ const CONFIG = {
   HISTORY_ENDPOINT: 'api/get_data.php',
   HISTORY_SECONDS: 60,      // Janela de tempo inicial para o histórico (em segundos)
   REALTIME_WINDOW_SECONDS: 5, // Janela para atualizações em tempo real
-  UPDATE_INTERVAL: 250,     // pull a cada 250ms (4Hz)
+  UPDATE_INTERVAL: 200,     // pull a cada 200ms (5Hz) - alinhado com taxa do ESP32
   MAX_POINTS: 7200,
   TIME_RANGE: 'all',
   OFFLINE_AFTER_MS: 10000,  // v4.1: Reduzido para 10s
@@ -952,8 +952,8 @@ async function startDataFetching() {
 // =============================================================================
 
 const ML_CONFIG = {
-  MODEL_URL: 'models/gnb_model_20260130.json',  // Path to model file (versioned)
-  PREDICTION_INTERVAL: 250,                      // v4.1: Run prediction every 250ms (was 1000ms)
+  MODEL_URL: 'models/gnb_model_20260131.json',  // Path to model file (versioned)
+  PREDICTION_INTERVAL: 200,                      // Predicao a cada 200ms (5Hz)
   ENABLED: true,                                 // ML classification enabled by default
 };
 
@@ -1437,12 +1437,12 @@ function updateFanStateFromML(state, detail, confidenceLevel) {
 
 function getFeatureVectorFromPayload(normalized) {
   const featurePayloadKeys = [
-    'accel_x_g_std',
-    'accel_x_g_range',
-    'accel_x_g_rms',
-    'gyro_y_dps_std',
-    'gyro_y_dps_rms',
-    'gyro_y_dps_range',
+    'gyro_z_dps_peak',
+    'accel_x_g_skew',
+    'gyro_y_dps_skew',
+    'accel_x_g_kurtosis',
+    'gyro_x_dps_shape_factor',
+    'gyro_y_dps_shape_factor',
   ];
   const mode = (normalized.mode || '').toString().toLowerCase();
   const isFeaturePayload = Number.isFinite(normalized.feature_window)
