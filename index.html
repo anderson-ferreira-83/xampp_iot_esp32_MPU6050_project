@@ -518,7 +518,10 @@
         </div>
 
         <div class="ml-decision-section">
-          <div class="ml-decision-section-title">Features em tempo real (janela atual)</div>
+          <div class="ml-decision-section-title" style="display:flex;align-items:center;justify-content:space-between;">
+            <span>Features em tempo real</span>
+            <select id="mlFeaturePageSelect" style="background:#1a1a2e;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.2);border-radius:4px;padding:2px 6px;font-size:0.7rem;cursor:pointer;"></select>
+          </div>
           <div class="ml-feature-list" id="mlFeatureList"></div>
         </div>
 
@@ -620,7 +623,7 @@
             style="vertical-align: middle; margin-right: 6px;">
             <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
           </svg>
-          Acelerao
+          Aceleração
         </div>
         <div class="card-values-column">
           <div class="card-value-line" id="accelAxisX">AX=--</div>
@@ -652,9 +655,7 @@
         <div class="progress-bar">
           <div class="progress-fill" id="gyroMagProgress"></div>
         </div>
-        </div>
       </div>
-
     </div>
 
     <!-- Row 7: Dados Recebidos (1x3) -->

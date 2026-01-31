@@ -647,8 +647,11 @@ function clearCache() {
   document.getElementById('severity').textContent = 'NONE';
   document.getElementById('severityMessage').textContent = 'Sistema normal';
   document.getElementById('lastUpdate').textContent = '--';
-  document.getElementById('lastPayloadSummary').textContent = '--';
-  document.getElementById('lastPayloadAxes').textContent = '--';
+  // Update column layout elements
+  const elIds = ['lastPayloadTimestamp', 'lastPayloadTemp', 'lastPayloadVib',
+                 'lastPayloadAX', 'lastPayloadAY', 'lastPayloadAZ',
+                 'lastPayloadGX', 'lastPayloadGY', 'lastPayloadGZ'];
+  elIds.forEach(id => { const el = document.getElementById(id); if (el) el.textContent = '--'; });
 
   updateStatus(false);
 }
@@ -1143,11 +1146,46 @@ function buildModelFeatureList(modelData) {
   });
 }
 
+const FEATURES_PER_PAGE = 5;
+let mlFeaturePage = 0;
+let mlAllFeatures = [];
+
 function buildMLFeatureRows(modelData) {
   const listEl = document.getElementById('mlFeatureList');
+  const selectEl = document.getElementById('mlFeaturePageSelect');
   if (!listEl || !modelData?.features) return;
+
+  mlAllFeatures = modelData.features;
+  const totalPages = Math.ceil(mlAllFeatures.length / FEATURES_PER_PAGE);
+
+  // Build dropdown
+  if (selectEl) {
+    selectEl.innerHTML = '';
+    for (let i = 0; i < totalPages; i++) {
+      const start = i * FEATURES_PER_PAGE + 1;
+      const end = Math.min((i + 1) * FEATURES_PER_PAGE, mlAllFeatures.length);
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = `${start}–${end} de ${mlAllFeatures.length}`;
+      selectEl.appendChild(opt);
+    }
+    selectEl.addEventListener('change', () => {
+      mlFeaturePage = Number(selectEl.value);
+      renderFeaturePage();
+    });
+  }
+
+  mlFeaturePage = 0;
+  renderFeaturePage();
+}
+
+function renderFeaturePage() {
+  const listEl = document.getElementById('mlFeatureList');
+  if (!listEl) return;
   listEl.innerHTML = '';
-  modelData.features.forEach(feature => {
+  const start = mlFeaturePage * FEATURES_PER_PAGE;
+  const pageFeatures = mlAllFeatures.slice(start, start + FEATURES_PER_PAGE);
+  pageFeatures.forEach(feature => {
     const row = document.createElement('div');
     row.className = 'ml-feature-row';
     row.dataset.feature = feature;

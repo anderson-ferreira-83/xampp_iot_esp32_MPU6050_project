@@ -31,11 +31,16 @@ const ClassifierConfig = {
     PREDICTION_INTERVAL_MS: 250,
 
     // Smoothing
-    SMOOTHING_ALPHA: 0.5,
+    SMOOTHING_ALPHA: 0.65,
 
     // Histerese: Exige N previsões iguais consecutivas antes de mudar o estado oficial
-    // Isso evita que o status fique piscando entre "LOW" e "MEDIUM" rapidamente
-    HYSTERESIS_COUNT: 3,
+    HYSTERESIS_COUNT: 2,
+
+    // Detecção de mudança brusca: monitora gyro_z_dps (feature mais discriminativa)
+    // Se a média recente divergir muito da média do buffer, faz flush parcial
+    CHANGE_DETECT_WINDOW: 15,       // últimos 15 pontos (3s a 5Hz) para detectar mudança
+    CHANGE_DETECT_RATIO: 0.45,      // ratio min entre média recente e média do buffer para trigger
+    FAST_FLUSH_KEEP: 25,            // manter apenas os últimos 25 pontos após flush (5s)
 };
 
 // =============================================================================
@@ -436,6 +441,70 @@ class RealTimeClassifier {
     addData(data) {
         this.buffer.push(data);
         this.feedCount++;
+        this._detectAbruptChange();
+    }
+
+    /**
+     * Detecta mudança brusca comparando os últimos N pontos com o buffer total.
+     * Se gyro_z (feature mais discriminativa) mudar significativamente, faz flush parcial.
+     */
+    _detectAbruptChange() {
+        const cfg = ClassifierConfig;
+        if (this.buffer.size < cfg.MIN_POINTS) return; // Só detecta com buffer cheio
+
+        const arrays = this.buffer.getArrays();
+        const gz = arrays.gz;
+        const n = gz.length;
+        const recentN = cfg.CHANGE_DETECT_WINDOW;
+        if (n < recentN + 10) return;
+
+        // Média absoluta do buffer completo vs últimos N pontos
+        let sumAll = 0, sumRecent = 0;
+        for (let i = 0; i < n; i++) sumAll += Math.abs(gz[i]);
+        for (let i = n - recentN; i < n; i++) sumRecent += Math.abs(gz[i]);
+
+        const meanAll = sumAll / n;
+        const meanRecent = sumRecent / recentN;
+
+        // Se a média recente for muito diferente (queda ou subida abrupta)
+        if (meanAll > 1) { // Evita divisão por ~0
+            const ratio = meanRecent / meanAll;
+            if (ratio < cfg.CHANGE_DETECT_RATIO || ratio > (1 / cfg.CHANGE_DETECT_RATIO)) {
+                console.log(`[ChangeDetect] Mudança brusca detectada: ratio=${ratio.toFixed(2)} (recent=${meanRecent.toFixed(1)} vs all=${meanAll.toFixed(1)}). Flush parcial.`);
+                this._fastFlush();
+            }
+        }
+    }
+
+    /**
+     * Flush parcial: mantém apenas os últimos N pontos, resetando suavização e histerese.
+     */
+    _fastFlush() {
+        const keep = ClassifierConfig.FAST_FLUSH_KEEP;
+        const arrays = this.buffer.getArrays();
+        const n = this.buffer.size;
+        if (n <= keep) return;
+
+        // Rebuild buffer with only recent points
+        this.buffer.clear();
+        for (let i = n - keep; i < n; i++) {
+            this.buffer.push({
+                ax: arrays.ax[i], ay: arrays.ay[i], az: arrays.az[i],
+                gx: arrays.gx[i], gy: arrays.gy[i], gz: arrays.gz[i],
+                vib: arrays.vib[i], timestamp: Date.now()
+            });
+        }
+
+        // Reset smoothing to uniform (fresh start)
+        const labels = this.classifier.model?.labels || ['LOW', 'MEDIUM', 'HIGH'];
+        for (const label of labels) {
+            this.smoothedConfidence[label] = 1 / labels.length;
+        }
+
+        // Reset hysteresis
+        this.confirmedState = null;
+        this.candidateState = null;
+        this.candidateCount = 0;
     }
 
     markFeatureMode(ttlMs = 3000) {
