@@ -954,7 +954,7 @@ async function startDataFetching() {
 // =============================================================================
 
 const ML_CONFIG = {
-  MODEL_URL: 'models/gnb_model_v2_20260201.json',  // Path to model file (versioned)
+  MODEL_URL: 'models/gnb_model_spectral_20260201.json',  // Path to model file (versioned)
   PREDICTION_INTERVAL: 200,                      // Predicao a cada 200ms (5Hz)
   ENABLED: true,                                 // ML classification enabled by default
 };

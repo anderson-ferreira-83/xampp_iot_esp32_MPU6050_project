@@ -3,7 +3,7 @@
   "sample_rate_hz": 20,
   "spectral_features_enabled": true,
   "generated_by": "03_EDA_v2_Transicao_Simetrica.ipynb",
-  "generated_at": "20260201_000802",
+  "generated_at": "20260201_012517",
   "selection_criteria": {
     "anova_alpha": 0.05,
     "correlation_threshold": 0.85,
@@ -14,20 +14,10 @@
   "window_size": 100,
   "step_size": 20,
   "selected_features": [
-    "gyro_z_dps_peak",
-    "gyro_y_dps_skew",
-    "accel_x_g_skew",
-    "accel_z_g_skew",
-    "accel_x_g_kurtosis",
-    "gyro_x_dps_shape_factor",
-    "gyro_y_dps_kurtosis",
-    "gyro_y_dps_shape_factor",
-    "accel_x_g_root_amplitude",
-    "accel_z_g_kurtosis",
-    "accel_y_g_skew",
-    "accel_x_g_mean",
-    "accel_z_g_root_amplitude",
-    "gyro_x_dps_kurtosis"
+    "accel_z_g_std",
+    "accel_x_g_P8",
+    "gyro_y_dps_P14",
+    "gyro_x_dps_P8"
   ],
   "all_features": [
     "accel_x_g_mean",
@@ -97,7 +87,7 @@
     "gyro_z_dps_impulse_factor",
     "gyro_z_dps_clearance_factor"
   ],
-  "feature_count": 14,
+  "feature_count": 4,
   "total_feature_count": 150,
   "class_distribution": {
     "LOW": 101,

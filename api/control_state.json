@@ -1,4 +1,4 @@
 {
-    "mode": "HIGH",
-    "sample_rate": "20"
+    "mode": "RAW",
+    "sample_rate": "1"
 }

@@ -1,0 +1,91 @@
+{
+  "type": "gaussian_nb",
+  "version": "5.0_spectral",
+  "generated_at": "2026-02-01 01:25:17",
+  "sample_rate_hz": 20,
+  "features": [
+    "accel_z_g_std",
+    "accel_x_g_P8",
+    "gyro_y_dps_P14",
+    "gyro_x_dps_P8"
+  ],
+  "labels": [
+    "HIGH",
+    "LOW",
+    "MEDIUM"
+  ],
+  "priors": {
+    "HIGH": 0.3339622641509434,
+    "LOW": 0.3333333333333333,
+    "MEDIUM": 0.33270440251572325
+  },
+  "stats": {
+    "HIGH": {
+      "accel_z_g_std": {
+        "mean": 0.06611971008466282,
+        "var": 2.204389973461334e-05
+      },
+      "accel_x_g_P8": {
+        "mean": 2.883017262889803,
+        "var": 0.0025523322611430196
+      },
+      "gyro_y_dps_P14": {
+        "mean": 3.2963201104977418,
+        "var": 0.042305529252621744
+      },
+      "gyro_x_dps_P8": {
+        "mean": 2.8525455645643527,
+        "var": 0.0018878083233887296
+      }
+    },
+    "LOW": {
+      "accel_z_g_std": {
+        "mean": 0.024580395526363878,
+        "var": 2.2514983876651993e-06
+      },
+      "accel_x_g_P8": {
+        "mean": 2.722246120255586,
+        "var": 0.0009387685607039808
+      },
+      "gyro_y_dps_P14": {
+        "mean": 2.743074332990298,
+        "var": 0.009477913799130428
+      },
+      "gyro_x_dps_P8": {
+        "mean": 2.7323985390456462,
+        "var": 0.0007712851391205128
+      }
+    },
+    "MEDIUM": {
+      "accel_z_g_std": {
+        "mean": 0.027972039041802937,
+        "var": 4.556731232436018e-06
+      },
+      "accel_x_g_P8": {
+        "mean": 2.7916230089871106,
+        "var": 0.0008083645561399728
+      },
+      "gyro_y_dps_P14": {
+        "mean": 2.843699725127366,
+        "var": 0.010377931352583867
+      },
+      "gyro_x_dps_P8": {
+        "mean": 2.7854778224856918,
+        "var": 0.0008475488933418293
+      }
+    }
+  },
+  "metrics": {
+    "train_accuracy": 0.9622641509433962,
+    "cv_accuracy_mean": 0.9622641509433963,
+    "cv_accuracy_std": 0.02653462026381004
+  },
+  "training_info": {
+    "total_samples": 1590,
+    "window_size": 100,
+    "step_size": 20,
+    "feature_set": "F (combined)",
+    "n_temporal": 1,
+    "n_spectral": 3
+  }
+}
