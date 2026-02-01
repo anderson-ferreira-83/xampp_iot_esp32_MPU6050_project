@@ -1,48 +1,55 @@
 {
-  "timestamp": "20260131_210511",
-  "raw_samples": 6335,
-  "filtered_samples": 6327,
-  "common_window_s": 541.2490000724792,
+  "timestamp": "20260201_081158",
+  "raw_samples": 32100,
+  "filtered_samples": 32062,
+  "common_window_s": 721.1775999069214,
   "window_size": 100,
   "step_size": 20,
-  "total_windows": 302,
+  "total_windows": 1590,
   "feature_count": 66,
-  "selected_feature_count": 18,
+  "selected_feature_count": 25,
   "class_distribution_raw": {
-    "MEDIUM": 2125,
-    "LOW": 2110,
-    "HIGH": 2100
+    "HIGH": 10720,
+    "LOW": 10700,
+    "MEDIUM": 10680
   },
   "class_distribution_filtered": {
-    "MEDIUM": 2119,
-    "LOW": 2110,
-    "HIGH": 2098
+    "HIGH": 10707,
+    "MEDIUM": 10680,
+    "LOW": 10675
   },
   "class_distribution_windows": {
-    "LOW": 101,
-    "MEDIUM": 101,
-    "HIGH": 100
+    "HIGH": 531,
+    "MEDIUM": 530,
+    "LOW": 529
   },
   "anova_alpha": 0.05,
   "correlation_threshold": 0.85,
   "selected_features": [
-    "accel_x_g_std",
-    "gyro_z_dps_shape_factor",
+    "accel_z_g_std",
+    "gyro_z_dps_peak",
+    "gyro_y_dps_skew",
+    "gyro_y_dps_shape_factor",
+    "gyro_z_dps_std",
+    "gyro_z_dps_rms",
+    "accel_x_g_rms",
+    "gyro_y_dps_kurtosis",
+    "accel_z_g_skew",
+    "accel_y_g_clearance_factor",
     "gyro_x_dps_shape_factor",
-    "gyro_x_dps_kurtosis",
+    "gyro_z_dps_shape_factor",
     "gyro_x_dps_clearance_factor",
-    "accel_y_g_kurtosis",
+    "gyro_x_dps_skew",
+    "accel_x_g_skew",
+    "gyro_z_dps_kurtosis",
+    "gyro_x_dps_kurtosis",
+    "accel_x_g_root_amplitude",
+    "accel_z_g_rms",
     "accel_x_g_kurtosis",
     "gyro_z_dps_skew",
-    "gyro_x_dps_skew",
-    "gyro_y_dps_skew",
+    "accel_y_g_skew",
     "gyro_y_dps_mean",
-    "accel_z_g_root_amplitude",
-    "accel_y_g_impulse_factor",
-    "accel_x_g_mean",
-    "accel_z_g_kurtosis",
-    "accel_y_g_mean",
-    "accel_z_g_skew",
-    "gyro_z_dps_mean"
+    "gyro_x_dps_mean",
+    "accel_z_g_kurtosis"
   ]
 }
