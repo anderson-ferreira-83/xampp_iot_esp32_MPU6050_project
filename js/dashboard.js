@@ -84,8 +84,10 @@ function normalizeTimestampMs(raw, fallback = null) {
 function normalizePayload(payload) {
   const rawTs = payload.timestamp_ms ?? payload.timestamp ?? payload.timestamp_s ?? payload.ts;
   const ts = normalizeTimestampMs(rawTs, getNow());
+  const hasRealTimestamp = normalizeTimestampMs(rawTs, null) !== null;
   return {
     ts,
+    hasRealTimestamp,
     counter: payload.contador != null ? Number(payload.contador) : (payload.counter != null ? Number(payload.counter) : null),
     temperature: Number(payload.temperature || 0),
     vibration: Number(payload.vibration || 0),
@@ -730,7 +732,7 @@ async function fetchLatest() {
     }
 
     const normalized = normalizePayload(payload);
-    lastSampleTs = normalized.ts;
+    if (normalized.hasRealTimestamp) lastSampleTs = normalized.ts;
     lastFetchAt = getNow();
     const hasCounter = Number.isFinite(normalized.counter);
     const isNewSample = hasCounter
@@ -746,10 +748,7 @@ async function fetchLatest() {
     lastDataTs = normalized.ts;
 
     pushCache(normalized);
-    updateStatus(true);
-    if (!isFresh()) {
-      updateStatus(false);
-    }
+    updateStatus(isFresh());
     updateCards(normalized);
     updateAlerts(normalized);
     renderAll();
@@ -955,7 +954,7 @@ async function startDataFetching() {
 // =============================================================================
 
 const ML_CONFIG = {
-  MODEL_URL: 'models/gnb_model_20260131.json',  // Path to model file (versioned)
+  MODEL_URL: 'models/gnb_model_v2_20260131.json',  // Path to model file (versioned)
   PREDICTION_INTERVAL: 200,                      // Predicao a cada 200ms (5Hz)
   ENABLED: true,                                 // ML classification enabled by default
 };
@@ -1686,7 +1685,7 @@ fetchLatest = async function () {
       ? normalized.counter !== lastSeenCounter
       : normalized.ts !== lastDataTs;
 
-    lastSampleTs = normalized.ts;
+    if (normalized.hasRealTimestamp) lastSampleTs = normalized.ts;
     lastFetchAt = getNow();
 
     if (isNewSample) {
@@ -1696,10 +1695,7 @@ fetchLatest = async function () {
 
     pushCache(normalized);
     feedMLData(normalized);
-    updateStatus(true);
-    if (!isFresh()) {
-      updateStatus(false);
-    }
+    updateStatus(isFresh());
     updateCards(normalized);
     updateAlerts(normalized);
     renderAll();
@@ -1754,7 +1750,7 @@ fetchLatest = async function () {
         anyNew = true;
         lastSeenCounter = hasCounter ? normalized.counter : lastSeenCounter;
         lastDataTs = normalized.ts;
-        lastSampleTs = normalized.ts;
+        if (normalized.hasRealTimestamp) lastSampleTs = normalized.ts;
         lastFetchAt = getNow();
 
         pushCache(normalized);
@@ -1766,14 +1762,11 @@ fetchLatest = async function () {
         // No new samples, but keep UI alive with most recent payload
         const normalized = normalizePayload(batch[batch.length - 1]);
         latestNormalized = normalized;
-        lastSampleTs = normalized.ts;
+        if (normalized.hasRealTimestamp) lastSampleTs = normalized.ts;
         lastFetchAt = getNow();
       }
 
-      updateStatus(true);
-      if (!isFresh()) {
-        updateStatus(false);
-      }
+      updateStatus(isFresh());
       if (latestNormalized) {
         updateCards(latestNormalized);
         updateAlerts(latestNormalized);
@@ -1845,13 +1838,13 @@ fetchHistory = async function () {
     // Update cards/status using the most recent payload
     if (sorted.length) {
       const latestNormalized = normalizePayload(sorted[sorted.length - 1]);
-      lastSampleTs = latestNormalized.ts;
+      if (latestNormalized.hasRealTimestamp) lastSampleTs = latestNormalized.ts;
       lastFetchAt = getNow();
       lastDataTs = latestNormalized.ts;
       if (Number.isFinite(latestNormalized.counter)) {
         lastSeenCounter = latestNormalized.counter;
       }
-      updateStatus(true);
+      updateStatus(isFresh());
       updateCards(latestNormalized);
       updateAlerts(latestNormalized);
     }
@@ -2230,7 +2223,9 @@ const TransitionTest = {
     const resultsEl = document.getElementById('testResults');
     const color = entry.timeout ? '#ff5252' : (entry.time_s > 15 ? '#ffc107' : '#00ff88');
     const timeStr = entry.timeout ? 'TIMEOUT' : `${entry.time_s}s`;
+    const tsStr = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     resultsEl.innerHTML += `<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+      <span style="color:rgba(255,255,255,0.25);min-width:58px;font-size:0.65rem;font-family:'JetBrains Mono',monospace;">${tsStr}</span>
       <span style="color:rgba(255,255,255,0.3);min-width:20px;">#${entry.step}</span>
       <span class="state-${entry.from.toLowerCase()}" style="min-width:55px;">${entry.from}</span>
       <span style="color:rgba(255,255,255,0.3);">→</span>
@@ -2448,6 +2443,13 @@ async function startApp() {
   await initMLClassifier();
   setMLDataOnline(false);
   startDataFetching();
+
+  // Periodic freshness check: mark offline if no fresh data
+  setInterval(() => {
+    if (!isFresh()) {
+      updateStatus(false);
+    }
+  }, 2000);
 }
 
 document.addEventListener('DOMContentLoaded', startApp);

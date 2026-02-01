@@ -622,35 +622,42 @@
 
     <!-- Row: Teste de Transição -->
     <div class="grid-2x1" id="transitionTestRow" style="display:none;">
-      <div class="card" style="border-color:#ffc107;">
-        <div class="card-title" style="color:#ffc107;display:flex;align-items:center;justify-content:space-between;">
-          <span><span class="status-icon">⏱</span> Teste Guiado de Transição</span>
-          <span id="testBadge" class="ml-badge ml-badge-offline" style="font-size:0.65rem;">Parado</span>
+      <div class="card ml-card" id="transitionTestCard">
+        <div class="card-title" style="display:flex;align-items:center;justify-content:space-between;">
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              style="vertical-align: middle; margin-right: 6px;">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            Teste Guiado de Transição
+          </span>
+          <span id="testBadge" class="ml-badge ml-badge-offline">Parado</span>
         </div>
 
         <!-- Controles -->
-        <div style="display:flex;gap:8px;margin:8px 12px;">
-          <button class="btn" id="testStartBtn" style="background:rgba(76,175,80,0.15);border-color:#4caf50;color:#4caf50;flex:1;">Iniciar Teste</button>
-          <button class="btn" id="testStopBtn" style="background:rgba(244,67,54,0.15);border-color:#f44336;color:#f44336;flex:1;" disabled>Parar</button>
+        <div class="ml-controls" style="margin-top:12px;">
+          <button class="btn" id="testStartBtn" style="background:rgba(0,255,136,0.15);border-color:#00ff88;color:#00ff88;">Iniciar Teste</button>
+          <button class="btn" id="testStopBtn" style="background:rgba(255,82,82,0.15);border-color:#ff5252;color:#ff5252;" disabled>Parar</button>
         </div>
 
         <!-- Barra de progresso das etapas -->
-        <div style="display:flex;gap:4px;margin:8px 12px;" id="testStepBar"></div>
+        <div style="display:flex;gap:4px;margin:12px 0 8px;" id="testStepBar"></div>
 
         <!-- Instrução principal -->
         <div style="text-align:center;padding:18px 10px;">
-          <div id="testInstruction" style="font-size:1.1rem;font-weight:600;color:rgba(255,255,255,0.5);">
+          <div id="testInstruction" style="font-size:1.2rem;font-weight:600;color:rgba(255,255,255,0.6);font-family:'Space Grotesk','Manrope',sans-serif;">
             Pressione "Iniciar Teste" para começar
           </div>
           <div id="testPhaseInfo" style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:6px;"></div>
-          <div id="testTimer" style="font-size:3rem;font-weight:700;color:#ffc107;margin-top:8px;">--</div>
-          <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:4px;">
-            Classificação atual: <span id="testCurrentClass" style="font-weight:600;">--</span>
+          <div id="testTimer" style="font-size:3rem;font-weight:700;color:#00d9ff;margin-top:8px;font-family:'JetBrains Mono',monospace;">--</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.5);margin-top:6px;">
+            Classificação atual: <span id="testCurrentClass" style="font-weight:600;font-family:'JetBrains Mono',monospace;">--</span>
           </div>
         </div>
 
         <!-- Resultados -->
-        <div id="testResults" style="padding:0 12px 10px;font-size:0.75rem;color:rgba(255,255,255,0.6);"></div>
+        <div id="testResults" style="padding:0 0 6px;font-size:0.8rem;color:rgba(255,255,255,0.7);font-family:'JetBrains Mono',monospace;"></div>
       </div>
     </div>
 

@@ -1,7 +1,7 @@
 {
   "version": "3.0",
   "generated_by": "01_Analise_Exploratoria.ipynb",
-  "generated_at": "20260131_131219",
+  "generated_at": "20260131_210511",
   "selection_criteria": {
     "anova_alpha": 0.05,
     "correlation_threshold": 0.85,
@@ -10,20 +10,24 @@
   "window_size": 100,
   "step_size": 20,
   "selected_features": [
-    "gyro_z_dps_peak",
-    "gyro_y_dps_skew",
-    "accel_x_g_skew",
-    "accel_z_g_skew",
-    "accel_x_g_kurtosis",
+    "accel_x_g_std",
+    "gyro_z_dps_shape_factor",
     "gyro_x_dps_shape_factor",
-    "gyro_y_dps_kurtosis",
-    "gyro_y_dps_shape_factor",
-    "accel_x_g_root_amplitude",
-    "accel_z_g_kurtosis",
-    "accel_y_g_skew",
-    "accel_x_g_mean",
+    "gyro_x_dps_kurtosis",
+    "gyro_x_dps_clearance_factor",
+    "accel_y_g_kurtosis",
+    "accel_x_g_kurtosis",
+    "gyro_z_dps_skew",
+    "gyro_x_dps_skew",
+    "gyro_y_dps_skew",
+    "gyro_y_dps_mean",
     "accel_z_g_root_amplitude",
-    "gyro_x_dps_kurtosis"
+    "accel_y_g_impulse_factor",
+    "accel_x_g_mean",
+    "accel_z_g_kurtosis",
+    "accel_y_g_mean",
+    "accel_z_g_skew",
+    "gyro_z_dps_mean"
   ],
   "all_features": [
     "accel_x_g_mean",
@@ -93,12 +97,12 @@
     "gyro_z_dps_impulse_factor",
     "gyro_z_dps_clearance_factor"
   ],
-  "feature_count": 14,
+  "feature_count": 18,
   "total_feature_count": 66,
   "class_distribution": {
-    "LOW": 121,
-    "MEDIUM": 121,
-    "HIGH": 120
+    "LOW": 101,
+    "MEDIUM": 101,
+    "HIGH": 100
   },
   "sensor_axes": [
     "accel_x_g",
@@ -123,74 +127,94 @@
   ],
   "anova_ranking": [
     {
-      "feature": "gyro_z_dps_peak",
-      "f_statistic": 14816.051079026849,
+      "feature": "accel_x_g_std",
+      "f_statistic": 33713.540456468094,
       "p_value": 0.0
     },
     {
-      "feature": "gyro_y_dps_skew",
-      "f_statistic": 331.3217383959399,
-      "p_value": 2.95268594149061e-82
-    },
-    {
-      "feature": "accel_x_g_skew",
-      "f_statistic": 315.9639543584518,
-      "p_value": 7.077888596455216e-80
-    },
-    {
-      "feature": "accel_z_g_skew",
-      "f_statistic": 242.09870634645011,
-      "p_value": 2.723644401416278e-67
-    },
-    {
-      "feature": "accel_x_g_kurtosis",
-      "f_statistic": 194.87844713343551,
-      "p_value": 4.9576261618779496e-58
+      "feature": "gyro_z_dps_shape_factor",
+      "f_statistic": 794.4770838768075,
+      "p_value": 2.2496829341645424e-120
     },
     {
       "feature": "gyro_x_dps_shape_factor",
-      "f_statistic": 155.8248067427027,
-      "p_value": 1.92078699317533e-49
-    },
-    {
-      "feature": "gyro_y_dps_kurtosis",
-      "f_statistic": 154.21396033132183,
-      "p_value": 4.558993681889212e-49
-    },
-    {
-      "feature": "gyro_y_dps_shape_factor",
-      "f_statistic": 148.8139364587669,
-      "p_value": 8.523866963277636e-48
-    },
-    {
-      "feature": "accel_x_g_root_amplitude",
-      "f_statistic": 62.58399613650147,
-      "p_value": 4.81568404385612e-24
-    },
-    {
-      "feature": "accel_z_g_kurtosis",
-      "f_statistic": 29.498472058004776,
-      "p_value": 1.3768317022918685e-12
-    },
-    {
-      "feature": "accel_y_g_skew",
-      "f_statistic": 28.62338127962719,
-      "p_value": 2.9239677960739674e-12
-    },
-    {
-      "feature": "accel_x_g_mean",
-      "f_statistic": 18.16389922669093,
-      "p_value": 3.059204385308843e-08
-    },
-    {
-      "feature": "accel_z_g_root_amplitude",
-      "f_statistic": 13.091147733509903,
-      "p_value": 3.2534910860662917e-06
+      "f_statistic": 167.65563622753388,
+      "p_value": 1.474448000879288e-49
     },
     {
       "feature": "gyro_x_dps_kurtosis",
-      "f_statistic": 3.43337037956446,
-      "p_value": 0.03334166617111881
+      "f_statistic": 105.61814757923388,
+      "p_value": 1.999981857471208e-35
+    },
+    {
+      "feature": "gyro_x_dps_clearance_factor",
+      "f_statistic": 103.9536686865984,
+      "p_value": 5.321331383626337e-35
+    },
+    {
+      "feature": "accel_y_g_kurtosis",
+      "f_statistic": 80.95939071179484,
+      "p_value": 7.961485398492028e-29
+    },
+    {
+      "feature": "accel_x_g_kurtosis",
+      "f_statistic": 52.94671255549788,
+      "p_value": 2.0673039807849406e-20
+    },
+    {
+      "feature": "gyro_z_dps_skew",
+      "f_statistic": 41.71801982831844,
+      "p_value": 1.0478526932098756e-16
+    },
+    {
+      "feature": "gyro_x_dps_skew",
+      "f_statistic": 40.85898591255996,
+      "p_value": 2.054175818832551e-16
+    },
+    {
+      "feature": "gyro_y_dps_skew",
+      "f_statistic": 31.77638895392855,
+      "p_value": 3.067910684041273e-13
+    },
+    {
+      "feature": "gyro_y_dps_mean",
+      "f_statistic": 21.514852385464,
+      "p_value": 1.8633770347907526e-09
+    },
+    {
+      "feature": "accel_z_g_root_amplitude",
+      "f_statistic": 19.514427009163228,
+      "p_value": 1.08206557245829e-08
+    },
+    {
+      "feature": "accel_y_g_impulse_factor",
+      "f_statistic": 12.396947456347188,
+      "p_value": 6.724787916305687e-06
+    },
+    {
+      "feature": "accel_x_g_mean",
+      "f_statistic": 8.548450047153114,
+      "p_value": 0.00024531112890549485
+    },
+    {
+      "feature": "accel_z_g_kurtosis",
+      "f_statistic": 6.19861670042834,
+      "p_value": 0.0023029661968565706
+    },
+    {
+      "feature": "accel_y_g_mean",
+      "f_statistic": 3.8899858178020303,
+      "p_value": 0.021488480795291493
+    },
+    {
+      "feature": "accel_z_g_skew",
+      "f_statistic": 3.3089909959035886,
+      "p_value": 0.037896277029220264
+    },
+    {
+      "feature": "gyro_z_dps_mean",
+      "f_statistic": 3.126303684133949,
+      "p_value": 0.045317402643947145
     }
   ]
 }

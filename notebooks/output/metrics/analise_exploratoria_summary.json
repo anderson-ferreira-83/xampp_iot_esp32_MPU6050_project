@@ -1,44 +1,48 @@
 {
-  "timestamp": "20260131_131219",
-  "raw_samples": 7710,
-  "filtered_samples": 7513,
-  "common_window_s": 639.8901000022888,
+  "timestamp": "20260131_210511",
+  "raw_samples": 6335,
+  "filtered_samples": 6327,
+  "common_window_s": 541.2490000724792,
   "window_size": 100,
   "step_size": 20,
-  "total_windows": 362,
+  "total_windows": 302,
   "feature_count": 66,
-  "selected_feature_count": 14,
+  "selected_feature_count": 18,
   "class_distribution_raw": {
-    "LOW": 2695,
-    "HIGH": 2510,
-    "MEDIUM": 2505
+    "MEDIUM": 2125,
+    "LOW": 2110,
+    "HIGH": 2100
   },
   "class_distribution_filtered": {
-    "LOW": 2515,
-    "MEDIUM": 2505,
-    "HIGH": 2493
+    "MEDIUM": 2119,
+    "LOW": 2110,
+    "HIGH": 2098
   },
   "class_distribution_windows": {
-    "LOW": 121,
-    "MEDIUM": 121,
-    "HIGH": 120
+    "LOW": 101,
+    "MEDIUM": 101,
+    "HIGH": 100
   },
   "anova_alpha": 0.05,
   "correlation_threshold": 0.85,
   "selected_features": [
-    "gyro_z_dps_peak",
-    "gyro_y_dps_skew",
-    "accel_x_g_skew",
-    "accel_z_g_skew",
-    "accel_x_g_kurtosis",
+    "accel_x_g_std",
+    "gyro_z_dps_shape_factor",
     "gyro_x_dps_shape_factor",
-    "gyro_y_dps_kurtosis",
-    "gyro_y_dps_shape_factor",
-    "accel_x_g_root_amplitude",
-    "accel_z_g_kurtosis",
-    "accel_y_g_skew",
-    "accel_x_g_mean",
+    "gyro_x_dps_kurtosis",
+    "gyro_x_dps_clearance_factor",
+    "accel_y_g_kurtosis",
+    "accel_x_g_kurtosis",
+    "gyro_z_dps_skew",
+    "gyro_x_dps_skew",
+    "gyro_y_dps_skew",
+    "gyro_y_dps_mean",
     "accel_z_g_root_amplitude",
-    "gyro_x_dps_kurtosis"
+    "accel_y_g_impulse_factor",
+    "accel_x_g_mean",
+    "accel_z_g_kurtosis",
+    "accel_y_g_mean",
+    "accel_z_g_skew",
+    "gyro_z_dps_mean"
   ]
 }
