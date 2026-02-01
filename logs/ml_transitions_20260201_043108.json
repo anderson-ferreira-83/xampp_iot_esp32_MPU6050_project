@@ -1,0 +1,68 @@
+[
+    {
+        "from": "LOW",
+        "to": "HIGH",
+        "duration_ms": 601,
+        "duration_s": 0.6,
+        "timestamp": 1769916668792,
+        "time": "00:31:08",
+        "confidence": 0.9815471713888544,
+        "bufferSize": 82,
+        "featureAgreement": {
+            "counts": {
+                "HIGH": 8,
+                "LOW": 6,
+                "MEDIUM": 0
+            },
+            "best": "HIGH",
+            "bestCount": 8,
+            "total": 14,
+            "ratio": "8\/14 \u2192 HIGH"
+        },
+        "server_time": "2026-02-01 04:31:08"
+    },
+    {
+        "from": "HIGH",
+        "to": "MEDIUM",
+        "duration_ms": 597,
+        "duration_s": 0.6,
+        "timestamp": 1769916691591,
+        "time": "00:31:31",
+        "confidence": 0.9563145083495161,
+        "bufferSize": 100,
+        "featureAgreement": {
+            "counts": {
+                "HIGH": 9,
+                "LOW": 2,
+                "MEDIUM": 3
+            },
+            "best": "HIGH",
+            "bestCount": 9,
+            "total": 14,
+            "ratio": "9\/14 \u2192 HIGH"
+        },
+        "server_time": "2026-02-01 04:31:31"
+    },
+    {
+        "from": "MEDIUM",
+        "to": "HIGH",
+        "duration_ms": 600,
+        "duration_s": 0.6,
+        "timestamp": 1769916707191,
+        "time": "00:31:47",
+        "confidence": 0.9815480014450988,
+        "bufferSize": 100,
+        "featureAgreement": {
+            "counts": {
+                "HIGH": 6,
+                "LOW": 2,
+                "MEDIUM": 6
+            },
+            "best": "HIGH",
+            "bestCount": 6,
+            "total": 14,
+            "ratio": "6\/14 \u2192 HIGH"
+        },
+        "server_time": "2026-02-01 04:31:47"
+    }
+]

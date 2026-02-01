@@ -1,0 +1,6253 @@
+[
+    {
+        "type": "transition_test",
+        "test_time": "2026-02-01T03:44:24.818Z",
+        "config": {
+            "window_size": 100,
+            "min_points": 50,
+            "smoothing_alpha": 0.55,
+            "hysteresis_count": 4,
+            "change_detect_ratio": 0.3,
+            "change_detect_window": 20,
+            "fast_flush_keep": 25,
+            "var_floor": "1e-3",
+            "peak_method": "P95"
+        },
+        "results": [],
+        "summary": {
+            "total_transitions": 0,
+            "timeouts": 0,
+            "avg_time_s": 0,
+            "max_time_s": 0,
+            "per_direction": []
+        },
+        "tick_log": [
+            {
+                "t": 1769917381886,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 70,
+                "probabilities": {
+                    "L": 15,
+                    "M": 70,
+                    "H": 15
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 52
+            },
+            {
+                "t": 1769917382090,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 86.5,
+                "probabilities": {
+                    "L": 6.8,
+                    "M": 86.5,
+                    "H": 6.8
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 52
+            },
+            {
+                "t": 1769917382281,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 93.9,
+                "probabilities": {
+                    "L": 3,
+                    "M": 93.9,
+                    "H": 3
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 52
+            },
+            {
+                "t": 1769917382485,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 97.3,
+                "probabilities": {
+                    "L": 1.4,
+                    "M": 97.3,
+                    "H": 1.4
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 52
+            },
+            {
+                "t": 1769917382691,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 98.8,
+                "probabilities": {
+                    "L": 0.6,
+                    "M": 98.8,
+                    "H": 0.6
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 52
+            },
+            {
+                "t": 1769917382883,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 99.4,
+                "probabilities": {
+                    "L": 0.3,
+                    "M": 99.4,
+                    "H": 0.3
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 52
+            },
+            {
+                "t": 1769917383089,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 99.8,
+                "probabilities": {
+                    "L": 0.1,
+                    "M": 99.8,
+                    "H": 0.1
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 52
+            },
+            {
+                "t": 1769917383278,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 99.9,
+                "probabilities": {
+                    "L": 0.1,
+                    "M": 99.9,
+                    "H": 0.1
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 57
+            },
+            {
+                "t": 1769917383484,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 99.9,
+                "probabilities": {
+                    "L": 0,
+                    "M": 99.9,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 57
+            },
+            {
+                "t": 1769917383676,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 57
+            },
+            {
+                "t": 1769917383881,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 57
+            },
+            {
+                "t": 1769917384083,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 57
+            },
+            {
+                "t": 1769917384286,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 59
+            },
+            {
+                "t": 1769917384489,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 59
+            },
+            {
+                "t": 1769917384677,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 59
+            },
+            {
+                "t": 1769917384882,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 59
+            },
+            {
+                "t": 1769917385087,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 59
+            },
+            {
+                "t": 1769917385277,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 59
+            },
+            {
+                "t": 1769917385482,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 59
+            },
+            {
+                "t": 1769917385687,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 59
+            },
+            {
+                "t": 1769917385877,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 61
+            },
+            {
+                "t": 1769917386084,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 61
+            },
+            {
+                "t": 1769917386288,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 61
+            },
+            {
+                "t": 1769917386478,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 61
+            },
+            {
+                "t": 1769917386682,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 61
+            },
+            {
+                "t": 1769917386886,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 61
+            },
+            {
+                "t": 1769917387089,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 64
+            },
+            {
+                "t": 1769917387278,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 64
+            },
+            {
+                "t": 1769917387477,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 64
+            },
+            {
+                "t": 1769917387682,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 64
+            },
+            {
+                "t": 1769917387888,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 64
+            },
+            {
+                "t": 1769917388076,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 64
+            },
+            {
+                "t": 1769917388279,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 68
+            },
+            {
+                "t": 1769917388482,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 68
+            },
+            {
+                "t": 1769917388684,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 68
+            },
+            {
+                "t": 1769917388888,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 68
+            },
+            {
+                "t": 1769917389090,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 68
+            },
+            {
+                "t": 1769917389280,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 68
+            },
+            {
+                "t": 1769917389486,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 HIGH",
+                "buffer": 68
+            },
+            {
+                "t": 1769917389676,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 70
+            },
+            {
+                "t": 1769917389881,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 70
+            },
+            {
+                "t": 1769917390087,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 70
+            },
+            {
+                "t": 1769917390291,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 70
+            },
+            {
+                "t": 1769917390482,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 70
+            },
+            {
+                "t": 1769917390688,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 72
+            },
+            {
+                "t": 1769917390876,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 72
+            },
+            {
+                "t": 1769917391086,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 72
+            },
+            {
+                "t": 1769917391289,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 72
+            },
+            {
+                "t": 1769917391478,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 72
+            },
+            {
+                "t": 1769917391682,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 72
+            },
+            {
+                "t": 1769917391888,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 72
+            },
+            {
+                "t": 1769917392091,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 75
+            },
+            {
+                "t": 1769917392278,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 75
+            },
+            {
+                "t": 1769917392480,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 75
+            },
+            {
+                "t": 1769917392688,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 75
+            },
+            {
+                "t": 1769917392878,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 75
+            },
+            {
+                "t": 1769917393083,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 75
+            },
+            {
+                "t": 1769917393288,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 80
+            },
+            {
+                "t": 1769917393478,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 80
+            },
+            {
+                "t": 1769917393680,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 80
+            },
+            {
+                "t": 1769917393886,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 80
+            },
+            {
+                "t": 1769917394091,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 80
+            },
+            {
+                "t": 1769917394281,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 80
+            },
+            {
+                "t": 1769917394486,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 82
+            },
+            {
+                "t": 1769917394690,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 82
+            },
+            {
+                "t": 1769917394878,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 82
+            },
+            {
+                "t": 1769917395085,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 82
+            },
+            {
+                "t": 1769917395288,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 82
+            },
+            {
+                "t": 1769917395478,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 82
+            },
+            {
+                "t": 1769917395684,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 82
+            },
+            {
+                "t": 1769917395886,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 84
+            },
+            {
+                "t": 1769917396090,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 84
+            },
+            {
+                "t": 1769917396282,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 84
+            },
+            {
+                "t": 1769917396489,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 84
+            },
+            {
+                "t": 1769917396679,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 84
+            },
+            {
+                "t": 1769917396877,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 84
+            },
+            {
+                "t": 1769917397090,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 87
+            },
+            {
+                "t": 1769917397280,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 87
+            },
+            {
+                "t": 1769917397482,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 87
+            },
+            {
+                "t": 1769917397686,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 87
+            },
+            {
+                "t": 1769917397876,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 87
+            },
+            {
+                "t": 1769917398079,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 87
+            },
+            {
+                "t": 1769917398286,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 92
+            },
+            {
+                "t": 1769917398477,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 92
+            },
+            {
+                "t": 1769917398683,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 92
+            },
+            {
+                "t": 1769917398890,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 92
+            },
+            {
+                "t": 1769917399080,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 92
+            },
+            {
+                "t": 1769917399285,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 92
+            },
+            {
+                "t": 1769917399488,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 92
+            },
+            {
+                "t": 1769917399676,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 94
+            },
+            {
+                "t": 1769917399882,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 94
+            },
+            {
+                "t": 1769917400087,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 94
+            },
+            {
+                "t": 1769917400290,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 94
+            },
+            {
+                "t": 1769917400478,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 94
+            },
+            {
+                "t": 1769917400681,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 94
+            },
+            {
+                "t": 1769917400884,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 96
+            },
+            {
+                "t": 1769917401089,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 96
+            },
+            {
+                "t": 1769917401278,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 96
+            },
+            {
+                "t": 1769917401483,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 96
+            },
+            {
+                "t": 1769917401689,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 96
+            },
+            {
+                "t": 1769917401876,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "5\/14 \u2192 LOW",
+                "buffer": 96
+            },
+            {
+                "t": 1769917402077,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 99
+            },
+            {
+                "t": 1769917402288,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 99
+            },
+            {
+                "t": 1769917402490,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 99
+            },
+            {
+                "t": 1769917402678,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 99
+            },
+            {
+                "t": 1769917402881,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 99
+            },
+            {
+                "t": 1769917403088,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 99
+            },
+            {
+                "t": 1769917403281,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917403487,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917403689,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917403876,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917404083,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917404288,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917404478,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917404678,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917404884,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917405086,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917405291,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917405479,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917405686,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917405890,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917406080,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917406288,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917406476,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917406682,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917406887,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917407076,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917407281,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917407488,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917407677,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917407884,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917408080,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917408290,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917408481,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917408684,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917408885,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917409089,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917409290,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917409478,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917409683,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917409889,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917410077,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917410283,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917410490,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917410680,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917410886,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917411076,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917411276,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917411481,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917411687,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917411890,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917412082,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917412284,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917412489,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917412676,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917412882,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917413087,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917413290,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917413480,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917413686,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917413891,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917414081,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917414288,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917414476,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917414680,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917414884,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917415088,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917415291,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917415481,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917415683,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917415885,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917416087,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917416291,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917416479,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917416686,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917416889,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917417076,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917417280,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917417484,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917417685,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917417888,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917418078,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917418283,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917418484,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917418690,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917418882,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917419087,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917419290,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917419479,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917419685,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917419891,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917420079,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917420284,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917420491,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917420678,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917420883,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917421087,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917421288,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917421478,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917421678,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917421882,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917422087,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917422290,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917422477,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917422683,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917422890,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917423081,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917423284,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917423487,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917423691,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917423882,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917424086,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917424290,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917424478,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917424682,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917424888,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917425091,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917425282,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917425488,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917425677,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917425882,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917426082,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917426285,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917426489,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917426676,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917426882,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917427084,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917427279,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917427479,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917427682,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917427885,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917428088,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917428279,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917428478,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 LOW",
+                "buffer": 100
+            },
+            {
+                "t": 1769917428682,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917428884,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917429088,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917429278,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917429484,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917429690,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917429879,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917430077,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917430288,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917430476,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917430681,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917430882,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917431082,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917431285,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917431479,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917431678,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917431882,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917432089,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917432278,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917432482,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917432679,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917432886,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917433089,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917433281,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917433478,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917433682,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917433886,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917434090,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917434277,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917434481,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917434684,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917434888,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917435077,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917435282,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917435483,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917435686,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917435890,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917436078,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917436279,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917436484,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917436684,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917436886,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917437089,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917437291,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917437481,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917437685,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917437890,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917438077,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917438278,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917438482,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917438675,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917438879,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917439083,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917439290,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917439480,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917439686,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917439889,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917440088,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917440276,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917440481,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917440680,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917440882,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917441085,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917441290,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917441479,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917441681,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917441888,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917442076,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917442281,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917442487,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917442680,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917442879,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917443086,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917443289,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917443480,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917443687,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917443877,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917444080,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917444286,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917444490,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917444679,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917444883,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917445083,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917445288,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917445488,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917445679,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917445884,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917446090,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917446277,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917446482,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917446684,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917446888,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917447077,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917447283,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917447489,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917447680,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917447884,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917448087,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917448279,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917448490,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917448678,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917448882,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917449086,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917449277,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917449482,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917449678,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917449879,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917450086,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917450290,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917450480,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917450684,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917450885,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917451090,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917451280,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917451485,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917451680,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917451890,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917452079,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917452286,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917452490,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917452677,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917452884,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917453088,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917453279,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917453481,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917453685,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917453876,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917454081,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917454284,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917454478,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917454681,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917454887,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917455077,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917455313,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917455479,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917455678,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917455885,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917456090,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917456277,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917456486,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917456690,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917456879,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917457086,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917457290,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917457476,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917457680,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917457879,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917458086,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917458276,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917458481,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917458687,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917458878,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917459084,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917459276,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917459481,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917459679,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917459884,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917460079,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917460280,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917460487,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917460677,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917460882,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917461089,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917461280,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917461486,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917461690,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917461877,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917462083,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917462289,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917462478,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917462683,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917462889,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "10\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917463080,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917463286,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917463477,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917463679,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917463888,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917464076,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917464283,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917464488,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769917464726,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "11\/14 \u2192 MEDIUM",
+                "buffer": 100
+            }
+        ],
+        "server_time": "2026-02-01 04:44:24"
+    }
+]

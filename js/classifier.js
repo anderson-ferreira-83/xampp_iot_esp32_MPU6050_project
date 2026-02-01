@@ -19,7 +19,7 @@ const ClassifierConfig = {
     // Tamanho da Janela Deslizante: Quantos pontos passados analisamos de uma vez
     // 100 pontos a 5Hz = analisamos os ultimos 20 segundos de comportamento
     WINDOW_SIZE: 100,  // 100 pontos a ~4Hz = ~25s (estabiliza skew/kurtosis)
-    MIN_POINTS: 40,    // Mínimo 40 pontos (~10s) para classificar
+    MIN_POINTS: 50,    // Mínimo 50 pontos (~12s) para classificar (aumentado de 40)
 
     // Confidence thresholds
     CONFIDENCE_HIGH: 0.70,
@@ -31,25 +31,27 @@ const ClassifierConfig = {
     PREDICTION_INTERVAL_MS: 250,
 
     // Smoothing
-    SMOOTHING_ALPHA: 0.65,
+    SMOOTHING_ALPHA: 0.55,          // Reduzido de 0.65: suavização mais lenta = menos flickering
 
     // Histerese: Exige N previsões iguais consecutivas antes de mudar o estado oficial
-    HYSTERESIS_COUNT: 2,
+    HYSTERESIS_COUNT: 4,            // Aumentado de 2: exige 4 predições consecutivas para mudar
 
     // Detecção de mudança brusca: monitora gyro_z_dps (feature mais discriminativa)
     // Se a média recente divergir muito da média do buffer, faz flush parcial
-    CHANGE_DETECT_WINDOW: 15,       // últimos 15 pontos (3s a 5Hz) para detectar mudança
-    CHANGE_DETECT_RATIO: 0.45,      // ratio min entre média recente e média do buffer para trigger
-    FAST_FLUSH_KEEP: 40,            // manter últimos 40 pontos após flush (~10s)
+    CHANGE_DETECT_WINDOW: 20,       // últimos 20 pontos (4-5s) para detectar mudança (era 15)
+    CHANGE_DETECT_RATIO: 0.30,      // ratio mais restrito: 0.30 (era 0.45) = flush so em mudancas grandes
+    FAST_FLUSH_KEEP: 25,            // manter últimos 25 pontos após flush (era 40)
+    CHANGE_DETECT_COOLDOWN: 15000,  // cooldown 15s entre flushes para evitar flickering
 
     // Defaults for reset
     _DEFAULTS: {
         WINDOW_SIZE: 100,
-        MIN_POINTS: 40,
-        SMOOTHING_ALPHA: 0.65,
-        HYSTERESIS_COUNT: 2,
-        CHANGE_DETECT_RATIO: 0.45,
-        FAST_FLUSH_KEEP: 40,
+        MIN_POINTS: 50,
+        SMOOTHING_ALPHA: 0.55,
+        HYSTERESIS_COUNT: 4,
+        CHANGE_DETECT_RATIO: 0.30,
+        FAST_FLUSH_KEEP: 25,
+        CHANGE_DETECT_COOLDOWN: 15000,
     },
 
     reset() {
@@ -267,6 +269,190 @@ const Stats = {
 };
 
 // =============================================================================
+// FFT (Radix-2 Cooley-Tukey)
+// =============================================================================
+
+const FFT = {
+    /**
+     * Next power of 2 >= n
+     */
+    _nextPow2(n) {
+        let p = 1;
+        while (p < n) p <<= 1;
+        return p;
+    },
+
+    /**
+     * In-place radix-2 Cooley-Tukey FFT.
+     * @param {Float64Array} re - real part (length must be power of 2)
+     * @param {Float64Array} im - imaginary part
+     */
+    _fftInPlace(re, im) {
+        const N = re.length;
+        // Bit-reversal permutation
+        for (let i = 1, j = 0; i < N; i++) {
+            let bit = N >> 1;
+            while (j & bit) { j ^= bit; bit >>= 1; }
+            j ^= bit;
+            if (i < j) {
+                let tmp = re[i]; re[i] = re[j]; re[j] = tmp;
+                tmp = im[i]; im[i] = im[j]; im[j] = tmp;
+            }
+        }
+        // Butterfly
+        for (let len = 2; len <= N; len <<= 1) {
+            const half = len >> 1;
+            const angle = -2 * Math.PI / len;
+            const wRe = Math.cos(angle);
+            const wIm = Math.sin(angle);
+            for (let i = 0; i < N; i += len) {
+                let curRe = 1, curIm = 0;
+                for (let j = 0; j < half; j++) {
+                    const uRe = re[i + j], uIm = im[i + j];
+                    const vRe = re[i + j + half] * curRe - im[i + j + half] * curIm;
+                    const vIm = re[i + j + half] * curIm + im[i + j + half] * curRe;
+                    re[i + j] = uRe + vRe;
+                    im[i + j] = uIm + vIm;
+                    re[i + j + half] = uRe - vRe;
+                    im[i + j + half] = uIm - vIm;
+                    const newCurRe = curRe * wRe - curIm * wIm;
+                    curIm = curRe * wIm + curIm * wRe;
+                    curRe = newCurRe;
+                }
+            }
+        }
+    },
+
+    /**
+     * Compute FFT of real signal with zero-padding to next power of 2.
+     * @param {number[]} signal
+     * @returns {{ re: Float64Array, im: Float64Array, N: number }}
+     */
+    compute(signal) {
+        const N = this._nextPow2(signal.length);
+        const re = new Float64Array(N);
+        const im = new Float64Array(N);
+        for (let i = 0; i < signal.length; i++) re[i] = signal[i];
+        this._fftInPlace(re, im);
+        return { re, im, N };
+    },
+
+    /**
+     * One-sided magnitude spectrum, normalized (÷N, double non-DC/non-Nyquist).
+     * @param {number[]} signal
+     * @param {number} sampleRate
+     * @returns {{ mag: Float64Array, freq: Float64Array, K: number }}
+     */
+    magnitudeSpectrum(signal, sampleRate) {
+        const { re, im, N } = this.compute(signal);
+        const K = (N >> 1) + 1; // one-sided length
+        const mag = new Float64Array(K);
+        const freq = new Float64Array(K);
+        const df = sampleRate / N;
+
+        for (let k = 0; k < K; k++) {
+            mag[k] = Math.sqrt(re[k] * re[k] + im[k] * im[k]) / N;
+            if (k > 0 && k < N >> 1) mag[k] *= 2; // double non-DC, non-Nyquist
+            freq[k] = k * df;
+        }
+        return { mag, freq, K };
+    }
+};
+
+// =============================================================================
+// SPECTRAL FEATURE EXTRACTOR (P1-P14)
+// =============================================================================
+
+class SpectralFeatureExtractor {
+    /**
+     * Compute P1-P14 spectral features from a 1D signal.
+     * Uses normalized magnitude spectrum as probability weights.
+     * DC bin (index 0) is excluded.
+     */
+    static computeP1toP14(signal, sampleRate) {
+        const { mag, freq, K } = FFT.magnitudeSpectrum(signal, sampleRate);
+
+        // Sum of spectrum excluding DC
+        let sumS = 0;
+        for (let k = 1; k < K; k++) sumS += mag[k];
+
+        if (sumS < 1e-15) {
+            // Flat/zero signal: return zeros
+            const result = {};
+            for (let i = 1; i <= 14; i++) result[`P${i}`] = 0;
+            return result;
+        }
+
+        // Weights w = s / sum(s), skip DC
+        // Weighted moments
+        let wf = 0, wf2 = 0, wf4 = 0;
+        for (let k = 1; k < K; k++) {
+            const w = mag[k] / sumS;
+            const f = freq[k];
+            wf += w * f;
+            wf2 += w * f * f;
+            wf4 += w * f * f * f * f;
+        }
+
+        const P5 = wf;           // centroid (same as P1)
+        const P1 = P5;
+        const P7 = Math.sqrt(wf2); // RMS frequency
+
+        // Variance, skewness, kurtosis around centroid
+        let var_ = 0, m3 = 0, m4 = 0, sqrtAbsDev = 0;
+        for (let k = 1; k < K; k++) {
+            const w = mag[k] / sumS;
+            const d = freq[k] - P5;
+            var_ += w * d * d;
+            m3 += w * d * d * d;
+            m4 += w * d * d * d * d;
+            sqrtAbsDev += w * Math.sqrt(Math.abs(d));
+        }
+
+        const P2 = var_;
+        const P6 = Math.sqrt(P2);
+        const P14 = P6;
+
+        const P3 = P6 > 1e-15 ? m3 / (P6 * P6 * P6) : 0;
+        const P4 = P6 > 1e-15 ? m4 / (P6 * P6 * P6 * P6) : 0;
+
+        const P8 = wf2 > 1e-15 ? Math.sqrt(Math.sqrt(wf4 / wf2)) : 0;
+        const P9 = P5 > 1e-15 ? wf2 / (P5 * P5) : 0;
+        const P10 = P5 > 1e-15 ? P6 / P5 : 0;
+        const P11 = P6 > 1e-15 ? m3 / (P6 * P6 * P6) : 0; // same as P3
+        const P12 = P6 > 1e-15 ? m4 / (P6 * P6 * P6 * P6) : 0; // same as P4
+        const P13 = sqrtAbsDev * sqrtAbsDev;
+
+        return { P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14 };
+    }
+
+    /**
+     * Extract spectral features for all 6 axes.
+     * @param {object} data - { ax, ay, az, gx, gy, gz } arrays
+     * @param {number} sampleRate
+     * @returns {object} flat features with keys like 'accel_x_g_P1'
+     */
+    static extract(data, sampleRate) {
+        const axes = [
+            ['accel_x_g', data.ax],
+            ['accel_y_g', data.ay],
+            ['accel_z_g', data.az],
+            ['gyro_x_dps', data.gx],
+            ['gyro_y_dps', data.gy],
+            ['gyro_z_dps', data.gz],
+        ];
+        const features = {};
+        for (const [prefix, signal] of axes) {
+            const pFeatures = this.computeP1toP14(signal, sampleRate);
+            for (const [key, value] of Object.entries(pFeatures)) {
+                features[`${prefix}_${key}`] = value;
+            }
+        }
+        return features;
+    }
+}
+
+// =============================================================================
 // FEATURE EXTRACTOR
 // =============================================================================
 
@@ -289,11 +475,16 @@ class FeatureExtractor {
         };
     }
 
-    // Extrai 66 features (11 metricas x 6 eixos) - identico ao pipeline Python
-    static extract(data) {
+    /**
+     * Extrai features temporais (66) + espectrais (84 se sampleRate > 0).
+     * @param {object} data - { ax, ay, az, gx, gy, gz }
+     * @param {number|null} sampleRate - se > 0, inclui features espectrais P1-P14
+     * @returns {object} feature dict
+     */
+    static extract(data, sampleRate = null) {
         const { ax, ay, az, gx, gy, gz } = data;
 
-        return {
+        const features = {
             ...this._axisFeatures(ax, 'accel_x_g'),
             ...this._axisFeatures(ay, 'accel_y_g'),
             ...this._axisFeatures(az, 'accel_z_g'),
@@ -301,6 +492,14 @@ class FeatureExtractor {
             ...this._axisFeatures(gy, 'gyro_y_dps'),
             ...this._axisFeatures(gz, 'gyro_z_dps'),
         };
+
+        // Merge spectral features if sample rate is available
+        if (sampleRate && sampleRate > 0) {
+            const spectral = SpectralFeatureExtractor.extract(data, sampleRate);
+            Object.assign(features, spectral);
+        }
+
+        return features;
     }
 }
 
@@ -440,6 +639,7 @@ class RealTimeClassifier {
         this.candidateState = null;
         this.candidateCount = 0;
         this.featureModeUntil = 0;
+        this.lastFlushTime = 0;     // cooldown para change detection
 
         // Transition tracking
         this.transitionStartTime = null;   // quando candidato começou a divergir
@@ -476,6 +676,10 @@ class RealTimeClassifier {
         const cfg = ClassifierConfig;
         if (this.buffer.size < cfg.MIN_POINTS) return;
 
+        // Cooldown: não fazer flush se fez um recentemente
+        const now = Date.now();
+        if (now - this.lastFlushTime < cfg.CHANGE_DETECT_COOLDOWN) return;
+
         const arrays = this.buffer.getArrays();
         const gz = arrays.gz;
         const n = gz.length;
@@ -499,6 +703,7 @@ class RealTimeClassifier {
             if (ratio < cfg.CHANGE_DETECT_RATIO || ratio > (1 / cfg.CHANGE_DETECT_RATIO)) {
                 console.log(`[ChangeDetect] Mudança brusca: ratio=${ratio.toFixed(2)} (P95 recent=${p95Recent.toFixed(1)} vs old=${p95Old.toFixed(1)}). Flush.`);
                 this._fastFlush();
+                this.lastFlushTime = now;
             }
         }
     }
@@ -728,6 +933,25 @@ class RealTimeClassifier {
         return this._applyResult(result, features, windowSize);
     }
 
+    /**
+     * Estimate sample rate from buffer timestamps (Hz).
+     * Returns null if not enough data.
+     */
+    _estimateSampleRate() {
+        if (this.buffer.size < 10) return null;
+        const arrays = this.buffer.getArrays();
+        // We need timestamps - get from buffer directly
+        const timestamps = [];
+        for (let i = 0; i < this.buffer.count; i++) {
+            const idx = (this.buffer.head - this.buffer.count + i + this.buffer.maxSize) % this.buffer.maxSize;
+            timestamps.push(this.buffer.buffer[idx].timestamp);
+        }
+        const n = timestamps.length;
+        const dtMs = (timestamps[n - 1] - timestamps[0]) / (n - 1);
+        if (dtMs <= 0) return null;
+        return 1000 / dtMs;
+    }
+
     predict() {
         if (!this.classifier.isLoaded) {
             return {
@@ -749,9 +973,10 @@ class RealTimeClassifier {
             };
         }
 
-        // Extract features
+        // Extract features (with spectral if sample rate is available)
         const data = this.buffer.getArrays();
-        const features = FeatureExtractor.extract(data);
+        const sampleRate = this._estimateSampleRate();
+        const features = FeatureExtractor.extract(data, sampleRate);
 
         // Run classification
         const result = this.classifier.predict(features);
@@ -852,6 +1077,8 @@ class RealTimeClassifier {
 window.ClassifierConfig = ClassifierConfig;
 window.CircularBuffer = CircularBuffer;
 window.Stats = Stats;
+window.FFT = FFT;
+window.SpectralFeatureExtractor = SpectralFeatureExtractor;
 window.FeatureExtractor = FeatureExtractor;
 window.GaussianNBClassifier = GaussianNBClassifier;
 window.RealTimeClassifier = RealTimeClassifier;

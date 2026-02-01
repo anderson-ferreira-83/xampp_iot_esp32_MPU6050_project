@@ -1,33 +1,33 @@
 {
-  "version": "3.0",
-  "generated_by": "01_Analise_Exploratoria.ipynb",
-  "generated_at": "20260131_210511",
+  "version": "5.0",
+  "sample_rate_hz": 20,
+  "spectral_features_enabled": true,
+  "generated_by": "03_EDA_v2_Transicao_Simetrica.ipynb",
+  "generated_at": "20260201_000802",
   "selection_criteria": {
     "anova_alpha": 0.05,
     "correlation_threshold": 0.85,
-    "method": "anova_f_test_with_correlation_filter"
+    "method": "anova_f_test_with_correlation_filter",
+    "peak_method": "P95",
+    "notes": "14 features originais com peak corrigido para P95 (alinhado com classifier.js)"
   },
   "window_size": 100,
   "step_size": 20,
   "selected_features": [
-    "accel_x_g_std",
-    "gyro_z_dps_shape_factor",
-    "gyro_x_dps_shape_factor",
-    "gyro_x_dps_kurtosis",
-    "gyro_x_dps_clearance_factor",
-    "accel_y_g_kurtosis",
-    "accel_x_g_kurtosis",
-    "gyro_z_dps_skew",
-    "gyro_x_dps_skew",
+    "gyro_z_dps_peak",
     "gyro_y_dps_skew",
-    "gyro_y_dps_mean",
-    "accel_z_g_root_amplitude",
-    "accel_y_g_impulse_factor",
-    "accel_x_g_mean",
-    "accel_z_g_kurtosis",
-    "accel_y_g_mean",
+    "accel_x_g_skew",
     "accel_z_g_skew",
-    "gyro_z_dps_mean"
+    "accel_x_g_kurtosis",
+    "gyro_x_dps_shape_factor",
+    "gyro_y_dps_kurtosis",
+    "gyro_y_dps_shape_factor",
+    "accel_x_g_root_amplitude",
+    "accel_z_g_kurtosis",
+    "accel_y_g_skew",
+    "accel_x_g_mean",
+    "accel_z_g_root_amplitude",
+    "gyro_x_dps_kurtosis"
   ],
   "all_features": [
     "accel_x_g_mean",
@@ -97,8 +97,8 @@
     "gyro_z_dps_impulse_factor",
     "gyro_z_dps_clearance_factor"
   ],
-  "feature_count": 18,
-  "total_feature_count": 66,
+  "feature_count": 14,
+  "total_feature_count": 150,
   "class_distribution": {
     "LOW": 101,
     "MEDIUM": 101,
@@ -123,7 +123,21 @@
     "crest_factor",
     "shape_factor",
     "impulse_factor",
-    "clearance_factor"
+    "clearance_factor",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8",
+    "P9",
+    "P10",
+    "P11",
+    "P12",
+    "P13",
+    "P14"
   ],
   "anova_ranking": [
     {

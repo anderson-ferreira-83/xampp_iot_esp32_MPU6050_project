@@ -1,0 +1,2238 @@
+[
+    {
+        "from": "LOW",
+        "to": "MEDIUM",
+        "duration_ms": 607,
+        "duration_s": 0.6,
+        "timestamp": 1769916756391,
+        "time": "00:32:36",
+        "confidence": 0.7185157157943868,
+        "bufferSize": 88,
+        "featureAgreement": {
+            "counts": {
+                "HIGH": 6,
+                "LOW": 3,
+                "MEDIUM": 5
+            },
+            "best": "HIGH",
+            "bestCount": 6,
+            "total": 14,
+            "ratio": "6\/14 \u2192 HIGH"
+        },
+        "server_time": "2026-02-01 04:32:36"
+    },
+    {
+        "from": "MEDIUM",
+        "to": "LOW",
+        "duration_ms": 607,
+        "duration_s": 0.6,
+        "timestamp": 1769916761192,
+        "time": "00:32:41",
+        "confidence": 0.6875922851110063,
+        "bufferSize": 100,
+        "featureAgreement": {
+            "counts": {
+                "HIGH": 6,
+                "LOW": 5,
+                "MEDIUM": 3
+            },
+            "best": "HIGH",
+            "bestCount": 6,
+            "total": 14,
+            "ratio": "6\/14 \u2192 HIGH"
+        },
+        "server_time": "2026-02-01 04:32:41"
+    },
+    {
+        "type": "transition_test",
+        "test_time": "2026-02-01T03:32:49.360Z",
+        "config": {
+            "window_size": 100,
+            "min_points": 50,
+            "smoothing_alpha": 0.55,
+            "hysteresis_count": 4,
+            "change_detect_ratio": 0.3,
+            "change_detect_window": 20,
+            "fast_flush_keep": 25,
+            "var_floor": "1e-3",
+            "peak_method": "P95"
+        },
+        "results": [
+            {
+                "step": 2,
+                "from": "LOW",
+                "to": "MEDIUM",
+                "time_s": 9.8,
+                "timeout": false,
+                "isInitial": false,
+                "confidence": 58.2,
+                "featureAgreement": {
+                    "counts": {
+                        "HIGH": 6,
+                        "LOW": 4,
+                        "MEDIUM": 4
+                    },
+                    "best": "HIGH",
+                    "bestCount": 6,
+                    "total": 14,
+                    "ratio": "6\/14 \u2192 HIGH"
+                },
+                "timestamp": "2026-02-01T03:32:39.526Z"
+            }
+        ],
+        "summary": {
+            "total_transitions": 1,
+            "timeouts": 0,
+            "avg_time_s": 9.8,
+            "max_time_s": 9.8,
+            "per_direction": {
+                "LOW\u2192MEDIUM": {
+                    "count": 1,
+                    "avg_s": 9.8,
+                    "max_s": 9.8,
+                    "min_s": 9.8
+                }
+            }
+        },
+        "tick_log": [
+            {
+                "t": 1769916741727,
+                "step": 0,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 70,
+                "probabilities": {
+                    "L": 70,
+                    "M": 15,
+                    "H": 15
+                },
+                "agreement": "8\/14 \u2192 HIGH",
+                "buffer": 50
+            },
+            {
+                "t": 1769916741927,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 86.5,
+                "probabilities": {
+                    "L": 86.5,
+                    "M": 6.8,
+                    "H": 6.8
+                },
+                "agreement": "8\/14 \u2192 HIGH",
+                "buffer": 50
+            },
+            {
+                "t": 1769916742127,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 93.9,
+                "probabilities": {
+                    "L": 93.9,
+                    "M": 3,
+                    "H": 3
+                },
+                "agreement": "8\/14 \u2192 HIGH",
+                "buffer": 50
+            },
+            {
+                "t": 1769916742327,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 97.3,
+                "probabilities": {
+                    "L": 97.3,
+                    "M": 1.4,
+                    "H": 1.4
+                },
+                "agreement": "8\/14 \u2192 HIGH",
+                "buffer": 50
+            },
+            {
+                "t": 1769916742527,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 98.8,
+                "probabilities": {
+                    "L": 98.8,
+                    "M": 0.6,
+                    "H": 0.6
+                },
+                "agreement": "8\/14 \u2192 HIGH",
+                "buffer": 50
+            },
+            {
+                "t": 1769916742727,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 99.4,
+                "probabilities": {
+                    "L": 99.4,
+                    "M": 0.3,
+                    "H": 0.3
+                },
+                "agreement": "9\/14 \u2192 HIGH",
+                "buffer": 53
+            },
+            {
+                "t": 1769916742927,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 99.7,
+                "probabilities": {
+                    "L": 99.7,
+                    "M": 0.1,
+                    "H": 0.1
+                },
+                "agreement": "9\/14 \u2192 HIGH",
+                "buffer": 53
+            },
+            {
+                "t": 1769916743123,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 99.9,
+                "probabilities": {
+                    "L": 99.9,
+                    "M": 0.1,
+                    "H": 0.1
+                },
+                "agreement": "9\/14 \u2192 HIGH",
+                "buffer": 53
+            },
+            {
+                "t": 1769916743327,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 99.9,
+                "probabilities": {
+                    "L": 99.9,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 HIGH",
+                "buffer": 53
+            },
+            {
+                "t": 1769916743527,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 HIGH",
+                "buffer": 53
+            },
+            {
+                "t": 1769916743727,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "9\/14 \u2192 HIGH",
+                "buffer": 53
+            },
+            {
+                "t": 1769916743927,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 57
+            },
+            {
+                "t": 1769916744126,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 57
+            },
+            {
+                "t": 1769916744326,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 57
+            },
+            {
+                "t": 1769916744523,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 57
+            },
+            {
+                "t": 1769916744727,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 57
+            },
+            {
+                "t": 1769916744926,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 57
+            },
+            {
+                "t": 1769916745126,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 57
+            },
+            {
+                "t": 1769916745327,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 62
+            },
+            {
+                "t": 1769916745523,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 62
+            },
+            {
+                "t": 1769916745726,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 62
+            },
+            {
+                "t": 1769916745926,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 62
+            },
+            {
+                "t": 1769916746126,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 62
+            },
+            {
+                "t": 1769916746322,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 62
+            },
+            {
+                "t": 1769916746526,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 62
+            },
+            {
+                "t": 1769916746727,
+                "step": 1,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 64
+            },
+            {
+                "t": 1769916746727,
+                "step": 1,
+                "phase": "CHANGE_COMMAND",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 64
+            },
+            {
+                "t": 1769916746923,
+                "step": 1,
+                "phase": "change",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 64
+            },
+            {
+                "t": 1769916747126,
+                "step": 1,
+                "phase": "change",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 64
+            },
+            {
+                "t": 1769916747326,
+                "step": 1,
+                "phase": "change",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 64
+            },
+            {
+                "t": 1769916747523,
+                "step": 1,
+                "phase": "change",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 64
+            },
+            {
+                "t": 1769916747726,
+                "step": 1,
+                "phase": "change",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 64
+            },
+            {
+                "t": 1769916747926,
+                "step": 1,
+                "phase": "change",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 66
+            },
+            {
+                "t": 1769916748123,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 66
+            },
+            {
+                "t": 1769916748325,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 66
+            },
+            {
+                "t": 1769916748526,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 66
+            },
+            {
+                "t": 1769916748726,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 66
+            },
+            {
+                "t": 1769916748924,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 70
+            },
+            {
+                "t": 1769916749127,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 70
+            },
+            {
+                "t": 1769916749326,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 70
+            },
+            {
+                "t": 1769916749522,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 70
+            },
+            {
+                "t": 1769916749726,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 70
+            },
+            {
+                "t": 1769916749926,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 70
+            },
+            {
+                "t": 1769916750124,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 100,
+                    "M": 0,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 70
+            },
+            {
+                "t": 1769916750327,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 99.7,
+                "probabilities": {
+                    "L": 99.7,
+                    "M": 0.3,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 HIGH",
+                "buffer": 75
+            },
+            {
+                "t": 1769916750526,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 99.6,
+                "probabilities": {
+                    "L": 99.6,
+                    "M": 0.4,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 HIGH",
+                "buffer": 75
+            },
+            {
+                "t": 1769916750727,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 99.6,
+                "probabilities": {
+                    "L": 99.6,
+                    "M": 0.4,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 HIGH",
+                "buffer": 75
+            },
+            {
+                "t": 1769916750926,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 99.6,
+                "probabilities": {
+                    "L": 99.6,
+                    "M": 0.4,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 HIGH",
+                "buffer": 75
+            },
+            {
+                "t": 1769916751127,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 99.5,
+                "probabilities": {
+                    "L": 99.5,
+                    "M": 0.5,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 HIGH",
+                "buffer": 75
+            },
+            {
+                "t": 1769916751322,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 99.5,
+                "probabilities": {
+                    "L": 99.5,
+                    "M": 0.5,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 HIGH",
+                "buffer": 75
+            },
+            {
+                "t": 1769916751526,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 94.7,
+                "probabilities": {
+                    "L": 94.7,
+                    "M": 5.3,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 77
+            },
+            {
+                "t": 1769916751726,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 92.6,
+                "probabilities": {
+                    "L": 92.6,
+                    "M": 7.4,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 77
+            },
+            {
+                "t": 1769916751923,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 91.6,
+                "probabilities": {
+                    "L": 91.6,
+                    "M": 8.4,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 77
+            },
+            {
+                "t": 1769916752127,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 91.2,
+                "probabilities": {
+                    "L": 91.2,
+                    "M": 8.8,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 77
+            },
+            {
+                "t": 1769916752322,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 91,
+                "probabilities": {
+                    "L": 91,
+                    "M": 9,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 77
+            },
+            {
+                "t": 1769916752527,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 90.9,
+                "probabilities": {
+                    "L": 90.9,
+                    "M": 9.1,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 77
+            },
+            {
+                "t": 1769916752726,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 79.7,
+                "probabilities": {
+                    "L": 79.7,
+                    "M": 20.3,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 79
+            },
+            {
+                "t": 1769916752928,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 74.7,
+                "probabilities": {
+                    "L": 74.7,
+                    "M": 25.3,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 79
+            },
+            {
+                "t": 1769916753125,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 72.4,
+                "probabilities": {
+                    "L": 72.4,
+                    "M": 27.6,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 79
+            },
+            {
+                "t": 1769916753326,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 71.4,
+                "probabilities": {
+                    "L": 71.4,
+                    "M": 28.6,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 79
+            },
+            {
+                "t": 1769916753526,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 70.9,
+                "probabilities": {
+                    "L": 70.9,
+                    "M": 29.1,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 79
+            },
+            {
+                "t": 1769916753724,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 70.7,
+                "probabilities": {
+                    "L": 70.7,
+                    "M": 29.3,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 79
+            },
+            {
+                "t": 1769916753927,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 70.6,
+                "probabilities": {
+                    "L": 70.6,
+                    "M": 29.4,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 79
+            },
+            {
+                "t": 1769916754126,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 86.4,
+                "probabilities": {
+                    "L": 86.4,
+                    "M": 13.6,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 83
+            },
+            {
+                "t": 1769916754326,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 93.5,
+                "probabilities": {
+                    "L": 93.5,
+                    "M": 6.5,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 83
+            },
+            {
+                "t": 1769916754526,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 96.7,
+                "probabilities": {
+                    "L": 96.7,
+                    "M": 3.3,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 83
+            },
+            {
+                "t": 1769916754726,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 98.1,
+                "probabilities": {
+                    "L": 98.1,
+                    "M": 1.9,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 83
+            },
+            {
+                "t": 1769916754927,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 98.8,
+                "probabilities": {
+                    "L": 98.8,
+                    "M": 1.2,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 83
+            },
+            {
+                "t": 1769916755126,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 99.1,
+                "probabilities": {
+                    "L": 99.1,
+                    "M": 0.9,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 83
+            },
+            {
+                "t": 1769916755322,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 99.2,
+                "probabilities": {
+                    "L": 99.2,
+                    "M": 0.8,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 83
+            },
+            {
+                "t": 1769916755527,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "MEDIUM",
+                "confidence": 59.8,
+                "probabilities": {
+                    "L": 59.8,
+                    "M": 40.2,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 88
+            },
+            {
+                "t": 1769916755727,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "MEDIUM",
+                "confidence": 57.9,
+                "probabilities": {
+                    "L": 42.1,
+                    "M": 57.9,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 88
+            },
+            {
+                "t": 1769916755924,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "MEDIUM",
+                "confidence": 65.9,
+                "probabilities": {
+                    "L": 34.1,
+                    "M": 65.9,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 88
+            },
+            {
+                "t": 1769916756126,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "MEDIUM",
+                "confidence": 69.5,
+                "probabilities": {
+                    "L": 30.5,
+                    "M": 69.5,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 88
+            },
+            {
+                "t": 1769916756326,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "LOW",
+                "raw": "MEDIUM",
+                "confidence": 71.1,
+                "probabilities": {
+                    "L": 28.9,
+                    "M": 71.1,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 88
+            },
+            {
+                "t": 1769916756525,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 71.9,
+                "probabilities": {
+                    "L": 28.1,
+                    "M": 71.9,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 88
+            },
+            {
+                "t": 1769916756727,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 72.2,
+                "probabilities": {
+                    "L": 27.8,
+                    "M": 72.2,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 88
+            },
+            {
+                "t": 1769916756927,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 67.6,
+                "probabilities": {
+                    "L": 32.4,
+                    "M": 67.6,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 90
+            },
+            {
+                "t": 1769916757126,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 65.6,
+                "probabilities": {
+                    "L": 34.4,
+                    "M": 65.6,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 90
+            },
+            {
+                "t": 1769916757326,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 64.6,
+                "probabilities": {
+                    "L": 35.4,
+                    "M": 64.6,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 90
+            },
+            {
+                "t": 1769916757526,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 64.2,
+                "probabilities": {
+                    "L": 35.8,
+                    "M": 64.2,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 90
+            },
+            {
+                "t": 1769916757726,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 64,
+                "probabilities": {
+                    "L": 36,
+                    "M": 64,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 90
+            },
+            {
+                "t": 1769916757927,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 74.9,
+                "probabilities": {
+                    "L": 25.1,
+                    "M": 74.9,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 93
+            },
+            {
+                "t": 1769916758126,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 79.8,
+                "probabilities": {
+                    "L": 20.2,
+                    "M": 79.8,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 93
+            },
+            {
+                "t": 1769916758326,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 82,
+                "probabilities": {
+                    "L": 18,
+                    "M": 82,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 93
+            },
+            {
+                "t": 1769916758526,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 83,
+                "probabilities": {
+                    "L": 17,
+                    "M": 83,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 93
+            },
+            {
+                "t": 1769916758726,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 83.5,
+                "probabilities": {
+                    "L": 16.5,
+                    "M": 83.5,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 93
+            },
+            {
+                "t": 1769916758926,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 83.7,
+                "probabilities": {
+                    "L": 16.3,
+                    "M": 83.7,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 93
+            },
+            {
+                "t": 1769916759123,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 68.3,
+                "probabilities": {
+                    "L": 31.7,
+                    "M": 68.3,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 98
+            },
+            {
+                "t": 1769916759324,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 61.3,
+                "probabilities": {
+                    "L": 38.7,
+                    "M": 61.3,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 98
+            },
+            {
+                "t": 1769916759526,
+                "step": 1,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 58.2,
+                "probabilities": {
+                    "L": 41.8,
+                    "M": 58.2,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 98
+            },
+            {
+                "t": 1769916759727,
+                "step": 1,
+                "phase": null,
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 56.8,
+                "probabilities": {
+                    "L": 43.2,
+                    "M": 56.8,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 98
+            },
+            {
+                "t": 1769916759926,
+                "step": 1,
+                "phase": null,
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 56.2,
+                "probabilities": {
+                    "L": 43.8,
+                    "M": 56.2,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 98
+            },
+            {
+                "t": 1769916760126,
+                "step": 1,
+                "phase": null,
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 55.9,
+                "probabilities": {
+                    "L": 44.1,
+                    "M": 55.9,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 98
+            },
+            {
+                "t": 1769916760321,
+                "step": 1,
+                "phase": null,
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 55.8,
+                "probabilities": {
+                    "L": 44.2,
+                    "M": 55.8,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 98
+            },
+            {
+                "t": 1769916760526,
+                "step": 1,
+                "phase": null,
+                "confirmed": "MEDIUM",
+                "raw": "LOW",
+                "confidence": 58,
+                "probabilities": {
+                    "L": 58,
+                    "M": 42,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916760726,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "LOW",
+                "confidence": 64.2,
+                "probabilities": {
+                    "L": 64.2,
+                    "M": 35.8,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916760926,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "LOW",
+                "confidence": 66.9,
+                "probabilities": {
+                    "L": 66.9,
+                    "M": 33.1,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916761126,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "LOW",
+                "confidence": 68.2,
+                "probabilities": {
+                    "L": 68.2,
+                    "M": 31.8,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916761327,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 68.8,
+                "probabilities": {
+                    "L": 68.8,
+                    "M": 31.2,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916761526,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 69,
+                "probabilities": {
+                    "L": 69,
+                    "M": 31,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916761726,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 69.4,
+                "probabilities": {
+                    "L": 69.4,
+                    "M": 30.6,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916761924,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 69.5,
+                "probabilities": {
+                    "L": 69.5,
+                    "M": 30.5,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916762126,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 69.6,
+                "probabilities": {
+                    "L": 69.6,
+                    "M": 30.4,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916762327,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 69.6,
+                "probabilities": {
+                    "L": 69.6,
+                    "M": 30.4,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916762523,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 69.6,
+                "probabilities": {
+                    "L": 69.6,
+                    "M": 30.4,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916762729,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 69.6,
+                "probabilities": {
+                    "L": 69.6,
+                    "M": 30.4,
+                    "H": 0
+                },
+                "agreement": "7\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916762933,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 64.8,
+                "probabilities": {
+                    "L": 64.8,
+                    "M": 35.2,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916763127,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 62.6,
+                "probabilities": {
+                    "L": 62.6,
+                    "M": 37.4,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916763326,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 61.7,
+                "probabilities": {
+                    "L": 61.7,
+                    "M": 38.3,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916763526,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 61.2,
+                "probabilities": {
+                    "L": 61.2,
+                    "M": 38.8,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916763724,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 61,
+                "probabilities": {
+                    "L": 61,
+                    "M": 39,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916763926,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 60.9,
+                "probabilities": {
+                    "L": 60.9,
+                    "M": 39.1,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916764126,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "LOW",
+                "confidence": 60.9,
+                "probabilities": {
+                    "L": 60.9,
+                    "M": 39.1,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916764322,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "LOW",
+                "raw": "MEDIUM",
+                "confidence": 70.1,
+                "probabilities": {
+                    "L": 29.9,
+                    "M": 70.1,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916764527,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 82.9,
+                "probabilities": {
+                    "L": 10.3,
+                    "M": 82.9,
+                    "H": 6.8
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916764727,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 89.9,
+                "probabilities": {
+                    "L": 7.1,
+                    "M": 89.9,
+                    "H": 3
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916764926,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 93,
+                "probabilities": {
+                    "L": 5.7,
+                    "M": 93,
+                    "H": 1.4
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916765126,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 94.4,
+                "probabilities": {
+                    "L": 5,
+                    "M": 94.4,
+                    "H": 0.6
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916765326,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 95,
+                "probabilities": {
+                    "L": 4.7,
+                    "M": 95,
+                    "H": 0.3
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916765526,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 95.3,
+                "probabilities": {
+                    "L": 4.6,
+                    "M": 95.3,
+                    "H": 0.1
+                },
+                "agreement": "6\/14 \u2192 HIGH",
+                "buffer": 100
+            },
+            {
+                "t": 1769916765726,
+                "step": 2,
+                "phase": "prepare",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 97.6,
+                "probabilities": {
+                    "L": 2.3,
+                    "M": 97.6,
+                    "H": 0.1
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916765726,
+                "step": 2,
+                "phase": "CHANGE_COMMAND",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 97.6,
+                "probabilities": {
+                    "L": 2.3,
+                    "M": 97.6,
+                    "H": 0.1
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916765926,
+                "step": 2,
+                "phase": "change",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 98.6,
+                "probabilities": {
+                    "L": 1.3,
+                    "M": 98.6,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916766126,
+                "step": 2,
+                "phase": "change",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 99.1,
+                "probabilities": {
+                    "L": 0.9,
+                    "M": 99.1,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916766326,
+                "step": 2,
+                "phase": "change",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 99.3,
+                "probabilities": {
+                    "L": 0.7,
+                    "M": 99.3,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916766527,
+                "step": 2,
+                "phase": "change",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 99.4,
+                "probabilities": {
+                    "L": 0.6,
+                    "M": 99.4,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916766727,
+                "step": 2,
+                "phase": "change",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 99.5,
+                "probabilities": {
+                    "L": 0.5,
+                    "M": 99.5,
+                    "H": 0
+                },
+                "agreement": "6\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916766924,
+                "step": 2,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 99.7,
+                "probabilities": {
+                    "L": 0.3,
+                    "M": 99.7,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916767126,
+                "step": 2,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 99.8,
+                "probabilities": {
+                    "L": 0.2,
+                    "M": 99.8,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916767326,
+                "step": 2,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 99.9,
+                "probabilities": {
+                    "L": 0.1,
+                    "M": 99.9,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916767522,
+                "step": 2,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 99.9,
+                "probabilities": {
+                    "L": 0.1,
+                    "M": 99.9,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916767726,
+                "step": 2,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 99.9,
+                "probabilities": {
+                    "L": 0.1,
+                    "M": 99.9,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916767933,
+                "step": 2,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 99.9,
+                "probabilities": {
+                    "L": 0.1,
+                    "M": 99.9,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916768124,
+                "step": 2,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916768324,
+                "step": 2,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916768527,
+                "step": 2,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916768726,
+                "step": 2,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916768925,
+                "step": 2,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916769126,
+                "step": 2,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            },
+            {
+                "t": 1769916769322,
+                "step": 2,
+                "phase": "detecting",
+                "confirmed": "MEDIUM",
+                "raw": "MEDIUM",
+                "confidence": 100,
+                "probabilities": {
+                    "L": 0,
+                    "M": 100,
+                    "H": 0
+                },
+                "agreement": "8\/14 \u2192 MEDIUM",
+                "buffer": 100
+            }
+        ],
+        "server_time": "2026-02-01 04:32:49"
+    },
+    {
+        "from": "MEDIUM",
+        "to": "HIGH",
+        "duration_ms": 588,
+        "duration_s": 0.6,
+        "timestamp": 1769916774984,
+        "time": "00:32:54",
+        "confidence": 0.9480046989683913,
+        "bufferSize": 100,
+        "featureAgreement": {
+            "counts": {
+                "HIGH": 7,
+                "LOW": 2,
+                "MEDIUM": 5
+            },
+            "best": "HIGH",
+            "bestCount": 7,
+            "total": 14,
+            "ratio": "7\/14 \u2192 HIGH"
+        },
+        "server_time": "2026-02-01 04:32:54"
+    }
+]

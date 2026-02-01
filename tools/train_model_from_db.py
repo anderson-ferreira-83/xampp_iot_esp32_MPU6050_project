@@ -4,6 +4,7 @@ import time
 
 import numpy as np
 import pandas as pd
+from scipy import stats as scipy_stats
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import cross_val_score
 from sklearn.naive_bayes import GaussianNB
@@ -14,49 +15,134 @@ DB_CONNECTION_STR = 'mysql+mysqlconnector://root:@localhost/iot_mpu6050'
 WINDOW_SIZE = 100  # Deve ser igual ao ClassifierConfig.WINDOW_SIZE no JS
 MIN_SAMPLES_PER_CLASS = 50
 OUTPUT_FILE = '../models/multifeature_model.json'
+SAMPLE_RATE = 5  # Hz (default 5 para dados atuais, trocar para 20 em produção)
+
+
+def compute_spectral_features(signal, sample_rate):
+    """
+    Compute P1-P14 spectral features from a 1D signal.
+    Uses np.fft.rfft with zero-padding to next power of 2.
+    IDENTICAL to JS FFT.magnitudeSpectrum + SpectralFeatureExtractor.computeP1toP14
+    """
+    signal = np.asarray(signal, dtype=np.float64)
+    N = int(2 ** np.ceil(np.log2(len(signal))))  # next power of 2
+
+    # FFT with zero-padding
+    fft_vals = np.fft.rfft(signal, n=N)
+    mag = np.abs(fft_vals) / N
+    # Double non-DC, non-Nyquist bins (one-sided normalization)
+    mag[1:-1] *= 2
+    freq = np.fft.rfftfreq(N, d=1.0 / sample_rate)
+
+    K = len(mag)
+
+    # Exclude DC bin (index 0)
+    mag_ndc = mag[1:]
+    freq_ndc = freq[1:]
+
+    sumS = mag_ndc.sum()
+    if sumS < 1e-15:
+        return {f'P{i}': 0.0 for i in range(1, 15)}
+
+    w = mag_ndc / sumS
+
+    wf = np.sum(w * freq_ndc)
+    wf2 = np.sum(w * freq_ndc ** 2)
+    wf4 = np.sum(w * freq_ndc ** 4)
+
+    P5 = wf  # centroid
+    P1 = P5
+    P7 = np.sqrt(wf2)
+
+    d = freq_ndc - P5
+    var_ = np.sum(w * d ** 2)
+    m3 = np.sum(w * d ** 3)
+    m4 = np.sum(w * d ** 4)
+    sqrtAbsDev = np.sum(w * np.sqrt(np.abs(d)))
+
+    P2 = var_
+    P6 = np.sqrt(P2)
+    P14 = P6
+
+    P3 = m3 / (P6 ** 3) if P6 > 1e-15 else 0.0
+    P4 = m4 / (P6 ** 4) if P6 > 1e-15 else 0.0
+
+    P8 = np.sqrt(np.sqrt(wf4 / wf2)) if wf2 > 1e-15 else 0.0
+    P9 = wf2 / (P5 ** 2) if P5 > 1e-15 else 0.0
+    P10 = P6 / P5 if P5 > 1e-15 else 0.0
+    P11 = P3  # same formula
+    P12 = P4  # same formula
+    P13 = sqrtAbsDev ** 2
+
+    return {
+        'P1': P1, 'P2': P2, 'P3': P3, 'P4': P4, 'P5': P5,
+        'P6': P6, 'P7': P7, 'P8': P8, 'P9': P9, 'P10': P10,
+        'P11': P11, 'P12': P12, 'P13': P13, 'P14': P14
+    }
+
 
 # Mapeamento de Features (Deve ser IDÊNTICO ao FeatureExtractor no classifier.js)
-def extract_features(window):
-    # window é um DataFrame com 100 linhas
-    
-    # Acelerômetro
-    ax = window['accel_x_g']
-    ay = window['accel_y_g']
-    az = window['accel_z_g']
-    
-    # Giroscópio
-    gx = window['gyro_x_dps']
-    gy = window['gyro_y_dps']
-    gz = window['gyro_z_dps']
-    
-    # Vibração
-    vib = window['vibration']
-    
-    features = {
-        # Accelerometer features
-        'accel_x_g_std': ax.std(),
-        'accel_x_g_range': ax.max() - ax.min(),
-        'accel_x_g_rms': np.sqrt((ax**2).mean()),
-        'accel_y_g_std': ay.std(),
-        'accel_z_g_std': az.std(),
+def _axis_features(arr, prefix):
+    """Compute 11 temporal features for one axis, aligned with JS FeatureExtractor."""
+    vals = arr.values if hasattr(arr, 'values') else np.asarray(arr)
+    n = len(vals)
+    m = vals.mean()
+    s = vals.std(ddof=0)
 
-        # Gyroscope features
-        'gyro_x_dps_std': gx.std(),
-        'gyro_x_dps_rms': np.sqrt((gx**2).mean()),
-        'gyro_x_dps_range': gx.max() - gx.min(),
-        'gyro_y_dps_std': gy.std(),
-        'gyro_y_dps_rms': np.sqrt((gy**2).mean()),
-        'gyro_y_dps_range': gy.max() - gy.min(),
-        'gyro_z_dps_std': gz.std(),
-        'gyro_z_dps_range': gz.max() - gz.min(),
-        'gyro_z_dps_rms': np.sqrt((gz**2).mean()),
+    rms = np.sqrt((vals ** 2).mean())
+    abs_vals = np.abs(vals)
+    abs_sorted = np.sort(abs_vals)
+    peak = abs_sorted[int(0.95 * (n - 1))]  # P95
+    mean_abs = abs_vals.mean()
+    root_amp_val = (np.sqrt(abs_vals).mean()) ** 2
 
-        # Vibration features
-        'vibration_dps_std': vib.std(),
-        'vibration_dps_max': vib.max(),
-        'vibration_dps_range': vib.max() - vib.min(),
-        'vibration_dps_mean': vib.mean(),
+    skew_val = scipy_stats.skew(vals, bias=True) if n >= 3 else 0.0
+    kurt_val = scipy_stats.kurtosis(vals, fisher=True, bias=True) if n >= 4 else 0.0
+
+    crest = peak / rms if rms > 1e-10 else 0.0
+    shape = rms / mean_abs if mean_abs > 1e-10 else 0.0
+    impulse = peak / mean_abs if mean_abs > 1e-10 else 0.0
+    clearance = peak / root_amp_val if root_amp_val > 1e-10 else 0.0
+
+    return {
+        f'{prefix}_mean': m,
+        f'{prefix}_std': s,
+        f'{prefix}_skew': skew_val,
+        f'{prefix}_kurtosis': kurt_val,
+        f'{prefix}_rms': rms,
+        f'{prefix}_peak': peak,
+        f'{prefix}_root_amplitude': root_amp_val,
+        f'{prefix}_crest_factor': crest,
+        f'{prefix}_shape_factor': shape,
+        f'{prefix}_impulse_factor': impulse,
+        f'{prefix}_clearance_factor': clearance,
     }
+
+
+def extract_features(window, sample_rate=None):
+    """Extract 66 temporal + 84 spectral features per window (if sample_rate > 0)."""
+    # 6 axes
+    axes = [
+        ('accel_x_g', window['accel_x_g']),
+        ('accel_y_g', window['accel_y_g']),
+        ('accel_z_g', window['accel_z_g']),
+        ('gyro_x_dps', window['gyro_x_dps']),
+        ('gyro_y_dps', window['gyro_y_dps']),
+        ('gyro_z_dps', window['gyro_z_dps']),
+    ]
+
+    features = {}
+    for prefix, arr in axes:
+        features.update(_axis_features(arr, prefix))
+
+    # Spectral features (P1-P14 per axis = 84 features)
+    if sample_rate and sample_rate > 0:
+        for prefix, arr in axes:
+            vals = arr.values if hasattr(arr, 'values') else np.asarray(arr)
+            spec = compute_spectral_features(vals, sample_rate)
+            for key, val in spec.items():
+                features[f'{prefix}_{key}'] = val
+
     return pd.Series(features)
 
 def main():
@@ -105,7 +191,7 @@ def main():
         # Loop manual otimizado para extração
         for i in range(WINDOW_SIZE, len(df_state), step):
             window = df_state.iloc[i-WINDOW_SIZE:i]
-            features = extract_features(window)
+            features = extract_features(window, sample_rate=SAMPLE_RATE)
             X_list.append(features)
             y_list.append(state)
 
